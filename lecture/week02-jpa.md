@@ -387,6 +387,38 @@ applying in memory!
 
 ---
 
+# 도메인에서 — JPA 가 보이는 자리
+
+이름은 달라도 _패턴은 같다_ — 1:N 컬렉션 조회 + 페이징 = N+1 함정.
+
+| 도메인 | 패턴 | 위험 |
+| --- | --- | --- |
+| 게시판 + 댓글 | `Post.comments` 조회 | N+1 (오늘 다룬 사례) |
+| 회원 + 주문 목록 | 마이페이지 | N+1 + paging 메모리 폭발 |
+| 상품 + 옵션 + 카테고리 | 상세 페이지 ToOne 체인 | LAZY 초기화 시점 누락 |
+| 검색 결과 + 첨부 | `Page<Post> + comments` | fetch join + paging 함정 |
+| 관리자 지표 | OneToMany 집계 | 컬렉션 distinct 빠뜨림 |
+
+> 학습자가 _개발자_ 가 되어가는 신호 = _다른 도메인_ 에서 _같은 패턴_ 을 본다.
+
+---
+
+# 이력서에서 — JPA 카드 sample
+
+```text
+[게시판 응답 지연 600ms 개선]
+P (문제) /posts 평균 600ms, p99 1.2s — 게시글당 댓글 N+1
+O (옵션) EAGER 전환 / fetch join / @EntityGraph / batch fetch size
+D (결정) @EntityGraph 채택 — paging 친화적
+A (행동) PostRepository.findAllWithComments() + 테스트 추가
+R (결과) SQL 51 → 1, 평균 600ms → 90ms (-85%), p99 1.2s → 180ms
+```
+
+> 매 강의 끝 = 본인 레포 `evidence/interview-cards/jpa.md` 에 P-O-D-A-R 1세트.
+> 10주 누적 = 면접 답변 카드 15개 → Week 10 피날레에서 그대로 답변.
+
+---
+
 # 다음 단계 — 이번 주 미션 연결
 
 - 미션 `03-week2-jpa` 의 통과 조건 = _SQL 로그로 차이 설명_
