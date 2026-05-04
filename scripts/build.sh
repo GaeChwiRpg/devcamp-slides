@@ -12,6 +12,8 @@ echo "==> Checking slide title widths"
 python3 scripts/check-titles.py
 echo "==> Checking code blocks + table cells"
 python3 scripts/check-content.py
+echo "==> Checking content consistency (forbidden words / mission IDs)"
+python3 scripts/check-consistency.py
 
 mkdir -p dist
 

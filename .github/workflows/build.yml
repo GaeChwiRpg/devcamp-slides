@@ -39,6 +39,9 @@ jobs:
       - name: Check code blocks + table cells
         run: python3 scripts/check-content.py
 
+      - name: Check content consistency
+        run: python3 scripts/check-consistency.py
+
       - name: Build slides (PDF + HTML)
         run: npm run build
 
