@@ -20,9 +20,13 @@ title: 'Week 1 — Spring Boot 기본기'
 
 # OT 잘 듣고 오셨나요?
 
-- 환경 셀프체크 3종 — `JDK 21` / IntelliJ Run / `./gradlew bootRun` 통과?
-- 본인 학생 레포 (`{cohort}-{username}`) clone — OK?
-- Discord 코호트 채널 — `{cohort}-질문` / `{cohort}-리뷰` / `{cohort}-til` 참여 OK?
+| 체크 | 항목 |
+| --- | --- |
+| □ | `JDK 21` 설치 확인 — `java -version` |
+| □ | IntelliJ 프로젝트 import + Run 성공 |
+| □ | `./gradlew bootRun` 성공 로그 |
+| □ | 본인 학생 레포 (`{cohort}-{username}`) clone |
+| □ | Discord — `{cohort}-질문` / `{cohort}-리뷰` / `{cohort}-til` 참여 |
 
 > 막힌 부분은 _지금_ 손 들어주세요. 다음 슬라이드 가기 전에 같이 정리.
 
@@ -35,7 +39,7 @@ title: 'Week 1 — Spring Boot 기본기'
 - **type**: `code`
 - **마감**: 2026-06-05 (금) `23:59`
 - **검증**: PR → mission-guard CI green → AI 리뷰 → 점수
-- **진급 게이트**: PR 머지 + 팀 규칙 문서 제출
+- **통과 조건**: PR 머지 + 팀 규칙 문서 제출
 
 > "Spring Boot 가 _뭘_ 해주는지 본인 손으로 확인한다."
 
@@ -47,7 +51,7 @@ title: 'Week 1 — Spring Boot 기본기'
 2. **`@Transactional` 1개 이상** — _왜_ 그 위치에 붙였는지 근거
 3. **4 endpoint 동작 + 테스트 3개** — 성공 / 실패 / 예외 케이스
 
-> _curriculum.md_ Week 1 진급 게이트와 1:1 매칭.
+> _curriculum.md_ Week 1 통과 조건과 1:1 매칭.
 
 ---
 
@@ -200,7 +204,7 @@ class PostServiceTest {
 
 ---
 
-# 첫 주 워크플로우 — 막히지 않는 길
+# 첫 주 워크플로우
 
 1. 본인 레포 clone — `git clone git@github.com:GaeChwiRpg/{cohort}-{username}.git`
 2. `02-week1-spring-boot/project/` 에 Spring Boot 코드 시작 (이미 부트스트랩됨)

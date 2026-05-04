@@ -25,7 +25,7 @@ Week 2 · 격주 특강 · 2026-06-06
 - 학습자가 가장 많이 _블랙박스_ 로 두는 영역
 - "동작하는 코드 ≠ 좋은 코드" 가 가장 극명하게 드러남
 - 면접 단골 질문 (영속성 / 연관관계 / N+1)
-- Week 2 미션의 _진급 게이트_ 가 SQL 로그
+- Week 2 미션 통과 조건 = SQL 로그 before/after 비교
 
 > "EntityManager 가 무슨 일을 하는지 _그림으로_ 설명할 수 있게."
 
@@ -38,18 +38,21 @@ Week 2 · 격주 특강 · 2026-06-06
 3. 연관관계 주인과 `mappedBy`
 4. LAZY 기본 + N+1
 5. 해결 3가지 — fetch join / `@EntityGraph` / batch size
-6. 라이브 데모
-7. 실수 사례 + Q&A
+6. 실수 사례 + Q&A
 
 ---
 
 # 사전 지식 체크 (1분)
 
-- _영속성 컨텍스트_ 한 줄 정의?
-- _변경 감지_ 가 발동하는 시점?
-- _LAZY_ 와 _EAGER_ 의 차이?
+| 질문 | 답할 수 있나요? |
+| --- | --- |
+| 영속성 컨텍스트 한 줄 정의 | □ |
+| 변경 감지가 발동하는 시점 | □ |
+| LAZY 와 EAGER 의 차이 | □ |
+| `mappedBy` 가 가리키는 것 | □ |
+| `fetch join` 과 `@EntityGraph` 의 차이 | □ |
 
-> 모르면 _이 강의를 들으면 답할 수 있게_ 됩니다.
+> 모르면 _이 강의를 들으면 답할 수 있게_ 됩니다. 끝나고 다시 체크.
 
 ---
 
@@ -231,7 +234,7 @@ public class Post {
 
 <!-- _class: quest -->
 
-# Part 3 — LAZY 기본 + N+1 해결
+# Part 3 — N+1 해결
 
 EAGER 가 _기본_ 이 아닌 이유 + 면접 단골.
 
@@ -240,7 +243,7 @@ EAGER 가 _기본_ 이 아닌 이유 + 면접 단골.
 - 해결 3가지: fetch join / `@EntityGraph` / batch size
 - 함정: fetch join + paging — 메모리 페이징 위험
 
-> Week 2 진급 게이트 = SQL 로그 before/after.
+> Week 2 통과 조건 = SQL 로그 before/after 비교.
 
 ---
 
@@ -335,19 +338,6 @@ SELECT * FROM comment WHERE post_id IN (?, ?, ..., 100);
 
 ---
 
-# 라이브 데모 (8분)
-
-- **세팅**: `spring.jpa.show-sql=true` + Post 10개 + Comment 50개
-- **시나리오 1**: `findAll()` 호출 → 콘솔에 N+1 발생 _직접_ 확인
-- **시나리오 2**: `findAllWithComments()` (fetch join) → SQL 1줄로 줄어드는 것 확인
-- **관찰 포인트**: JPQL `LEFT JOIN FETCH` 가 SQL 의 `LEFT JOIN` 으로 어떻게 번역되는지
-
-```bash
-# 콘솔 출력 캡처 → evidence/n-plus-one-{before,after}.md
-```
-
----
-
 # 실수 사례 — fetch join + paging
 
 ```java
@@ -399,7 +389,7 @@ applying in memory!
 
 # 다음 단계 — 이번 주 미션 연결
 
-- 미션 `03-week2-jpa` 의 진급 게이트 = _SQL 로그로 차이 설명_
+- 미션 `03-week2-jpa` 의 통과 조건 = _SQL 로그로 차이 설명_
 - 학습 목표 2번(N+1 또는 fetch join 차이)이 오늘 강의와 1:1 매칭
 - evidence 에 박을 것:
   - `n-plus-one-before.md` — show_sql 로그 N+1 캡처

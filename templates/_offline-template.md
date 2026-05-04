@@ -95,12 +95,12 @@ title: '{{Week N · OT 또는 Finale}}'
 
 ---
 
-# 평가·진급 게이트
+# 평가·통과 조건
 
 - 매주 미션 mission-guard CI green
 - AI 리뷰 평균 **3점 이상** (5축 — review-rubric.md)
-- 4주차 종료 시 누적 평균 진급 게이트
-- 8주차 종료 시 팀 프로젝트 진입 게이트
+- 4주차 종료 시 누적 평균 점검
+- 8주차 종료 시 팀 프로젝트 진입 조건 점검
 
 ---
 
@@ -113,14 +113,14 @@ title: '{{Week N · OT 또는 Finale}}'
 
 ---
 
-# 제출 시스템 데모 (5분)
+# 제출 흐름
 
 - `submit/<mission_id>` 브랜치 push
 - mission-guard CI 가 형식 + 내용 검증
 - AI 리뷰가 5축 점수 + 한국어 피드백
 - `{cohort}-리뷰` 채널 알림 + `latest_score` DB 업데이트
 
-> 라이브 데모 → sample repo PR 1개 시연
+> sample repo `GaeChwiRpg/devcamp-submission-sample` 의 PR 들을 _참고_ — 같은 형식.
 
 ---
 
@@ -188,7 +188,7 @@ title: '{{Week N · OT 또는 Finale}}'
 - 팀 2: {{팀명}} — {{한 줄}}
 - 팀 3: {{팀명}} — {{한 줄}}
 
-> 각 팀 5분 라이브 데모. SLIDE-OUTLINE.md 12장 양식.
+> 각 팀 5분 데모. SLIDE-OUTLINE.md 12장 양식.
 
 ---
 
