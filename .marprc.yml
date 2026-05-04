@@ -1,0 +1,21 @@
+# 딩코딩코 부트캠프 발표 슬라이드 — Marp 전역 설정
+# 모든 .md 는 이 설정으로 빌드. 개별 파일에서 frontmatter 로 override 가능.
+
+allowLocalFiles: true
+themeSet:
+  - ./theme/rpg.css
+
+options:
+  html: true
+  markdown:
+    breaks: false
+    linkify: true
+
+# 입력에서 제외할 패턴 (템플릿 raw 파일은 빌드하지 않음)
+inputDir: .
+exclude:
+  - "node_modules/**"
+  - "dist/**"
+  - "templates/**"
+  - "README.md"
+  - "**/*-notes.md"
