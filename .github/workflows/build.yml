@@ -54,7 +54,7 @@ jobs:
 
           const sections = [
             { id: 'weekly-kickoff', title: '매주 14:00–15:00 미션 공개' },
-            { id: 'tech-talk',      title: '격주 특강 (2/4/6/8주차)' },
+            { id: 'lecture',        title: '격주 강의 (2/4/6/8주차)' },
             { id: 'offline',        title: '첫·마지막 오프라인 모임' },
           ];
 

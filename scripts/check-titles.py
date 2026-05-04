@@ -19,7 +19,7 @@ from pathlib import Path
 LIMITS = {1: 32, 2: 48, 3: 56}
 
 # 검사 대상 디렉토리 (다른 마크다운은 건드리지 않음)
-SLIDE_DIRS = ("weekly-kickoff", "tech-talk", "offline", "templates")
+SLIDE_DIRS = ("weekly-kickoff", "lecture", "offline", "templates")
 # 발표 노트 등 빌드되지 않는 파일은 제외
 EXCLUDE_SUFFIX = ("-notes.md",)
 

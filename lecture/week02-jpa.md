@@ -2,7 +2,7 @@
 marp: true
 theme: rpg
 paginate: true
-title: 'Tech Talk — JPA 영속성 컨텍스트 + N+1'
+title: 'Week 2 강의 — JPA 영속성 + N+1'
 ---
 
 <!-- _class: cover -->
@@ -10,11 +10,11 @@ title: 'Tech Talk — JPA 영속성 컨텍스트 + N+1'
 
 ![logo](../theme/assets/logo.png)
 
-# Tech Talk
+# Week 2 강의
 
-## JPA 영속성 컨텍스트 + 연관관계 + N+1
+## JPA 영속성 + 연관관계 + N+1
 
-Week 2 · 격주 특강 · 2026-06-06
+Week 2 · 격주 강의 · 2026-06-06
 
 ---
 
@@ -404,4 +404,4 @@ applying in memory!
 
 질문은 강의 어디에서나. 화·목 21:00 오피스아워에서 이어가도 OK.
 
-> 다음 격주 특강(Week 4): **인덱스 / EXPLAIN 으로 쿼리 플랜 읽기**.
+> 다음 격주 강의(Week 4): **인덱스 / EXPLAIN 으로 쿼리 플랜 읽기**.

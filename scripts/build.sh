@@ -13,7 +13,7 @@ python3 scripts/check-titles.py
 
 mkdir -p dist
 
-for d in weekly-kickoff tech-talk offline; do
+for d in weekly-kickoff lecture offline; do
   if compgen -G "$d/*.md" > /dev/null; then
     echo "==> Building $d/"
     mkdir -p "dist/$d"

@@ -1,12 +1,12 @@
 <!--
-TEMPLATE: 격주 토 15:00–16:30 특강 (30-50장 / 60-70분)
+TEMPLATE: 격주 토 15:00–16:30 강의 (30-50장 / 60-70분)
 사용 주차: 2 / 4 / 6 / 8
 
 사용법:
-  cp templates/_tech-talk-template.md tech-talk/weekNN-{topic}.md
+  cp templates/_lecture-template.md lecture/weekNN-{topic}.md
   → {{...}} placeholder 교체
 
-특강 운영 원칙:
+강의 운영 원칙:
 - 본문 강의 40분 + Q&A 20분 + 네트워킹/행정 30분
 - 실수 사례 1개 이상 — 학습자가 흔히 빠지는 함정
 - 다음 단계 = 이번 주 미션과 어떻게 닿는지 명시
@@ -16,7 +16,7 @@ TEMPLATE: 격주 토 15:00–16:30 특강 (30-50장 / 60-70분)
 marp: true
 theme: rpg
 paginate: true
-title: 'Tech Talk — {{주제}}'
+title: 'Week {{NN}} 강의 — {{주제}}'
 ---
 
 <!-- _class: cover -->
@@ -24,11 +24,11 @@ title: 'Tech Talk — {{주제}}'
 
 ![logo](../theme/assets/logo.png)
 
-# Tech Talk
+# Week {{NN}} 강의
 
 ## {{주제}}
 
-Week {{NN}} · 특강 · {{2026-MM-DD}}
+Week {{NN}} · 격주 강의 · {{2026-MM-DD}}
 
 ---
 
