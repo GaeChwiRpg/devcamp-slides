@@ -1,0 +1,277 @@
+---
+marp: true
+theme: rpg
+paginate: true
+title: 'Week 1 OT — 10-Week Backend Bootcamp Begins'
+description: 딩코딩코 백엔드 부트캠프 1기 첫 오프라인 모임. 비전 / 10주 로드맵 / 평가·진급 / 팀 매칭 / 제출 시스템 / 첫 미션.
+---
+
+<!-- _class: cover -->
+<!-- _paginate: false -->
+
+![logo](../theme/assets/logo.png)
+
+# Week 1 OT
+
+## 10-Week Backend Bootcamp Begins
+
+2026-05-30 (토) · 오프라인 저녁 모임
+
+---
+
+# 오늘의 흐름
+
+1. 왜 우리는 여기 모였나
+2. 10-Week RPG 로드맵
+3. 평가 / 진급 / 팀
+4. 제출 시스템 라이브 데모
+5. 첫 주 시작 신호 + 네트워킹
+
+> _2시간 안에 끝납니다. 막히는 곳은 다음 주 토요일에 다시._
+
+---
+
+<!-- _class: quest -->
+
+# 왜 이 부트캠프인가
+
+- _비전공자_ 가 _진짜로_ 백엔드 개발자가 되는 10주
+- 책 한 권의 7주차 베이스 + AI Native 4 요소
+- 매주 검증 루프 — 면접에서 _말할 수 있는_ 결과물
+
+> "이 10주가 끝나면, 본인 입으로 본인 코드를 설명할 수 있다."
+
+---
+
+# 문제 — 비전공자 백엔드의 함정
+
+- 강의는 _쉽게_ 설명되지만, 실무는 _어렵게_ 굴러간다
+- 코드는 돌아가지만 _왜_ 그렇게 짰는지 못 답한다
+- AI 가 만들어준 코드의 _hallucination_ 을 못 거른다
+- 면접에서 _수치_ 를 가지고 답을 못 한다
+
+> 이 4가지를 10주 동안 _반복적으로_ 깬다.
+
+---
+
+# 해결 — 3축 압축
+
+| 축 | 내용 |
+| --- | --- |
+| **6 공통 필수 기능** | 권한 / 동시성 / 검색 / 캐시 / 비동기 / AI |
+| **라이프사이클 5 단계** | 기획 → 코딩 → 테스트 → 리뷰 → 운영 |
+| **AI Native 4 요소** | Context Engineering / Slash Commands / Hooks / Sub-agents |
+
+> 모든 미션은 이 3축을 _최소 1번씩_ 통과시킨다.
+
+---
+
+# 10-Week RPG Map ① — W1~W5
+
+| 주차 | 미션 ID | 주제 |
+| --- | --- | --- |
+| W1 | `02-week1-spring-boot` | Spring Boot 기본기 |
+| W2 | `03-week2-jpa` | JPA 연관관계 / 영속성 |
+| W3 | `04-week3-backend-resume` | 이력서 스토리라인 |
+| W4 | `05-week4-index` | 인덱스 / EXPLAIN |
+| W5 | `06-week5-concurrency` | 트랜잭션 / 락 / 동시성 |
+
+---
+
+# 10-Week RPG Map ② — W6~W10
+
+| 주차 | 미션 ID | 주제 |
+| --- | --- | --- |
+| W6 | `07-week6-profiling` | 서버 성능 최적화 |
+| W7 | `08-week7-redis` | Redis 실전 활용 |
+| W8 | `09-week8-ai-native` | AI 네이티브 워크플로우 |
+| W9 | `week9-team-project` | 팀 프로젝트 (5단계 분담) |
+| W10 | `10-week10-interview` | **FINAL BOSS** — 면접 |
+
+---
+
+# 6 공통 필수 기능
+
+- **권한 / 인가** — `@PreAuthorize` / 토큰 검증
+- **트랜잭션 / 동시성** — `@Transactional` / `@Lock` / 재시도
+- **검색 / 인덱스** — `EXPLAIN` 으로 쿼리 플랜 읽기
+- **캐시** — Redis hit rate / invalidation 전략
+- **비동기 / 이벤트** — `@Async` / 이벤트 기반 책임 분리
+- **AI 보조 기능** — 검증 루프와 evidence 누적
+
+---
+
+<!-- _class: lesson -->
+
+# 라이프사이클 5 단계 — 산출물
+
+기획 / 코딩 / 테스트 / 리뷰 / 운영
+
+각 단계마다 _남기는 것_ 이 다르다.
+
+| 단계 | 산출물 | 도구 |
+| --- | --- | --- |
+| 기획 | `PRD.md` + Jira 티켓 | Jira MCP |
+| 코딩 | PR + 테스트 | Claude Code |
+| 테스트 | E2E 시나리오 | Playwright MCP |
+| 리뷰 | AI Actions / CodeRabbit | GitHub Actions |
+| 운영 | `MONITORING.md` | Sentry MCP |
+
+---
+
+# AI Native 4 요소
+
+- **Context Engineering** — `CLAUDE.md` 헌법 = 팀의 합의
+- **Slash Commands** — 자주 하는 작업을 _명령_ 으로 굳히기
+- **Hooks** — 커밋/푸시 시점에 검증 자동화
+- **Sub-agents** — 병렬 작업, 독립 검증
+
+> 매주 미션마다 _AI 보조 흔적_ 을 evidence 에 박는다.
+
+---
+
+# 평가 — 5축 채점 (1~5점)
+
+| 축 | 1점 | 3점 | 5점 |
+| --- | --- | --- | --- |
+| 요구사항 충족 | 일부 누락 | 모두 충족 | 추가 케이스 |
+| 구조 | 절차 나열 | 책임 분리 | 일관 패턴 |
+| 기술 적용 | 동작만 | 의도 적용 | 다른 선택지 비교 |
+| 검증 근거 | 텍스트만 | 수치 1개 | before/after + p95 |
+| 설명력 | 정보 부족 | 의도 전달 | 비전공자도 이해 |
+
+> 0.5 단위. 5축 평균 = `overall_score`.
+
+---
+
+# 진급 게이트
+
+- **매주**: mission-guard CI green + AI 리뷰 평균 ≥ **3.0**
+- **W4 누적**: 4주차 종료 시 평균으로 코드형 미션 진입 자격 확인
+- **W8 종료**: 팀 프로젝트 진입 게이트 — 6 공통 + 라이프사이클 ≥ 2 단계 흔적
+- **W9 팀**: 개인 PR ≥ 2 + 5 단계 모두 적용 흔적
+- **W10 면접**: 6 evidence + 이력서 최종본 + 발표
+
+---
+
+# 팀 매칭 룰
+
+- 4명 팀 기본 (3·5명도 OK)
+- 기술 영역 4종 × 라이프사이클 5단계 매트릭스로 분담
+- 팀별 1개 레포 (`{cohort}-team-NN`) 자동 부트스트랩
+- 팀 헌법 = `CLAUDE.md` 공동 작성
+
+> 분담 sample: `devcamp-team-submission-sample/examples/week9-team-role-split.md`
+
+---
+
+<!-- _class: lesson -->
+
+# 제출 시스템 — 개요
+
+검증은 _자동_, 피드백은 _즉시_.
+
+- 학생 1인 1레포 — `{cohort}-{username}`
+- 미션 폴더 = mission_id
+- `submit/<mission_id>` 브랜치에 PR 생성
+- mission-guard CI → AI 리뷰 → DB 점수 갱신 → Discord 알림
+
+---
+
+# 제출 시스템 데모 (5분)
+
+1. 학생 레포 fork + clone
+2. `submit/02-week1-spring-boot` 브랜치 만들고 PR 생성
+3. mission-guard CI 가 _내용_ 검증 (red 시 어떤 메시지 뜨는지 확인)
+4. 통과 시 AI 리뷰 한국어 코멘트 + 5축 점수
+5. Discord `#submissions` 알림 + DB `latest_score` 업데이트
+
+> _라이브로 시연 — 실제 sample repo PR 1건._
+
+---
+
+# mission-guard 가 막는 것
+
+- `report.md` 가 체크박스만 있고 본문 비어있는 경우
+- `evidence/` 에 README/.gitkeep 외 실제 파일이 없는 경우
+- 코드형 미션인데 `project/` 안 `.java/.sql` 가 0개
+- W4~7 인데 evidence 에 `before` / `after` 단어 모두 없을 때
+
+> 형식 검증 → AI 리뷰는 _내용_ 만 본다.
+
+---
+
+# 운영 리듬 — 매주 토요일
+
+| 시간 | 슬롯 | 발표자 |
+| --- | --- | --- |
+| 14:00–15:00 | 미션 공개 + 주간 방향 | 총괄 |
+| 15:00–16:30 | 격주 특강 (2/4/6/8) | 총괄 직접 |
+| 15:00–16:30 | 격주 내부 발표 (3/5/7/9) | 학생 (팀별 1명) |
+
+평일은 _혼자 / 팀끼리_. Discord 오피스아워: 화·목 21:00.
+
+---
+
+# 도구 스택
+
+- **GitHub** — 학생/팀 레포 + mission-guard + AI 리뷰
+- **Google Meet** — 토요일 14:00 / 15:00 라이브 (녹화 제공)
+- **Discord** — `#help` / `#submissions` / `#oh` 오피스아워
+- **Notion** — 발표/회고/공지
+- **Claude Code** — 매 미션의 코딩 파트너
+
+---
+
+# 학생 측 도구 — 너희의 무기
+
+- `CLAUDE.md` — 본인 또는 팀의 _합의_ 를 박는 곳
+- `prompts/` — 자주 쓰는 명령 슬래시화
+- `.github/workflows/` — Hooks 자동화
+- 검증 → AI 리뷰 → 본인 답 = _포트폴리오 1조각_
+
+> 매주 1조각씩 쌓이면 10주 후 면접 답변 10개 완성.
+
+---
+
+# 첫 주 미션 — `02-week1-spring-boot`
+
+- 주제: Spring Boot 기본기 — 게시판 1개 (CRUD + 페이징)
+- 진급 게이트: PR 머지 가능 + 팀 규칙 문서 제출
+- 마감: **2026-06-05 (금) 23:59**
+- 다음 주 토 14:00 W1 미션 회고 + W2 JPA 공개
+
+> 상세는 토 14:00 슬롯에서 다시 — 오늘은 _뭘 할지_ 만 알면 충분.
+
+---
+
+# 첫 주 할 일 (오늘 → 다음 토)
+
+- [ ] 본인 학생 레포 접속 확인 (Discord에 invite 링크)
+- [ ] `01-onboarding-git-basics/` 의 환경 셀프체크 3종 (JDK 17 / IntelliJ Run / `./gradlew bootRun`) 통과
+- [ ] `02-week1-spring-boot/README.md` 의 "이번 주에 제출할 것" 읽기
+- [ ] 막히면 `#help` 채널 — 24시간 안에 답이 옵니다
+
+---
+
+# 운영진의 약속 / 학생의 약속
+
+**운영진**:
+- mission-guard / AI 리뷰는 24시간 내 응답
+- 매주 토 14:00 슬롯은 _절대_ 펑크 내지 않음
+- 진급 게이트는 _구체적 수치_ 로 알려준다
+
+**학생**:
+- 막히면 _먼저 시도하고_ `#help` 에 _뭘 시도했는지_ 와 함께 질문
+- 매주 PR 1건 ≥ — _작은 진전_ 도 누적되면 큰 차이
+- AI 답을 _믿지 않고_ 본인 손으로 검증
+
+---
+
+<!-- _class: end -->
+
+# Press Start
+
+1주가 끝나면 _첫_ PR. 5주가 끝나면 _첫_ 동시성 디버깅. 10주가 끝나면 _첫_ 백엔드 개발자.
+
+> 다음 주 토 14:00 — Week 1 Kickoff.
