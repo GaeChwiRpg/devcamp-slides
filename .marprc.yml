@@ -10,12 +10,3 @@ options:
   markdown:
     breaks: false
     linkify: true
-
-# 입력에서 제외할 패턴 (템플릿 raw 파일은 빌드하지 않음)
-inputDir: .
-exclude:
-  - "node_modules/**"
-  - "dist/**"
-  - "templates/**"
-  - "README.md"
-  - "**/*-notes.md"

@@ -4,13 +4,20 @@
   "version": "0.1.0",
   "description": "딩코딩코 부트캠프 발표 슬라이드 (Marp + DEVELOPER RPG 테마)",
   "scripts": {
-    "build": "marp --config-file .marprc.yml --pdf --html --input-dir . --output-dir dist",
-    "build:html": "marp --config-file .marprc.yml --html --input-dir . --output-dir dist",
-    "build:one": "marp --config-file .marprc.yml --pdf --html",
-    "watch": "marp --config-file .marprc.yml --html --watch --server .",
-    "preview": "marp --config-file .marprc.yml --html --preview"
+    "build": "npm-run-all build:weekly build:tech build:offline",
+    "build:weekly": "marp --pdf --html -I weekly-kickoff -o dist/weekly-kickoff && marp --html -I weekly-kickoff -o dist/weekly-kickoff",
+    "build:tech":   "marp --pdf --html -I tech-talk      -o dist/tech-talk      && marp --html -I tech-talk      -o dist/tech-talk",
+    "build:offline":"marp --pdf --html -I offline        -o dist/offline        && marp --html -I offline        -o dist/offline",
+    "build:html": "npm-run-all build:weekly:html build:tech:html build:offline:html",
+    "build:weekly:html":  "marp --html -I weekly-kickoff -o dist/weekly-kickoff",
+    "build:tech:html":    "marp --html -I tech-talk      -o dist/tech-talk",
+    "build:offline:html": "marp --html -I offline        -o dist/offline",
+    "build:one": "marp --pdf --html",
+    "watch":   "marp --html --watch --server .",
+    "preview": "marp --html --preview"
   },
   "devDependencies": {
-    "@marp-team/marp-cli": "^4.1.2"
+    "@marp-team/marp-cli": "^4.1.2",
+    "npm-run-all": "^4.1.5"
   }
 }
