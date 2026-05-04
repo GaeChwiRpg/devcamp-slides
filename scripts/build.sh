@@ -13,12 +13,16 @@ for d in weekly-kickoff tech-talk offline; do
   if compgen -G "$d/*.md" > /dev/null; then
     echo "==> Building $d/"
     mkdir -p "dist/$d"
-    npx marp --pdf  -I "$d" -o "dist/$d"
-    npx marp --html -I "$d" -o "dist/$d"
+    npx marp --pdf  -I "$d" -o "dist/$d" -P 1
+    npx marp --html -I "$d" -o "dist/$d" -P 1
   else
     echo "==> Skip $d (no .md)"
   fi
 done
 
+# 발표 노트(*-notes.md)는 운영자 전용 — Pages 에 노출 안 함
+echo "==> Stripping presenter notes (*-notes.*)"
+find dist -type f \( -name "*-notes.html" -o -name "*-notes.pdf" \) -delete
+
 echo "Done. Output: dist/"
-ls -la dist/ 2>/dev/null || true
+find dist -type f -name "*.pdf" -o -name "*.html" | sort 2>/dev/null || true

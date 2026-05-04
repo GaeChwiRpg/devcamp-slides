@@ -1,0 +1,210 @@
+---
+marp: true
+theme: rpg
+paginate: true
+title: 'Week 2 — JPA 연관관계 / 영속성'
+---
+
+<!-- _class: cover -->
+<!-- _paginate: false -->
+
+![logo](../theme/assets/logo.png)
+
+# Week 2
+
+## JPA 연관관계 / 영속성 컨텍스트
+
+2026-06-06 (토) · 미션 공개 + 주간 방향
+
+---
+
+# 지난 주 돌아보기 — Week 1
+
+- **제출률**: {{N}}/{{M}} 명, {{X%}}
+- 잘된 점: 3계층 분리 근거를 _말로_ 푼 학생이 많았음
+- 아쉬운 점: `@Transactional` 위치 근거가 빈약 (그냥 Service 위에 붙임)
+- 이번 주에 가져갈 것: _왜_ 그 위치냐를 evidence 에 박는 습관
+
+---
+
+<!-- _class: quest -->
+
+# 03-week2-jpa
+
+- **type**: `code`
+- **마감**: 2026-06-12 (금) `23:59`
+- **검증**: PR → mission-guard CI → AI 리뷰
+- **진급 게이트**: 리팩토링 PR 머지 가능 + 피어리뷰 참여 완료
+
+> "Week 1 코드를 _그대로_ 이어 받는다 — 처음부터 다시 짜지 마세요."
+
+---
+
+# 이번 주 학습 목표
+
+1. **연관관계 주인** 본인이 결정 — 양방향 매핑에서 _어느 쪽_ 이 FK 를 가지는지
+2. **모든 연관관계 LAZY** + N+1 발생 현장 _쿼리 로그_ 로 확인
+3. **변경 감지** 활용 1건 — `setter` 만 호출하고 `save()` 안 부르기
+
+> 게이트 완화: N+1 _못_ 잡아도 fetch join / `@EntityGraph` _차이_ 를 SQL 로그로 설명하면 통과.
+
+---
+
+# 시작하는 법 — Week 1 코드 그대로
+
+```bash
+# Week 1 폴더의 project/ 를 Week 2 로 복사
+cp -r 02-week1-spring-boot/project 03-week2-jpa/project
+
+# JPA 의존성 + H2/MySQL 추가, 메모리 저장소 → JpaRepository
+```
+
+> 이게 Week 4~7 starter 운영 원칙과 같은 흐름. _환경 세팅 반복 금지_.
+
+---
+
+<!-- _class: lesson -->
+
+## 핵심 개념 1 — 영속성 컨텍스트 4 기능
+
+EntityManager 가 _캐시_ 처럼 동작.
+
+| 기능 | 무엇 |
+| --- | --- |
+| 1차 캐시 | 같은 트랜잭션 내 동일 PK 재조회 시 SELECT 안 감 |
+| 변경 감지 | flush 시 _바뀐_ Entity 만 UPDATE |
+| 쓰기 지연 | INSERT/UPDATE 모아서 flush 시점 한 번 |
+| 동일성 보장 | `==` 비교가 트랜잭션 내에서 같은 객체 |
+
+각 기능을 _evidence/n1-detection-guide.md_ 에서 본인 말로.
+
+---
+
+<!-- _class: lesson -->
+
+## 핵심 개념 2 — 연관관계 주인
+
+`Post` 1 : N `Comment`. 누가 FK 를 가질까?
+
+```java
+// 일반적: N 쪽이 주인
+@Entity
+public class Comment {
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "post_id")
+  private Post post;
+}
+
+@Entity
+public class Post {
+  @OneToMany(mappedBy = "post")
+  private List<Comment> comments;
+}
+```
+
+evidence 에 _이 결정의 근거_ 를 박는다.
+
+---
+
+<!-- _class: lesson -->
+
+## 핵심 개념 3 — N+1 와 fetch join
+
+```sql
+-- N+1 : 1번 + N번
+SELECT * FROM post;          -- 1
+SELECT * FROM comment WHERE post_id = ?;  -- N
+
+-- fetch join : 1번
+SELECT p, c FROM Post p
+LEFT JOIN FETCH p.comments c;
+```
+
+`spring.jpa.show-sql=true` 로 _직접_ 확인하고 캡처.
+
+---
+
+<!-- _class: lesson -->
+
+## 핵심 개념 4 — 변경 감지
+
+`save()` 호출 안 해도 트랜잭션 종료 시 UPDATE.
+
+```java
+@Transactional
+public void updateTitle(Long id, String title) {
+  Post post = postRepository.findById(id)
+    .orElseThrow();
+  post.changeTitle(title);  // setter 호출만
+  // save() 호출 X — 변경 감지가 처리
+}
+```
+
+evidence/dirty-checking-snapshot.md 에 _flush 전후 SQL 로그_ 캡처.
+
+---
+
+# 함정 / 자주 하는 실수
+
+- ❌ 양방향 매핑에서 양쪽 다 setter → ✅ 편의 메서드 1개로 양쪽 동기화
+- ❌ EAGER 로 처음부터 다 가져옴 → ✅ LAZY 기본, fetch join 으로 케이스별 해결
+- ❌ N+1 보고 _그냥_ EAGER 로 도망 → ✅ fetch join 또는 `@EntityGraph`
+- ❌ `setter` 안 부르고 `save(new Post(...))` 로 _전체 교체_ → ✅ 변경 감지 활용
+
+---
+
+# 이번 주에 제출할 것
+
+```
+03-week2-jpa/
+├── report.md
+├── project/                              # Week 1 에서 복사 + 리팩토링
+└── evidence/
+    ├── entity-design-notes.md            # Entity 설계 결정
+    ├── association-owner-decision.md     # 연관관계 주인 근거
+    ├── n-plus-one-before.md              # N+1 발생 시 SQL 로그
+    ├── n-plus-one-after.md               # fetch join 적용 후 SQL 로그
+    ├── dirty-checking-snapshot.md        # 변경 감지 flush 로그
+    └── n1-detection-guide.md             # 학습 보조 (main 에서 같이 들어감)
+```
+
+---
+
+# 평가 기준 (5축)
+
+| 축 | 가중 | 핵심 |
+| --- | --- | --- |
+| 요구사항 충족 | ★★ | 연관관계 / LAZY / 쿼리 로그 |
+| 구조 | ★★ | Entity 설계 / 편의 메서드 |
+| 기술 적용 | ★★★ | _연관관계 주인 결정 근거_ |
+| 검증 근거 | ★★★ | _쿼리 로그 before/after_ |
+| 설명력 | ★★ | N+1 또는 fetch join 차이 설명 |
+
+> Week 2 는 _기술 포인트 적용_ 가중. SQL 로그 한 장이 핵심 evidence.
+
+---
+
+# 피어리뷰 (1차)
+
+- 같은 코호트 학생 2명 PR 을 _읽고_ 1개씩 코멘트
+- 코멘트 양식: "{{잘된 점 1줄}} / {{개선 1줄}}"
+- 룰: 5점 → 5점 만점 / 비판적이지만 _격려_ 톤
+- 점수 룰: 참여 OK = +5, 미참여 = 0 (`submissions.md` 260–264)
+
+---
+
+# 운영 안내
+
+- **제출 마감**: 2026-06-12 (금) `23:59`
+- **토 15:00–16:30**: 격주 **특강** — JPA 연관관계 / 영속성 (직후 슬롯)
+- **오피스아워**: 화·목 21:00 `#oh`
+
+---
+
+<!-- _class: end -->
+
+# Q&A
+
+오늘 15:00 부터 _특강_ — JPA 깊게 들어갑니다. 잠깐 쉬고 뵐게요.
+
+> 다음 주: **Week 3 — 백엔드 이력서 차별화**.

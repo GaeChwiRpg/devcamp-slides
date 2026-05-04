@@ -1,0 +1,216 @@
+---
+marp: true
+theme: rpg
+paginate: true
+title: 'Week 1 — Spring Boot 기본기'
+---
+
+<!-- _class: cover -->
+<!-- _paginate: false -->
+
+![logo](../theme/assets/logo.png)
+
+# Week 1
+
+## Spring Boot 기본기
+
+2026-05-30 (토) · 미션 공개 + 주간 방향
+
+---
+
+# OT 잘 듣고 오셨나요?
+
+- 환경 셀프체크 3종 (JDK 17 / IntelliJ Run / `./gradlew bootRun`) — 통과?
+- 본인 학생 레포 접근 — OK?
+- Discord 채널 `#help` / `#oh` 참여 — OK?
+
+> 막힌 부분은 _지금_ 손 들어주세요. 다음 슬라이드 가기 전에 같이 정리.
+
+---
+
+<!-- _class: quest -->
+
+# 02-week1-spring-boot
+
+- **type**: `code`
+- **마감**: 2026-06-05 (금) `23:59`
+- **검증**: PR → mission-guard CI green → AI 리뷰 → 점수
+- **진급 게이트**: PR 머지 + 팀 규칙 문서 제출
+
+> "Spring Boot 가 _뭘_ 해주는지 본인 손으로 확인한다."
+
+---
+
+# 이번 주 학습 목표
+
+1. **3계층 분리** — Controller / Service / Repository 책임을 본인 말로 설명
+2. **`@Transactional` 1개 이상** — _왜_ 그 위치에 붙였는지 근거
+3. **4 endpoint 동작 + 테스트 3개** — 성공 / 실패 / 예외 케이스
+
+> _curriculum.md_ Week 1 진급 게이트와 1:1 매칭.
+
+---
+
+<!-- _class: lesson -->
+
+## 핵심 개념 1 — 3계층 분리
+
+각 계층의 _책임_ 이 다르다.
+
+```
+Controller — HTTP 입출력만
+Service    — 비즈니스 로직 + Tx
+Repository — DB 접근만
+```
+
+이 _분리_ 를 evidence 에 본인 말로.
+
+```text
+@Controller → @Service → @Repository
+   ↓             ↓             ↓
+  요청 받기      Tx 시작       JPA/JDBC
+  응답 형식     도메인 검증    SQL 실행
+```
+
+---
+
+<!-- _class: lesson -->
+
+## 핵심 개념 2 — REST API 4 endpoint
+
+게시판 도메인 (Post) — Week 2 로 자연스럽게 이어진다.
+
+| 메서드 | 경로 | 응답 |
+| --- | --- | --- |
+| `POST` | `/posts` | 201 Created + body |
+| `GET` | `/posts` | 200 OK + 목록 |
+| `GET` | `/posts/{id}` | 200 OK / 404 |
+| `PUT` | `/posts/{id}` | 200 OK / 404 |
+
+`@RestController` + `ResponseEntity` 로 응답.
+
+```java
+@PostMapping
+public ResponseEntity<PostResponse> create(
+  @RequestBody @Valid PostRequest req
+) { ... }
+```
+
+---
+
+<!-- _class: lesson -->
+
+## 핵심 개념 3 — `@Transactional`
+
+비즈니스 로직 _경계_ 에 붙인다.
+
+```java
+@Service
+public class PostService {
+
+  @Transactional
+  public Post create(PostRequest req) {
+    // 1. 도메인 검증
+    // 2. Repository.save
+    // 3. 이벤트 발행 (선택)
+  }
+}
+```
+
+**왜 Service 에?** — Controller 는 트랜잭션 경계의 _책임_ 이 아님.
+
+evidence 에 _이 한 줄_ 을 본인 말로 박는다.
+
+---
+
+<!-- _class: lesson -->
+
+## 핵심 개념 4 — 테스트 3개
+
+성공 / 실패 / 예외 1개씩 — 작은 시작.
+
+```java
+@SpringBootTest
+class PostServiceTest {
+
+  @Test void create_success() { ... }
+  @Test void create_invalidTitle_throws() { ... }
+  @Test void getById_notFound_throws404() { ... }
+}
+```
+
+`@SpringBootTest` 또는 `@DataJpaTest` 또는 `@WebMvcTest` 중 _맞는 범위_ 선택.
+
+---
+
+# 함정 / 자주 하는 실수
+
+- ❌ Controller 안에 비즈니스 로직 → ✅ Service 위임
+- ❌ `@Transactional` 을 Controller 또는 private 메서드에 → ✅ public Service 메서드에
+- ❌ Repository 가 Entity 외 객체를 받음 → ✅ DTO 변환은 Service 에서
+- ❌ 테스트가 _success_ 만 → ✅ 실패 / 예외 케이스도 반드시
+- ❌ Postman 캡처 없이 PR → ✅ `evidence/response-samples.md` 에 4 endpoint 응답 모두
+
+---
+
+# 이번 주에 제출할 것
+
+```
+02-week1-spring-boot/
+├── report.md
+├── project/                       # 실제 Spring Boot 코드
+└── evidence/
+    ├── api-contract.md            # 4 endpoint 명세
+    ├── response-samples.md        # Postman 응답 4건
+    ├── test-results.md            # 테스트 3개 결과
+    ├── layer-separation-notes.md  # 3계층 분리 근거
+    └── transactional-snapshot.md  # @Transactional 위치 근거
+```
+
+> 정확한 파일명은 `devcamp-submission-sample/02-week1-spring-boot/README.md`
+
+---
+
+# 평가 기준 (5축)
+
+| 축 | 가중 | 핵심 |
+| --- | --- | --- |
+| 요구사항 충족 | ★★ | 4 endpoint 모두 동작 |
+| 구조 | ★★★ | 3계층 분리 근거 |
+| 기술 적용 | ★★ | `@Transactional` 위치 근거 |
+| 검증 근거 | ★ | 테스트 + Postman 응답 |
+| 설명력 | ★★ | report.md + evidence |
+
+> Week 1 은 _요구사항 충족도와 설명력_ 에 가중. 검증 근거는 작아도 OK.
+
+---
+
+# 운영 안내
+
+- **제출 마감**: 2026-06-05 (금) `23:59`
+- **금 18:00**: 다음 주 토요일 행사 1장 슬라이드 제출 (3주차 발표자만 해당)
+- **토 15:00–16:30**: 1주차는 _이 슬롯 없음_ — 오프라인 OT 가 대체
+- **오피스아워**: 화·목 21:00 Discord `#oh`
+- **막히면**: `#help` 채널 + 환경 이슈는 `#env`
+
+---
+
+# 첫 주 워크플로우 — 막히지 않는 길
+
+1. 학생 레포 clone → `02-week1-spring-boot/project/` 에 새 Spring Boot 프로젝트
+2. 엔드포인트 1개씩 구현 → Postman 으로 _즉시_ 확인
+3. 테스트 1개 → 통과 → 다음 endpoint
+4. 4 endpoint 다 됐으면 evidence 5개 채우기
+5. `submit/02-week1-spring-boot` 브랜치 push → PR
+6. mission-guard CI green → AI 리뷰 → 답장 받기
+
+---
+
+<!-- _class: end -->
+
+# Q&A
+
+질문 환영. 막히면 _바로_ `#help` — 24시간 내 답.
+
+> 다음 주: **Week 2 — JPA 연관관계 / 영속성**.
+> 1주차 코드를 _그대로 이어서_ 리팩토링.
