@@ -1,0 +1,154 @@
+name: Build slides + deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Chromium for Marp PDF rendering
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser fonts-noto-cjk
+          echo "PUPPETEER_EXECUTABLE_PATH=$(which chromium-browser)" >> $GITHUB_ENV
+
+      - run: npm ci
+
+      - name: Build slides (PDF + HTML)
+        run: npm run build
+
+      - name: Generate landing index.html
+        run: |
+          mkdir -p dist
+          node <<'EOF'
+          const fs = require('fs');
+          const path = require('path');
+
+          function listOf(dir) {
+            const full = path.join('dist', dir);
+            if (!fs.existsSync(full)) return [];
+            return fs.readdirSync(full).filter(f => f.endsWith('.pdf') || f.endsWith('.html')).sort();
+          }
+
+          const sections = [
+            { id: 'weekly-kickoff', title: '매주 14:00–15:00 미션 공개' },
+            { id: 'tech-talk',      title: '격주 특강 (2/4/6/8주차)' },
+            { id: 'offline',        title: '첫·마지막 오프라인 모임' },
+          ];
+
+          const rows = sections.map(s => {
+            const files = listOf(s.id);
+            const items = files.length === 0
+              ? '<li class="muted">아직 빌드된 자료 없음</li>'
+              : files.map(f => `<li><a href="./${s.id}/${f}">${f}</a></li>`).join('\n');
+            return `
+              <section>
+                <h2>${s.title}</h2>
+                <p class="dir">/${s.id}/</p>
+                <ul>${items}</ul>
+              </section>`;
+          }).join('\n');
+
+          const html = `<!doctype html>
+          <html lang="ko">
+          <head>
+            <meta charset="utf-8">
+            <title>딩코딩코 부트캠프 발표 슬라이드</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="preconnect" href="https://cdn.jsdelivr.net">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/quiple/galmuri/dist/galmuri.css">
+            <style>
+              :root {
+                --bg: #0d1138; --bg2: #1a1e4d; --bg3: #2a2f6e;
+                --gold: #f4c84b; --text: #fff; --muted: #a8b0d8;
+              }
+              * { box-sizing: border-box; }
+              body {
+                margin: 0;
+                background: linear-gradient(135deg, var(--bg) 0%, var(--bg2) 100%);
+                color: var(--text);
+                font-family: 'Pretendard', system-ui, sans-serif;
+                min-height: 100vh;
+                padding: 60px 24px;
+              }
+              .wrap { max-width: 960px; margin: 0 auto; }
+              h1 {
+                font-family: 'Galmuri11', monospace;
+                color: var(--gold);
+                font-size: 44px;
+                letter-spacing: 0.05em;
+                margin: 0 0 8px;
+              }
+              .lead { color: var(--muted); margin: 0 0 40px; font-size: 18px; }
+              section {
+                background: rgba(42, 47, 110, 0.3);
+                border: 1px solid var(--bg3);
+                border-radius: 12px;
+                padding: 24px 32px;
+                margin-bottom: 24px;
+              }
+              h2 {
+                font-family: 'Galmuri11', monospace;
+                color: var(--gold);
+                font-size: 24px;
+                margin: 0 0 4px;
+              }
+              .dir { color: var(--muted); font-size: 14px; margin: 0 0 16px; font-family: monospace; }
+              ul { list-style: none; padding: 0; margin: 0; }
+              li { padding: 6px 0; border-bottom: 1px dashed var(--bg3); }
+              li:last-child { border-bottom: none; }
+              .muted { color: var(--muted); font-style: italic; }
+              a { color: var(--gold); text-decoration: none; }
+              a:hover { text-decoration: underline; }
+              footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 40px; }
+            </style>
+          </head>
+          <body>
+            <div class="wrap">
+              <h1>딩코딩코 부트캠프 발표 슬라이드</h1>
+              <p class="lead">DEVELOPER RPG · 10-Week Backend Bootcamp · 2026-05-30 ~ 2026-08-08</p>
+              ${rows}
+              <footer>
+                <a href="https://github.com/GaeChwiRpg/devcamp-slides">github.com/GaeChwiRpg/devcamp-slides</a>
+              </footer>
+            </div>
+          </body>
+          </html>`;
+
+          fs.writeFileSync('dist/index.html', html);
+          console.log('Wrote dist/index.html');
+          EOF
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
