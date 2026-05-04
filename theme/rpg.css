@@ -1,0 +1,289 @@
+/* @theme rpg */
+/*
+ * DEVELOPER RPG — 딩코딩코 부트캠프 발표 슬라이드 테마
+ * 매주 = 퀘스트, W10 = FINAL BOSS. 딥 네이비 + 골드 + 픽셀 폰트.
+ *
+ * Layout classes:
+ *   <!-- _class: cover --> 표지
+ *   <!-- _class: quest --> 퀘스트 시작 (이번 주 미션)
+ *   <!-- _class: lesson --> 본문 (양분할)
+ *   <!-- _class: boss --> FINAL BOSS (피날레/면접)
+ *   <!-- _class: end --> 마무리
+ */
+
+@import url('https://cdn.jsdelivr.net/gh/quiple/galmuri/dist/galmuri.css');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+
+:root {
+  --rpg-bg: #0d1138;
+  --rpg-bg-2: #1a1e4d;
+  --rpg-bg-3: #2a2f6e;
+  --rpg-gold: #f4c84b;
+  --rpg-gold-2: #ffd866;
+  --rpg-text: #ffffff;
+  --rpg-muted: #a8b0d8;
+  --rpg-danger: #e85d75;
+  --rpg-success: #66e89c;
+
+  --rpg-font-pixel: 'Galmuri11', 'DotGothic16', monospace;
+  --rpg-font-body: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --rpg-font-mono: 'JetBrains Mono', 'D2Coding', Menlo, Consolas, monospace;
+}
+
+/* ===== 기본 슬라이드 ===== */
+section {
+  background-color: var(--rpg-bg);
+  background-image: linear-gradient(135deg, var(--rpg-bg) 0%, var(--rpg-bg-2) 100%);
+  color: var(--rpg-text);
+  font-family: var(--rpg-font-body);
+  font-size: 26px;
+  line-height: 1.5;
+  padding: 60px 80px;
+  letter-spacing: -0.01em;
+}
+
+h1, h2, h3 {
+  font-family: var(--rpg-font-pixel);
+  color: var(--rpg-gold);
+  letter-spacing: 0.03em;
+  margin: 0 0 0.4em;
+  font-weight: normal;
+}
+
+h1 { font-size: 60px; line-height: 1.1; }
+h2 { font-size: 40px; line-height: 1.2; }
+h3 { font-size: 28px; color: var(--rpg-gold-2); }
+
+p, li {
+  font-size: 26px;
+  margin: 0.4em 0;
+}
+
+ul, ol { margin-left: 1.2em; }
+li::marker { color: var(--rpg-gold); }
+strong { color: var(--rpg-gold); }
+em { color: var(--rpg-success); font-style: normal; }
+
+a {
+  color: var(--rpg-gold-2);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--rpg-gold-2);
+}
+
+code {
+  font-family: var(--rpg-font-mono);
+  font-size: 0.85em;
+  background-color: var(--rpg-bg-3);
+  color: var(--rpg-gold-2);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+}
+
+pre {
+  background-color: #050720;
+  border: 2px solid var(--rpg-bg-3);
+  border-radius: 8px;
+  padding: 18px 22px;
+  font-size: 20px;
+  line-height: 1.4;
+  overflow-x: auto;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  color: var(--rpg-text);
+  font-size: 1em;
+}
+
+blockquote {
+  border-left: 4px solid var(--rpg-gold);
+  padding: 4px 0 4px 18px;
+  color: var(--rpg-muted);
+  font-style: italic;
+  margin: 0.4em 0;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0.4em 0;
+  font-size: 22px;
+}
+
+th {
+  background-color: var(--rpg-bg-3);
+  color: var(--rpg-gold);
+  font-family: var(--rpg-font-pixel);
+  font-weight: normal;
+  border: 1px solid var(--rpg-bg-3);
+  padding: 8px 14px;
+  text-align: left;
+  letter-spacing: 0.02em;
+}
+
+td {
+  border: 1px solid var(--rpg-bg-3);
+  padding: 8px 14px;
+}
+
+tr:nth-child(even) td {
+  background-color: rgba(42, 47, 110, 0.3);
+}
+
+hr {
+  border: none;
+  border-top: 2px dashed var(--rpg-bg-3);
+  margin: 24px 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===== 슬라이드 상단 골드 라인 + 하단 페이지 번호 ===== */
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--rpg-gold) 0%, var(--rpg-gold-2) 50%, var(--rpg-gold) 100%);
+}
+
+section::after {
+  content: 'Quest ' attr(data-marpit-pagination) ' / ' attr(data-marpit-pagination-total);
+  position: absolute;
+  bottom: 22px;
+  right: 40px;
+  font-family: var(--rpg-font-pixel);
+  color: var(--rpg-muted);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+
+/* ===== Layout: cover (표지) ===== */
+section.cover {
+  text-align: center;
+  background-image:
+    radial-gradient(ellipse at center, var(--rpg-bg-2) 0%, var(--rpg-bg) 70%),
+    linear-gradient(135deg, var(--rpg-bg) 0%, var(--rpg-bg-2) 100%);
+}
+
+section.cover h1 {
+  font-size: 80px;
+  margin-top: 0.6em;
+}
+
+section.cover h2 {
+  color: var(--rpg-text);
+  font-family: var(--rpg-font-body);
+  font-weight: 600;
+  font-size: 30px;
+  margin-top: 0.6em;
+}
+
+section.cover p {
+  color: var(--rpg-muted);
+  font-family: var(--rpg-font-pixel);
+  font-size: 22px;
+  letter-spacing: 0.12em;
+}
+
+section.cover img {
+  max-width: 360px;
+  margin: 0 auto 16px;
+  display: block;
+}
+
+section.cover::after { content: ''; }
+
+/* ===== Layout: quest (퀘스트 시작) ===== */
+section.quest {
+  background-image: linear-gradient(135deg, var(--rpg-bg-2) 0%, var(--rpg-bg) 100%);
+}
+
+section.quest h1::before {
+  content: '⚔ QUEST ';
+  color: var(--rpg-gold);
+  margin-right: 12px;
+  font-size: 0.75em;
+  letter-spacing: 0.1em;
+}
+
+section.quest h2 {
+  color: var(--rpg-success);
+}
+
+/* ===== Layout: lesson (양분할) ===== */
+section.lesson {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 28px 48px;
+  align-items: start;
+}
+
+section.lesson > h1,
+section.lesson > h2 {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+/* ===== Layout: boss (FINAL BOSS) ===== */
+section.boss {
+  text-align: center;
+  background-image:
+    radial-gradient(ellipse at center, rgba(232, 93, 117, 0.18) 0%, var(--rpg-bg) 65%),
+    linear-gradient(135deg, var(--rpg-bg) 0%, var(--rpg-bg-2) 100%);
+}
+
+section.boss h1 {
+  font-size: 80px;
+  color: var(--rpg-danger);
+  text-shadow: 0 0 24px rgba(232, 93, 117, 0.6);
+}
+
+section.boss h2 {
+  color: var(--rpg-gold);
+}
+
+/* ===== Layout: end (마무리) ===== */
+section.end {
+  text-align: center;
+}
+
+section.end h1 {
+  font-size: 64px;
+}
+
+section.end p {
+  font-family: var(--rpg-font-pixel);
+  color: var(--rpg-gold);
+  letter-spacing: 0.1em;
+  font-size: 22px;
+}
+
+section.end::after { content: ''; }
+
+/* ===== Utility ===== */
+.tag {
+  display: inline-block;
+  background-color: var(--rpg-bg-3);
+  color: var(--rpg-gold);
+  font-family: var(--rpg-font-pixel);
+  font-size: 18px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  margin-right: 6px;
+}
+
+.tag-danger  { color: var(--rpg-danger); }
+.tag-success { color: var(--rpg-success); }
+.tag-muted   { color: var(--rpg-muted); }
+
+.muted  { color: var(--rpg-muted); }
+.center { text-align: center; }
+.small  { font-size: 0.85em; }
