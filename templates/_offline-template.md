@@ -48,7 +48,7 @@ title: '{{Week N · OT 또는 Finale}}'
 
 # 왜 이 부트캠프인가
 
-- 비전공자도 _제대로_ 백엔드를 한다
+- _말로 답할 수 있는_ 백엔드 코드 — 면접에서 본인 입으로
 - 책 7주차 베이스 + AI Native 4 요소
 - 검증 루프 + 팀 라이프사이클 5단계 = 면접에서 _말할 수 있는_ 결과물
 
@@ -118,7 +118,7 @@ title: '{{Week N · OT 또는 Finale}}'
 - `submit/<mission_id>` 브랜치 push
 - mission-guard CI 가 형식 + 내용 검증
 - AI 리뷰가 5축 점수 + 한국어 피드백
-- Discord 알림 + `latest_score` DB 업데이트
+- `{cohort}-리뷰` 채널 알림 + `latest_score` DB 업데이트
 
 > 라이브 데모 → sample repo PR 1개 시연
 
@@ -192,7 +192,7 @@ title: '{{Week N · OT 또는 Finale}}'
 
 ---
 
-# 회고 — 비전공자에서 백엔드로
+# 회고 — 10주 학습 여정
 
 - 5주차 동시성 구간 살아남기 → ?
 - 8주차 AI Native 첫 도입 → ?

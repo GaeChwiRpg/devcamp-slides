@@ -22,7 +22,7 @@ Week 2 · 격주 특강 · 2026-06-06
 
 # 왜 JPA 를 _깊게_ 보나
 
-- 비전공자가 가장 많이 _블랙박스_ 로 두는 영역
+- 학습자가 가장 많이 _블랙박스_ 로 두는 영역
 - "동작하는 코드 ≠ 좋은 코드" 가 가장 극명하게 드러남
 - 면접 단골 질문 (영속성 / 연관관계 / N+1)
 - Week 2 미션의 _진급 게이트_ 가 SQL 로그
@@ -53,9 +53,20 @@ Week 2 · 격주 특강 · 2026-06-06
 
 ---
 
-## 1. 영속성 컨텍스트 4 기능
+<!-- _class: quest -->
 
-EntityManager 안의 _캐시 + 추적 메모_
+# Part 1 — 영속성 컨텍스트
+
+EntityManager 안의 _캐시 + 추적 메모_.
+
+| 기능 | 효과 |
+| --- | --- |
+| 1차 캐시 | 같은 PK 재조회 SELECT 안 감 |
+| 변경 감지 | 바뀐 필드만 UPDATE |
+| 쓰기 지연 | INSERT/UPDATE 모아서 flush |
+| 동일성 보장 | `==` 비교가 트랜잭션 내 동일 객체 |
+
+> 이 4 기능을 _그림으로_ 설명할 수 있어야.
 
 ---
 
@@ -141,9 +152,18 @@ JDBC 배치 + hibernate.jdbc.batch_size 로 더 최적화 가능
 
 ---
 
-## 2. 연관관계 주인
+<!-- _class: quest -->
 
-DB FK 는 _한 곳_ 에만 있다.
+# Part 2 — 연관관계 주인
+
+DB FK 는 _한 곳_ 에만 있다 — 양방향 매핑에서 누가 _주인_ 인지 결정.
+
+- 주인 = FK 컬럼을 갖는 쪽 (보통 N 쪽)
+- 거울 = `mappedBy` 로 주인을 가리킴
+- _주인의 setter_ 만 DB 에 영향
+- `@JoinColumn` / `mappedBy` / 편의 메서드 설계
+
+> Week 2 evidence/association-owner-decision.md 의 핵심.
 
 ---
 
@@ -209,9 +229,18 @@ public class Post {
 
 ---
 
-## 3. LAZY 기본 + N+1
+<!-- _class: quest -->
 
-EAGER 가 _기본_ 이 아닌 이유.
+# Part 3 — LAZY 기본 + N+1 해결
+
+EAGER 가 _기본_ 이 아닌 이유 + 면접 단골.
+
+- 기본은 LAZY — _필요한 시점_ 에만 SELECT
+- N+1 = 컬렉션 순회 시 N 번 SELECT 추가 발생
+- 해결 3가지: fetch join / `@EntityGraph` / batch size
+- 함정: fetch join + paging — 메모리 페이징 위험
+
+> Week 2 진급 게이트 = SQL 로그 before/after.
 
 ---
 

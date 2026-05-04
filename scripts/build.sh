@@ -24,5 +24,10 @@ done
 echo "==> Stripping presenter notes (*-notes.*)"
 find dist -type f \( -name "*-notes.html" -o -name "*-notes.pdf" \) -delete
 
+# HTML 슬라이드의 ../theme/assets/logo.png 경로 해석을 위해 theme/ 미러링
+echo "==> Mirroring theme/ → dist/theme/"
+rm -rf dist/theme
+cp -R theme dist/theme
+
 echo "Done. Output: dist/"
 find dist -type f -name "*.pdf" -o -name "*.html" | sort 2>/dev/null || true

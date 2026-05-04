@@ -20,9 +20,9 @@ title: 'Week 1 — Spring Boot 기본기'
 
 # OT 잘 듣고 오셨나요?
 
-- 환경 셀프체크 3종 (JDK 17 / IntelliJ Run / `./gradlew bootRun`) — 통과?
-- 본인 학생 레포 접근 — OK?
-- Discord 채널 `#help` / `#oh` 참여 — OK?
+- 환경 셀프체크 3종 — `JDK 21` / IntelliJ Run / `./gradlew bootRun` 통과?
+- 본인 학생 레포 (`{cohort}-{username}`) clone — OK?
+- Discord 코호트 채널 — `{cohort}-질문` / `{cohort}-리뷰` / `{cohort}-til` 참여 OK?
 
 > 막힌 부분은 _지금_ 손 들어주세요. 다음 슬라이드 가기 전에 같이 정리.
 
@@ -132,14 +132,19 @@ evidence 에 _이 한 줄_ 을 본인 말로 박는다.
 ```java
 @SpringBootTest
 class PostServiceTest {
-
   @Test void create_success() { ... }
   @Test void create_invalidTitle_throws() { ... }
   @Test void getById_notFound_throws404() { ... }
 }
 ```
 
-`@SpringBootTest` 또는 `@DataJpaTest` 또는 `@WebMvcTest` 중 _맞는 범위_ 선택.
+| 어노테이션 | 범위 | 언제 |
+| --- | --- | --- |
+| `@SpringBootTest` | 전체 컨텍스트 | 통합 검증 |
+| `@WebMvcTest` | Controller + 직렬화 | HTTP 계층만 |
+| `@DataJpaTest` | Repository + JPA | DB 접근만 |
+
+> 가장 _작은 범위_ 부터 — 실행 시간이 짧아야 자주 돌린다.
 
 ---
 
@@ -188,21 +193,23 @@ class PostServiceTest {
 # 운영 안내
 
 - **제출 마감**: 2026-06-05 (금) `23:59`
-- **금 18:00**: 다음 주 토요일 행사 1장 슬라이드 제출 (3주차 발표자만 해당)
-- **토 15:00–16:30**: 1주차는 _이 슬롯 없음_ — 오프라인 OT 가 대체
-- **오피스아워**: 화·목 21:00 Discord `#oh`
-- **막히면**: `#help` 채널 + 환경 이슈는 `#env`
+- **금 18:00**: 3주차 학생 발표자 1장 슬라이드 제출 (이번 주는 해당 없음)
+- **토 15:00–16:30**: 1주차는 _이 슬롯 없음_ — 오프라인 저녁 OT 가 대체
+- **오피스아워**: 화·목 `21:00` `{cohort}-질문` 채널 스레드
+- **TIL**: 매일 한 줄씩 `{cohort}-til` — 본인 학습 로그 누적
 
 ---
 
 # 첫 주 워크플로우 — 막히지 않는 길
 
-1. 학생 레포 clone → `02-week1-spring-boot/project/` 에 새 Spring Boot 프로젝트
-2. 엔드포인트 1개씩 구현 → Postman 으로 _즉시_ 확인
-3. 테스트 1개 → 통과 → 다음 endpoint
-4. 4 endpoint 다 됐으면 evidence 5개 채우기
-5. `submit/02-week1-spring-boot` 브랜치 push → PR
-6. mission-guard CI green → AI 리뷰 → 답장 받기
+1. 본인 레포 clone — `git clone git@github.com:GaeChwiRpg/{cohort}-{username}.git`
+2. `02-week1-spring-boot/project/` 에 Spring Boot 코드 시작 (이미 부트스트랩됨)
+3. endpoint 1개 구현 → Postman 으로 _즉시_ 확인 → 테스트 1개 → 다음 endpoint
+4. 4 endpoint 완성 후 `evidence/` 5개 파일 채우기
+5. `git checkout -b submit/02-week1-spring-boot` → push → PR
+6. mission-guard CI green → AI 리뷰 → `{cohort}-리뷰` 채널 알림
+
+> 막히면 _뭘 시도했는지_ 와 함께 `{cohort}-질문` 채널.
 
 ---
 
@@ -210,7 +217,7 @@ class PostServiceTest {
 
 # Q&A
 
-질문 환영. 막히면 _바로_ `#help` — 24시간 내 답.
+질문 환영. 막히면 _바로_ `{cohort}-질문` — 24시간 내 답.
 
-> 다음 주: **Week 2 — JPA 연관관계 / 영속성**.
+> 다음 주: **Week 2 — JPA 연관관계 / 영속성** (14:00) + **JPA 특강** (15:00).
 > 1주차 코드를 _그대로 이어서_ 리팩토링.
