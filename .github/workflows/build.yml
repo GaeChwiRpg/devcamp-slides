@@ -36,6 +36,9 @@ jobs:
       - name: Check slide title widths
         run: python3 scripts/check-titles.py
 
+      - name: Check code blocks + table cells
+        run: python3 scripts/check-content.py
+
       - name: Build slides (PDF + HTML)
         run: npm run build
 

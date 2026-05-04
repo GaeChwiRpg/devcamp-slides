@@ -73,12 +73,12 @@ cp -r 02-week1-spring-boot/project 03-week2-jpa/project
 
 EntityManager 가 _캐시_ 처럼 동작.
 
-| 기능 | 무엇 |
+| 기능 | 효과 |
 | --- | --- |
-| 1차 캐시 | 같은 트랜잭션 내 동일 PK 재조회 시 SELECT 안 감 |
-| 변경 감지 | flush 시 _바뀐_ Entity 만 UPDATE |
-| 쓰기 지연 | INSERT/UPDATE 모아서 flush 시점 한 번 |
-| 동일성 보장 | `==` 비교가 트랜잭션 내에서 같은 객체 |
+| 1차 캐시 | 동일 PK 재조회 시 SELECT 안 감 |
+| 변경 감지 | flush 때 _바뀐_ Entity 만 UPDATE |
+| 쓰기 지연 | INSERT/UPDATE 모아서 flush 시 |
+| 동일성 보장 | `==` 비교가 같은 객체 보장 |
 
 각 기능을 _evidence/n1-detection-guide.md_ 에서 본인 말로.
 
@@ -115,11 +115,11 @@ evidence 에 _이 결정의 근거_ 를 박는다.
 ## 핵심 개념 3 — N+1 와 fetch join
 
 ```sql
--- N+1 : 1번 + N번
-SELECT * FROM post;          -- 1
-SELECT * FROM comment WHERE post_id = ?;  -- N
+-- N+1 : 1 + N 번
+SELECT * FROM post;                    -- 1
+SELECT * FROM comment WHERE post_id=?; -- N
 
--- fetch join : 1번
+-- fetch join : 1 번
 SELECT p, c FROM Post p
 LEFT JOIN FETCH p.comments c;
 ```
@@ -137,8 +137,7 @@ LEFT JOIN FETCH p.comments c;
 ```java
 @Transactional
 public void updateTitle(Long id, String title) {
-  Post post = postRepository.findById(id)
-    .orElseThrow();
+  Post post = postRepo.findById(id).orElseThrow();
   post.changeTitle(title);  // setter 호출만
   // save() 호출 X — 변경 감지가 처리
 }
@@ -162,14 +161,14 @@ evidence/dirty-checking-snapshot.md 에 _flush 전후 SQL 로그_ 캡처.
 ```
 03-week2-jpa/
 ├── report.md
-├── project/                              # Week 1 에서 복사 + 리팩토링
+├── project/                          # Week 1 코드 이어 받기
 └── evidence/
-    ├── entity-design-notes.md            # Entity 설계 결정
-    ├── association-owner-decision.md     # 연관관계 주인 근거
-    ├── n-plus-one-before.md              # N+1 발생 시 SQL 로그
-    ├── n-plus-one-after.md               # fetch join 적용 후 SQL 로그
-    ├── dirty-checking-snapshot.md        # 변경 감지 flush 로그
-    └── n1-detection-guide.md             # 학습 보조 (main 에서 같이 들어감)
+    ├── entity-design-notes.md        # Entity 설계 결정
+    ├── association-owner-decision.md # 연관관계 주인 근거
+    ├── n-plus-one-before.md          # N+1 SQL 로그
+    ├── n-plus-one-after.md           # fetch join 후 로그
+    ├── dirty-checking-snapshot.md    # 변경 감지 로그
+    └── n1-detection-guide.md         # 학습 보조 (main)
 ```
 
 ---

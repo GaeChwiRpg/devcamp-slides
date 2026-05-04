@@ -137,8 +137,8 @@ evidence 에 _이 한 줄_ 을 본인 말로 박는다.
 @SpringBootTest
 class PostServiceTest {
   @Test void create_success() { ... }
-  @Test void create_invalidTitle_throws() { ... }
-  @Test void getById_notFound_throws404() { ... }
+  @Test void create_invalidTitle_400() { ... }
+  @Test void getById_notFound_404() { ... }
 }
 ```
 

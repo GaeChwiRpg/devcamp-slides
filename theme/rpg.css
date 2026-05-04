@@ -231,6 +231,17 @@ section.lesson > h2 {
   margin-bottom: 0;
 }
 
+/* lesson 의 cell 은 폭이 좁아 코드/표 폰트를 살짝 작게 */
+section.lesson pre,
+section.lesson pre code {
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+section.lesson table {
+  font-size: 19px;
+}
+
 /* ===== Layout: boss (FINAL BOSS) ===== */
 section.boss {
   text-align: center;

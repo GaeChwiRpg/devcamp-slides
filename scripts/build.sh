@@ -7,9 +7,11 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
-# 빌드 전 슬라이드 제목 폭 검증 — 줄바꿈 위험 막기
+# 빌드 전 슬라이드 폭 검증 — 줄바꿈/잘림 위험 막기
 echo "==> Checking slide title widths"
 python3 scripts/check-titles.py
+echo "==> Checking code blocks + table cells"
+python3 scripts/check-content.py
 
 mkdir -p dist
 

@@ -82,8 +82,8 @@ EntityManager 안의 _캐시 + 추적 메모_.
 ```java
 @Transactional
 public void firstLevelCache() {
-  Post p1 = repo.findById(1L).get();  // SELECT 발생
-  Post p2 = repo.findById(1L).get();  // SELECT 안 감
+  Post p1 = repo.findById(1L).get();   // SELECT
+  Post p2 = repo.findById(1L).get();   // 캐시 적중
   System.out.println(p1 == p2);       // true
 }
 ```
@@ -107,7 +107,7 @@ public void update(Long id, String title) {
   p.changeTitle(title);
   // save() 호출 X
 }
-// 트랜잭션 종료 → flush → UPDATE post SET title = ?
+// 트랜잭션 종료 → flush → UPDATE post SET title=?
 ```
 
 ```text
@@ -133,7 +133,7 @@ public void batchInsert() {
 ```
 
 ```text
-JDBC 배치 + hibernate.jdbc.batch_size 로 더 최적화 가능
+JDBC 배치 + `hibernate.jdbc.batch_size` 로 더 최적
 ```
 
 ---
@@ -279,7 +279,7 @@ for (Post p : posts) {
 ```sql
 -- N+1 = 1 + N
 SELECT * FROM post;
-SELECT * FROM comment WHERE post_id = ?;  -- N 번
+SELECT * FROM comment WHERE post_id=?;   -- N 회
 ```
 
 LAZY 가 _문제_ 가 아니라, _컬렉션 순회_ 가 문제.
