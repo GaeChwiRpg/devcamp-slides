@@ -29,6 +29,17 @@ description: Marp 슬라이드 (devcamp-slides) 작성·편집 시 자동 호출
 - **일반 표 cell** ≤ 60 EAW
 - **lesson 표 cell** ≤ 42 EAW
 
+### 3. 슬라이드 오버플로우 (`scripts/check-overflow.py`)
+- **일반 슬라이드 콘텐츠** ≤ 18 라인 (제목 + 본문 + 코드 + 표)
+- **lesson 슬라이드** ≤ 17 라인
+- 한도 초과 = 페이지 카운트 영역 침범 = _글씨 잘림_
+- 해결: 슬라이드 _두 장으로 분리_ 또는 본문 단축
+
+### 4. 내용 일관성 (`scripts/check-consistency.py`)
+- 금지 단어 (진급 게이트 / 라이브 데모 / 특강 / JDK 17)
+- 옛 Discord 표기 (#help / #oh / #submissions / #env / #alumni)
+- 미션 ID 정합성 (mission-catalog 와 일치)
+
 ### 빌드 + 검증 1회 명령
 ```bash
 npm run build

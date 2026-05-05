@@ -14,6 +14,8 @@ echo "==> Checking code blocks + table cells"
 python3 scripts/check-content.py
 echo "==> Checking content consistency (forbidden words / mission IDs)"
 python3 scripts/check-consistency.py
+echo "==> Checking slide overflow (line count)"
+python3 scripts/check-overflow.py
 
 mkdir -p dist
 

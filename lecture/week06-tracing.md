@@ -41,14 +41,17 @@ Netflix 가 본 1 PB 로그 · 2026-07-04
 
 ---
 
-# 사전 지식 체크 (1분)
+# 시작 전 — 용어 카드
 
-| 질문 | □ |
+| 용어 | 한 줄 정의 |
 | --- | --- |
-| Trace 와 Span 차이 | □ |
-| Context Propagation 한 줄 | □ |
-| OpenTelemetry 가 무엇 | □ |
-| 분산 추적이 _필요_ 한 시점 | □ |
+| **Trace** | 한 요청의 _전체 여정_ (서비스 1 → N 까지) |
+| **Span** | Trace 안의 _한 단계_ (서비스 1 개 또는 함수) |
+| **Context Propagation** | trace ID 를 서비스 간 _전달_ |
+| **OpenTelemetry** | 분산 추적·로그·메트릭 _표준_ (CNCF) |
+| **Service Mesh** | 서비스 간 통신을 _인프라_ 가 가로채는 패턴 |
+
+> 모르는 단어 나오면 _이 표_ 다시.
 
 ---
 
@@ -166,7 +169,80 @@ management:
 
 <!-- _class: quest -->
 
-# Part 3 — 사례
+# Part 3 — Service Mesh
+
+```text
+지금까지: 코드에 _계측 라이브러리_ 박기
+   ↓
+2020+ : 인프라가 _자동_ 으로 추적
+```
+
+- 모든 서비스 옆에 _sidecar_ (= Envoy proxy)
+- Pod 내부 통신을 _가로채서_ 추적
+- 코드 변경 _없이_ trace ID 발행 + 전파
+- Kubernetes + istio = 지금의 표준
+
+> "추적은 _라이브러리_ 가 아니라 _인프라_ 의 책임이다."
+
+---
+
+<!-- _class: lesson -->
+
+## istio sidecar 동작
+
+```text
+[Pod]  App ←→ Envoy ←→ 외부
+              ↑
+       sidecar proxy
+```
+
+Envoy 가 가로채서:
+- HTTP 헤더 trace-id 자동 주입
+- 메트릭 수집 + Jaeger 전송
+
+```text
+✅ App 코드 _0줄_ 변경
+✅ 모든 서비스 _자동_ 적용
+❌ K8s 환경 필요
+```
+
+---
+
+<!-- _class: lesson -->
+
+## istio vs Linkerd vs Cilium
+
+| 도구 | 특징 | 사례 |
+| --- | --- | --- |
+| **istio** | 가장 _많이_ 쓰임 | 카카오·네이버 |
+| **Linkerd** | _가벼운_ Service Mesh | Toss 일부 |
+| **Cilium** | eBPF 기반 _커널_ 레벨 | Datadog |
+| **Consul** | HashiCorp 통합 | 외국 회사 다수 |
+
+```text
+선택 = 운영 복잡도 vs 기능
+공통: _코드 변경 X_ + _자동 추적_
+```
+
+---
+
+# 코드 vs 인프라 — trade-off
+
+| | 코드 계측 (OTel SDK) | Service Mesh |
+| --- | --- | --- |
+| 적용 | 라이브러리 추가 | sidecar 자동 주입 |
+| 변경 비용 | 모든 서비스 코드 수정 | 인프라 설정만 |
+| 정확도 | 함수 단위까지 | HTTP/RPC 경계만 |
+| 운영 | 단순 | K8s 운영 필요 |
+| 추천 | 작은 팀·모놀리스 | 대규모 마이크로서비스 |
+
+> 둘 다 _보완_. SDK 로 _깊이_ + Mesh 로 _커버리지_.
+
+---
+
+<!-- _class: quest -->
+
+# Part 4 — 사례
 
 실제 회사들 의 분산 추적 도입.
 

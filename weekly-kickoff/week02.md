@@ -88,13 +88,13 @@ EntityManager 가 _캐시_ 처럼 동작.
 
 ## 핵심 개념 2 — 연관관계 주인
 
-`Post` 1 : N `Comment`. 누가 FK 를 가질까?
+`Post` 1 : N `Comment` — 누가 FK 를 가지나?
 
 ```java
-// 일반적: N 쪽이 주인
+// N 쪽이 주인 (일반)
 @Entity
 public class Comment {
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = LAZY)
   @JoinColumn(name = "post_id")
   private Post post;
 }
@@ -105,8 +105,6 @@ public class Post {
   private List<Comment> comments;
 }
 ```
-
-evidence 에 _이 결정의 근거_ 를 박는다.
 
 ---
 

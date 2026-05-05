@@ -17,6 +17,8 @@ import unicodedata
 from pathlib import Path
 
 LIMITS = {1: 32, 2: 48, 3: 56}
+# cover/boss 클래스의 H1 은 80px 폰트 → 본문 폭 좁아 더 짧게
+COVER_BOSS_H1_LIMIT = 24
 
 # 검사 대상 디렉토리 (다른 마크다운은 건드리지 않음)
 SLIDE_DIRS = ("weekly-kickoff", "lecture", "offline", "templates")
@@ -67,6 +69,9 @@ def check_file(path: Path) -> list[tuple[int, int, int, str, int]]:
         # quest 슬라이드의 H1 은 ::before "⚔ QUEST " (8폭) prefix 추가됨 → 한도 더 짧게
         if level == 1 and current_class == "quest":
             limit -= 8
+        # cover / boss 클래스의 H1 은 80px 폰트 → 더 짧아야
+        elif level == 1 and current_class in ("cover", "boss"):
+            limit = COVER_BOSS_H1_LIMIT
         if w > limit:
             errs.append((lineno, level, w, title, limit))
     return errs

@@ -38,7 +38,7 @@ section {
   font-family: var(--rpg-font-body);
   font-size: 26px;
   line-height: 1.5;
-  padding: 60px 80px;
+  padding: 60px 80px 70px;  /* 하단 70px = 페이지 카운트 영역 확보 */
   letter-spacing: -0.01em;
 }
 

@@ -42,6 +42,9 @@ jobs:
       - name: Check content consistency
         run: python3 scripts/check-consistency.py
 
+      - name: Check slide overflow (line count)
+        run: python3 scripts/check-overflow.py
+
       - name: Build slides (PDF + HTML)
         run: npm run build
 
