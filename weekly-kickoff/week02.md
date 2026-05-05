@@ -214,7 +214,7 @@ evidence/dirty-checking-snapshot.md 에 _flush 전후 SQL 로그_ 캡처.
 # Q&A
 
 ```text
-오늘 15:00 — JPA 강의 (영속성 / 연관관계 / N+1 깊게)
+오늘 15:00 — 도메인 모델링 강의 (게시판 5초 vs 5시간)
 다음 주 토 14:00 — Week 3 (이력서 스토리라인) + 첫 학생 발표
 ```
 

@@ -1,0 +1,299 @@
+---
+marp: true
+theme: rpg
+paginate: true
+title: 'Week 6 강의 — 분산 추적의 세계'
+---
+
+<!-- _class: cover -->
+<!-- _paginate: false -->
+
+![logo](../theme/assets/logo.png)
+
+# Week 6 강의
+
+## 분산 추적의 세계
+
+Netflix 가 본 1 PB 로그 · 2026-07-04
+
+---
+
+<!-- _class: quest -->
+
+# 왜 이 주제인가
+
+- 단일 서버 → 여러 서버 가면 _프로파일링_ 만으론 부족
+- "느려요" 가 _어느 서버_ 의 _어느 단계_ 인지 추적 필요
+- W5 동시성 + W6 프로파일링 = 단일 서버 가시성
+- 이번 강의 = _여러 서버 가시성_
+
+> "1 개 서버는 _MRI_, 100 개 서버는 _CCTV 망_."
+
+---
+
+# 오늘 다루는 것
+
+1. 비유 — CCTV 망
+2. 단일 vs 분산 — 가시성의 차이
+3. Trace / Span / Context Propagation
+4. OpenTelemetry / Zipkin / Jaeger
+5. Netflix·Uber 사례 + 이력서 카드
+
+---
+
+# 사전 지식 체크 (1분)
+
+| 질문 | □ |
+| --- | --- |
+| Trace 와 Span 차이 | □ |
+| Context Propagation 한 줄 | □ |
+| OpenTelemetry 가 무엇 | □ |
+| 분산 추적이 _필요_ 한 시점 | □ |
+
+---
+
+<!-- _class: quest -->
+
+# Part 1 — CCTV 망 비유
+
+도둑 1 명을 _건물 1 채_ 안에서 잡기 = 단일 서버 프로파일링.
+
+도둑 1 명이 _10 건물_ 을 거쳐 도망 = 분산 추적.
+
+- 각 건물에 _CCTV_ (= span)
+- _시간 동기화_ + _도둑 ID_ (= trace ID)
+- _건물 간 동선_ 재구성 (= context propagation)
+
+> "한 요청을 _시작_ 부터 _끝_ 까지 따라간다."
+
+---
+
+# 단일 vs 분산 — 가시성 차이
+
+| 측면 | 단일 서버 | 분산 시스템 |
+| --- | --- | --- |
+| 도구 | 프로파일러 | 분산 추적 |
+| 단위 | 함수 | 서비스 |
+| 어려운 점 | 핫스팟 | _어느 서비스_ |
+| 데이터 | flamegraph | trace tree |
+| 사례 | async-profiler | Zipkin / Jaeger |
+
+> 마이크로서비스 = _필수_. 모놀리스도 _DB / 캐시 / 외부 API_ 추적.
+
+---
+
+<!-- _class: quest -->
+
+# Part 2 — Trace / Span
+
+```text
+[Trace] = 한 요청의 전체 여정
+   ↓
+[Span 1] gateway       (50ms)
+   ├ [Span 2] auth     (10ms)
+   ├ [Span 3] order    (200ms)
+   │   ├ [Span 4] DB   (180ms)  ← 핫스팟!
+   │   └ [Span 5] redis (5ms)
+   └ [Span 6] notify   (20ms)
+```
+
+> Span 들이 모여 Trace. Span 트리에서 _가장 굵은_ 가지 = 핵심 병목.
+
+---
+
+# Context Propagation
+
+```text
+Request → gateway 서비스
+  HTTP header: trace-id=abc-123
+
+gateway → order 서비스
+  HTTP header: trace-id=abc-123
+                 parent-span=g-001
+
+order → DB / redis / notify
+  HTTP/RPC header: trace-id=abc-123
+                   parent-span=o-002
+```
+
+> 모든 호출이 _같은 trace-id_ 공유 → 추적 가능.
+
+---
+
+<!-- _class: lesson -->
+
+## OpenTelemetry — 표준
+
+```text
+🌐 OpenTelemetry (OTel)
+   = 추적·로그·메트릭 통합 표준
+   = CNCF 프로젝트
+
+지원: Java / Kotlin / Python / Go / Node ...
+백엔드: Jaeger / Zipkin / Tempo / Datadog
+```
+
+```text
+✅ vendor 종속 ↓
+✅ 한 SDK 로 모든 언어
+✅ 자동 계측 라이브러리 풍부
+```
+
+---
+
+<!-- _class: lesson -->
+
+## Spring Boot 통합
+
+```yaml
+# application.yml
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/...
+```
+
+```text
+✅ Spring Boot 3 + Micrometer
+✅ HTTP 호출 / DB / Redis 자동 계측
+✅ 컨트롤러 메서드 자동 span
+```
+
+---
+
+<!-- _class: quest -->
+
+# Part 3 — 사례
+
+실제 회사들 의 분산 추적 도입.
+
+```text
+Netflix      — 1 PB / day 추적 데이터
+Uber         — Jaeger 자체 개발
+Twitter/X    — Zipkin 자체 개발
+Toss / 카카오 — DataDog APM
+배민         — OpenTelemetry + Jaeger
+```
+
+> 트래픽 큰 회사는 _자체 개발_, 일반 회사는 _SaaS_ 선택.
+
+---
+
+# Netflix 의 분산 추적
+
+```text
+규모:
+  - 1 PB / day 추적 데이터
+  - 1 초에 수백만 트랜잭션
+  - 700+ 마이크로서비스
+
+도입 효과:
+  - 장애 _복구 시간_ 1 시간 → 5 분
+  - SLA p99 _안정성_ ↑
+  - 새 서비스 _병목 사전 발견_
+```
+
+> "추적 _없이_ 마이크로서비스 = 안개 속 운전."
+
+---
+
+# 함정 — 분산 추적의 비용
+
+```text
+❌ 모든 요청 추적 → 저장소 폭발
+❌ 추적 자체가 _느려짐_ (overhead)
+❌ trace-id 안 박힌 _레거시_ 서비스
+❌ 시간 동기화 _안 됨_ → 순서 뒤섞임
+```
+
+```text
+✅ 샘플링 1% (또는 적응형)
+✅ 비동기 + 배치 전송
+✅ 모든 서비스 _공통 라이브러리_
+✅ NTP 동기화
+```
+
+---
+
+# 단일 서버에서도 _부분 적용_ 가능
+
+```text
+HTTP 요청 → controller → service → repository
+              ↓                          ↓
+          [span 1]                  [span 2: SQL]
+                                          ↓
+                                    [span 3: redis]
+```
+
+```text
+✅ Spring Boot 만으로도 자동 계측
+✅ 각 단계 _시간 분포_ 확인
+✅ 마이크로서비스 가기 전 _학습_
+```
+
+> 부트캠프 학생도 _첫 분산 추적 경험_ 가능.
+
+---
+
+# 도메인에서 — 분산 추적 자리
+
+| 도메인 | 추적 패턴 |
+| --- | --- |
+| 결제 | 주문 → 인증 → PG → DB → 알림 |
+| 검색 | 검색 → ES → 캐시 → 추천 |
+| 알림 | 트리거 → 큐 → 발송 → 응답 |
+| 배달 | 주문 → 매칭 → 라이더 → 추적 |
+| 회원가입 | 검증 → DB → 메일 → 분석 |
+
+> 5 개 모두 _여러 서비스_ 거치는 패턴.
+
+---
+
+# 이력서에서 — 분산 추적 카드
+
+```text
+[결제 latency p99 5초 → 800ms 개선]
+P (문제) 결제 응답 p99 5초 — 어느 단계인지 _추측_
+O (옵션) 로그 수집 / APM 도입 / OpenTelemetry
+D (결정) OpenTelemetry + Jaeger — 표준 + 무료
+A (행동) Spring Boot 통합 + 모든 서비스 적용
+R (결과) PG span 4초 발견 → 비동기 변환 → p99 800ms
+```
+
+---
+
+# AI 보조 — 잘 쓰는 법
+
+- **잘하는 것**: trace tree 해석, 병목 후보 추천
+- **자주 hallucinate**: 도구 _옵션_ 잘못, 버전별 차이
+- **검증 루프**:
+  1. AI 답 받기
+  2. 본인 trace 데이터로 _직접_ 확인
+  3. 도구 공식 문서 교차
+  4. evidence 에 _도입 효과_ 기록
+
+---
+
+# 다음 단계 — 미션 연결
+
+- W6 미션 `07-week6-profiling` = 단일 서버 프로파일링
+- 분산 추적은 _다음 단계_ — 학생 본인 미션은 단일 서버
+- 단, _Spring Boot Actuator + Micrometer_ 만 켜둬도 _기초_ 확보
+
+> 막히면 → `{cohort}-질문` 채널 + 오피스아워 (화·목 `21:00`)
+
+---
+
+<!-- _class: end -->
+
+# Q&A
+
+```text
+이번 주 = "한 요청 _전체 여정_ 보기"
+다음 면접 = "마이크로서비스 추적 어떻게?" 답할 수 있게
+```
+
+> 다음 격주 강의(W8): **Event Sourcing — 캐시 너머**.
