@@ -21,10 +21,11 @@ import sys
 import unicodedata
 from pathlib import Path
 
-LIMIT_NORMAL = 17  # cover/end/quest/일반 — visual line 기준
-LIMIT_LESSON = 16  # 양분할 grid 한쪽 cell (폰트 작아져 더 들어감)
-WRAP_WIDTH_NORMAL = 80   # 일반 본문 폭 (EAW) — 넘으면 wrap
-WRAP_WIDTH_LESSON = 50   # lesson cell 폭 (양분할 + 폰트 22px)
+LIMIT_NORMAL = 15  # 보수: 일반 슬라이드 — visual line
+LIMIT_LESSON = 13  # 보수: lesson 양분할 cell — bullet 마진 폭발 방지
+LIMIT_LESSON_CODE_LINES = 9  # lesson 의 코드 블록 1개당 라인 수 한도
+WRAP_WIDTH_NORMAL = 80
+WRAP_WIDTH_LESSON = 50
 
 SLIDE_DIRS = ("weekly-kickoff", "lecture", "offline", "templates")
 EXCLUDE_SUFFIX = ("-notes.md",)
@@ -63,35 +64,39 @@ def visual_lines_for(line: str, wrap_width: int) -> int:
     return max(1, math.ceil(w / wrap_width))
 
 
-def count_content_lines(slide_text: str, wrap_width: int) -> int:
-    """렌더 시점의 _세로 visual 라인 수_ 추정 — wrap 포함."""
+def count_content_lines(slide_text: str, wrap_width: int) -> tuple[int, int]:
+    """(visual_lines, max_code_block_lines) 추정."""
     in_code = False
     lines = 0
+    code_block_lines = 0
+    max_code_block = 0
     fence_re = re.compile(r"^[ \t]*(```|~~~)")
     cls_re = re.compile(r"^<!--\s*_(class|paginate|color|backgroundColor):.*-->\s*$")
 
     for raw in slide_text.split("\n"):
         line = raw.rstrip()
         if fence_re.match(line):
+            if in_code:
+                # 닫히는 fence — 코드 블록 끝
+                max_code_block = max(max_code_block, code_block_lines)
+                code_block_lines = 0
             in_code = not in_code
             lines += 1
             continue
         if in_code:
-            # 코드는 _wrap 안 됨_ (overflow-x:auto). 1줄 그대로.
             lines += 1
+            code_block_lines += 1
             continue
         if not line.strip():
             continue
         if cls_re.match(line.strip()):
             continue
-        # 표 행 — 1줄 (셀 wrap 은 셀별 별도 검증)
         if line.strip().startswith("|"):
             lines += 1
             continue
-        # 본문 / 제목 / blockquote / 리스트 — wrap 추정 적용
         lines += visual_lines_for(line, wrap_width)
 
-    return lines
+    return lines, max_code_block
 
 
 def slide_class(slide_text: str) -> str | None:
@@ -117,13 +122,17 @@ def main() -> int:
             if cls in ("cover", "end"):
                 continue
             wrap_w = WRAP_WIDTH_LESSON if cls == "lesson" else WRAP_WIDTH_NORMAL
-            lines = count_content_lines(slide, wrap_w)
+            lines, max_code = count_content_lines(slide, wrap_w)
             limit = LIMIT_LESSON if cls == "lesson" else LIMIT_NORMAL
+            title_match = re.search(r"^#+ +(.+?)$", slide, re.MULTILINE)
+            title = title_match.group(1)[:40] if title_match else "?"
             if lines > limit:
-                # 슬라이드 첫 줄 (제목) 추출
-                title_match = re.search(r"^#+ +(.+?)$", slide, re.MULTILINE)
-                title = title_match.group(1)[:40] if title_match else "?"
                 slide_errs.append((start_ln, lines, limit, title))
+            # lesson 의 코드 블록 길이 별도 검사
+            if cls == "lesson" and max_code > LIMIT_LESSON_CODE_LINES:
+                slide_errs.append(
+                    (start_ln, max_code, LIMIT_LESSON_CODE_LINES, f"[code blk] {title}")
+                )
         if slide_errs:
             print(f"\n[ FAIL ] {f.relative_to(root)}")
             for ln, n, lim, title in slide_errs:

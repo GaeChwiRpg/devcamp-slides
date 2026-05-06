@@ -91,15 +91,12 @@ EntityManager 가 _캐시_ 처럼 동작.
 `Post` 1 : N `Comment` — 누가 FK?
 
 ```java
-// N 쪽이 주인 (일반)
-@Entity
-public class Comment {
-  @ManyToOne(fetch = LAZY)
-  @JoinColumn(name = "post_id")
-  private Post post;
-}
+// N 쪽이 주인 (FK 가짐)
+@ManyToOne(fetch = LAZY)
+@JoinColumn(name = "post_id")
+private Post post;
 
-// 거울 쪽
+// 거울 쪽 (mappedBy)
 @OneToMany(mappedBy = "post")
 private List<Comment> comments;
 ```

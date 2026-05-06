@@ -165,15 +165,12 @@ Event Store ─── 비동기 ─→ 읽기 전용 DB
 
 ```text
 📱 소셜 네트워크
-   - 좋아요/댓글 = 이벤트
-   - 알림 = read model 1
-   - 통계 = read model 2
-   - 추천 = read model 3
+  - 좋아요/댓글 = 이벤트
+  - 알림 / 통계 / 추천 = read model 다수
 
 🚗 IoT / 위치 추적
-   - GPS pin = 이벤트
-   - 현재 위치 = 마지막 이벤트
-   - 경로 = 전체 이벤트
+  - GPS pin = 이벤트
+  - 현재 위치 / 경로 = read model
 ```
 
 ---

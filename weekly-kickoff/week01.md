@@ -61,44 +61,30 @@ title: 'Week 1 — Spring Boot 기본기'
 
 각 계층의 _책임_ 이 다르다.
 
-```
-Controller — HTTP 입출력만
-Service    — 비즈니스 로직 + Tx
-Repository — DB 접근만
-```
-
-이 _분리_ 를 evidence 에 본인 말로.
-
 ```text
-@Controller → @Service → @Repository
-   ↓             ↓             ↓
-  요청 받기      Tx 시작       JPA/JDBC
-  응답 형식     도메인 검증    SQL 실행
+Controller → Service → Repository
+  HTTP        Tx         DB
+  입출력      비즈니스    접근만
 ```
+
+> 책임 분리를 evidence 에 본인 말로.
 
 ---
 
 <!-- _class: lesson -->
 
-## 핵심 개념 2 — REST API 4 endpoint
+## 핵심 개념 2 — REST 4 endpoint
 
-게시판 도메인 (Post) — Week 2 로 자연스럽게 이어진다.
+게시판 (Post) — W2 로 이어진다.
 
 | 메서드 | 경로 | 응답 |
 | --- | --- | --- |
-| `POST` | `/posts` | 201 Created + body |
-| `GET` | `/posts` | 200 OK + 목록 |
-| `GET` | `/posts/{id}` | 200 OK / 404 |
-| `PUT` | `/posts/{id}` | 200 OK / 404 |
+| `POST` | `/posts` | 201 + body |
+| `GET` | `/posts` | 200 + 목록 |
+| `GET` | `/posts/{id}` | 200 / 404 |
+| `PUT` | `/posts/{id}` | 200 / 404 |
 
-`@RestController` + `ResponseEntity` 로 응답.
-
-```java
-@PostMapping
-public ResponseEntity<PostResponse> create(
-  @RequestBody @Valid PostRequest req
-) { ... }
-```
+`@RestController` + `ResponseEntity`.
 
 ---
 
@@ -131,19 +117,16 @@ public class PostService {
 성공 / 실패 / 예외 1개씩.
 
 ```java
-@SpringBootTest
-class PostServiceTest {
-  @Test void create_success() { ... }
-  @Test void create_invalidTitle_400() { ... }
-  @Test void getById_notFound_404() { ... }
-}
+@Test void create_success() { ... }
+@Test void create_invalidTitle_400() { ... }
+@Test void getById_notFound_404() { ... }
 ```
 
 | 어노테이션 | 범위 |
 | --- | --- |
-| `@SpringBootTest` | 전체 컨텍스트 |
-| `@WebMvcTest` | Controller 만 |
-| `@DataJpaTest` | Repository 만 |
+| `@SpringBootTest` | 전체 |
+| `@WebMvcTest` | Controller |
+| `@DataJpaTest` | Repository |
 
 ---
 

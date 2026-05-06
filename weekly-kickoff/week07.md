@@ -87,14 +87,10 @@ hit rate 10%   = 캐시 _빼는_ 게 나음
 
 ```java
 @Cacheable(value="post", key="#id")
-public Post findById(Long id) {
-  return postRepo.findById(id).orElseThrow();
-}
+public Post findById(Long id) { ... }
 
 @CacheEvict(value="post", key="#post.id")
-public void update(Post post) {
-  postRepo.save(post);
-}
+public void update(Post post) { ... }
 ```
 
 | 어노테이션 | 동작 |

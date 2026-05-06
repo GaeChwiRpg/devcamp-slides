@@ -128,18 +128,14 @@ order → DB / redis / notify
 ## OpenTelemetry — 표준
 
 ```text
-🌐 OpenTelemetry (OTel)
-   = 추적·로그·메트릭 통합 표준
-   = CNCF 프로젝트
-
-지원: Java / Kotlin / Python / Go / Node ...
+🌐 OTel = 추적·로그·메트릭 통합 표준 (CNCF)
+지원: Java / Python / Go / Node 다수
 백엔드: Jaeger / Zipkin / Tempo / Datadog
 ```
 
 ```text
 ✅ vendor 종속 ↓
 ✅ 한 SDK 로 모든 언어
-✅ 자동 계측 라이브러리 풍부
 ```
 
 ---
@@ -149,20 +145,14 @@ order → DB / redis / notify
 ## Spring Boot 통합
 
 ```yaml
-# application.yml
 management:
-  tracing:
-    sampling:
-      probability: 1.0
-  zipkin:
-    tracing:
-      endpoint: http://zipkin:9411/...
+  tracing.sampling.probability: 1.0
+  zipkin.tracing.endpoint: http://...
 ```
 
 ```text
 ✅ Spring Boot 3 + Micrometer
-✅ HTTP 호출 / DB / Redis 자동 계측
-✅ 컨트롤러 메서드 자동 span
+✅ HTTP / DB / Redis 자동 계측
 ```
 
 ---
@@ -192,17 +182,13 @@ management:
 
 ```text
 [Pod]  App ←→ Envoy ←→ 외부
-              ↑
-       sidecar proxy
+              (sidecar proxy)
 ```
 
-Envoy 가 가로채서:
-- HTTP 헤더 trace-id 자동 주입
-- 메트릭 수집 + Jaeger 전송
+Envoy 가 가로채서 trace-id 자동 주입 + Jaeger 전송.
 
 ```text
 ✅ App 코드 _0줄_ 변경
-✅ 모든 서비스 _자동_ 적용
 ❌ K8s 환경 필요
 ```
 

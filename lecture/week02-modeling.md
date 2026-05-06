@@ -74,19 +74,15 @@ title: 'Week 2 강의 — 도메인 모델링의 함정'
 ## 같은 게시판 — 모델 A
 
 ```text
-Post(
-  id, title, content,
-  author, viewCount,
-  likeCount, status,
-  scheduledAt, ...
-)
+Post(id, title, content, author,
+     viewCount, likeCount, status,
+     scheduledAt, ...)
 ```
 
 ```text
 ✅ 단순 — 한 테이블
 ❌ 좋아요 +1 → 본문 락 경합
 ❌ 통계 추가 → 마이그레이션 큼
-❌ 한 Entity 책임 _많음_
 ```
 
 ---

@@ -122,21 +122,17 @@ DB 변경 없음. 코드 변경 없음.
 
 ```text
 status='PUBLISHED' 카디널리티 _바뀜_
-
-어제: PUBLISHED 30% (인덱스 적중)
-오늘: PUBLISHED 95% (대다수)
+어제: 30% (적중) → 오늘: 95% (대다수)
 → 옵티마이저가 _풀스캔_ 선택
-
-(통계 노후 — 자동 갱신 안 됐을 수도)
 ```
 
 ```text
-✅ 1. ANALYZE TABLE post   (통계 갱신)
-✅ 2. 복합 인덱스 (user_id, status, created)
-✅ 3. 인덱스 힌트 USE INDEX (마지막 수단)
+✅ ANALYZE TABLE post (통계 갱신)
+✅ 복합 인덱스 (user_id, status, created)
+✅ USE INDEX 힌트 (마지막 수단)
 ```
 
-> _데이터 분포_ 가 옵티마이저를 좌우. 운영에서 _자주_ 발생.
+> _데이터 분포_ 가 옵티마이저를 좌우.
 
 ---
 
@@ -238,21 +234,16 @@ EXPLAIN 결과: 모든 컬럼 인덱스 적중
 # 사례 5 — 정답: JOIN 순서
 
 ```text
-옵티마이저가 _작은_ 결과집합 먼저:
+✅ 좋은 순서: user(VIP 100) → order JOIN
+   → 100 × lookup = 빠름
 
-✅ 좋은 순서:
-  user (VIP) 먼저 → 100명 → order JOIN
-  → 100 × 작은 lookup = 빠름
-
-❌ 옵티마이저가 잘못 골랐을 때:
-  order (PENDING) 먼저 → 50만 row → user JOIN
-  → 50만 × lookup = 느림
+❌ 잘못 고른 순서: order(50만) → user JOIN
+   → 50만 × lookup = 느림
 ```
 
 ```text
-✅ ANALYZE TABLE 자주 (통계 정확)
-✅ STRAIGHT_JOIN 힌트 (마지막 수단)
-✅ 서브쿼리 분리 (작은 쪽 먼저 명시)
+✅ ANALYZE TABLE (통계 정확)
+✅ STRAIGHT_JOIN 힌트 (마지막)
 ```
 
 ---
