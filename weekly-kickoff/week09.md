@@ -112,20 +112,17 @@ W9 첫날 4명이 모여서:
 
 ```markdown
 ## 담당 기능
-- {{기능 1줄}}
+- {{한 줄}}
 
 ## 라이프사이클 단계
-- [x] 코딩
-- [ ] 기획 / 테스트 / 리뷰 / 운영
+- [x] 코딩 / [ ] 기획·테스트·리뷰·운영
 
 ## 검증
 - {{evidence 인용}}
 
-## API 변경
-- [ ] 없음 / [x] API-CONTRACT.md 갱신
-
-## AI 보조 흔적
-- [ ] / [x] {{prompt-log + hallucination 사례}}
+## API 변경 / AI 보조
+- API-CONTRACT.md 갱신 여부
+- prompt-log + hallucination 사례
 ```
 
 ---

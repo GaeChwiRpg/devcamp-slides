@@ -88,7 +88,7 @@ EntityManager 가 _캐시_ 처럼 동작.
 
 ## 핵심 개념 2 — 연관관계 주인
 
-`Post` 1 : N `Comment` — 누가 FK 를 가지나?
+`Post` 1 : N `Comment` — 누가 FK?
 
 ```java
 // N 쪽이 주인 (일반)
@@ -99,11 +99,9 @@ public class Comment {
   private Post post;
 }
 
-@Entity
-public class Post {
-  @OneToMany(mappedBy = "post")
-  private List<Comment> comments;
-}
+// 거울 쪽
+@OneToMany(mappedBy = "post")
+private List<Comment> comments;
 ```
 
 ---

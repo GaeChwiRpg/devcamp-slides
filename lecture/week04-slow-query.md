@@ -160,23 +160,19 @@ DB CPU:             20%
 
 # 사례 3 — 정답: 락 대기
 
-```text
-다른 트랜잭션이 _긴_ 작업 중:
-
+```java
 @Transactional
 public void bigBatch() {
-  product.findById(5);  ← row 락 잡음
-  externalApi.call();   ← 30 초 대기 (!)
+  product.findById(5);  // row 락 잡음
+  externalApi.call();   // 30 초 대기 (!)
   product.save();
 }
-
-→ 그 사이 _같은 row_ 조회·수정 모두 _대기_
+// → 그 사이 같은 row 조회·수정 _대기_
 ```
 
 ```text
-✅ 트랜잭션 _짧게_ — 외부 호출 트랜잭션 밖
-✅ 슬로우 쿼리 + _innodb_lock_wait_ 같이 보기
-✅ 락 모니터링 (SHOW ENGINE INNODB STATUS)
+✅ 트랜잭션 _짧게_ — 외부 호출은 Tx 밖
+✅ innodb_lock_wait + 슬로우 쿼리 같이
 ```
 
 ---

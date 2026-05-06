@@ -111,19 +111,16 @@ public ResponseEntity<PostResponse> create(
 ```java
 @Service
 public class PostService {
-
   @Transactional
   public Post create(PostRequest req) {
-    // 1. 도메인 검증
-    // 2. Repository.save
-    // 3. 이벤트 발행 (선택)
+    // 1. 검증 → 2. save → 3. 이벤트
   }
 }
 ```
 
-**왜 Service 에?** — Controller 는 트랜잭션 경계의 _책임_ 이 아님.
+**왜 Service 에?** Controller 는 _Tx 경계_ 책임 X.
 
-evidence 에 _이 한 줄_ 을 본인 말로 박는다.
+> evidence 에 _이 한 줄_ 본인 말로.
 
 ---
 
@@ -131,7 +128,7 @@ evidence 에 _이 한 줄_ 을 본인 말로 박는다.
 
 ## 핵심 개념 4 — 테스트 3개
 
-성공 / 실패 / 예외 1개씩 — 작은 시작.
+성공 / 실패 / 예외 1개씩.
 
 ```java
 @SpringBootTest
@@ -142,13 +139,11 @@ class PostServiceTest {
 }
 ```
 
-| 어노테이션 | 범위 | 언제 |
-| --- | --- | --- |
-| `@SpringBootTest` | 전체 컨텍스트 | 통합 검증 |
-| `@WebMvcTest` | Controller + 직렬화 | HTTP 계층만 |
-| `@DataJpaTest` | Repository + JPA | DB 접근만 |
-
-> 가장 _작은 범위_ 부터 — 실행 시간이 짧아야 자주 돌린다.
+| 어노테이션 | 범위 |
+| --- | --- |
+| `@SpringBootTest` | 전체 컨텍스트 |
+| `@WebMvcTest` | Controller 만 |
+| `@DataJpaTest` | Repository 만 |
 
 ---
 

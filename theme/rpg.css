@@ -37,8 +37,8 @@ section {
   color: var(--rpg-text);
   font-family: var(--rpg-font-body);
   font-size: 26px;
-  line-height: 1.5;
-  padding: 60px 80px 70px;  /* 하단 70px = 페이지 카운트 영역 확보 */
+  line-height: 1.45;  /* 줄간격 살짝 압축 */
+  padding: 48px 80px 70px;  /* 상단 48px (60→48), 하단 70px = 페이지 카운트 영역 */
   letter-spacing: -0.01em;
 }
 
@@ -56,10 +56,12 @@ h3 { font-size: 28px; color: var(--rpg-gold-2); }
 
 p, li {
   font-size: 26px;
-  margin: 0.4em 0;
+  margin: 0.25em 0;  /* 마진 줄여서 줄간격 압축 */
 }
 
-ul, ol { margin-left: 1.2em; }
+ul, ol { margin: 0.4em 0 0.4em 1.2em; }
+li { margin: 0.15em 0; }
+li > ul, li > ol { margin: 0.1em 0 0.1em 1.2em; }
 li::marker { color: var(--rpg-gold); }
 strong { color: var(--rpg-gold); }
 em { color: var(--rpg-success); font-style: normal; }
@@ -234,12 +236,18 @@ section.lesson > h2 {
 /* lesson 의 cell 은 폭이 좁아 코드/표 폰트를 살짝 작게 */
 section.lesson pre,
 section.lesson pre code {
-  font-size: 17px;
-  line-height: 1.4;
+  font-size: 16px;
+  line-height: 1.35;
 }
 
 section.lesson table {
-  font-size: 19px;
+  font-size: 18px;
+}
+
+section.lesson p,
+section.lesson li {
+  font-size: 22px;
+  line-height: 1.4;
 }
 
 /* ===== Layout: boss (FINAL BOSS) ===== */

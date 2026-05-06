@@ -212,12 +212,12 @@ Envoy 가 가로채서:
 
 ## istio vs Linkerd vs Cilium
 
-| 도구 | 특징 | 사례 |
-| --- | --- | --- |
-| **istio** | 가장 _많이_ 쓰임 | 카카오·네이버 |
-| **Linkerd** | _가벼운_ Service Mesh | Toss 일부 |
-| **Cilium** | eBPF 기반 _커널_ 레벨 | Datadog |
-| **Consul** | HashiCorp 통합 | 외국 회사 다수 |
+| 도구 | 특징 |
+| --- | --- |
+| **istio** | 가장 _많이_ 쓰임, 기능 풍부 |
+| **Linkerd** | _가벼운_ Service Mesh |
+| **Cilium** | eBPF 기반 _커널_ 레벨 |
+| **Consul** | HashiCorp 통합 |
 
 ```text
 선택 = 운영 복잡도 vs 기능
@@ -242,19 +242,22 @@ Envoy 가 가로채서:
 
 <!-- _class: quest -->
 
-# Part 4 — 사례
+# Part 4 — 공개 사례
 
-실제 회사들 의 분산 추적 도입.
+자체 기술 블로그 / 공개 컨퍼런스 발표 기준.
 
 ```text
-Netflix      — 1 PB / day 추적 데이터
-Uber         — Jaeger 자체 개발
-Twitter/X    — Zipkin 자체 개발
-Toss / 카카오 — DataDog APM
-배민         — OpenTelemetry + Jaeger
+Netflix    — 1 PB / day 추적 데이터
+Uber       — Jaeger 를 _자체 개발_ 후 오픈소스
+Twitter/X  — Zipkin 을 _자체 개발_ 후 오픈소스
 ```
 
-> 트래픽 큰 회사는 _자체 개발_, 일반 회사는 _SaaS_ 선택.
+```text
+일반 회사: SaaS APM (DataDog / NewRelic) 채택 다수
+대규모: OSS (Jaeger / Tempo) 자체 운영
+```
+
+> 트래픽 큰 회사는 _자체 개발·오픈소스화_ 패턴.
 
 ---
 

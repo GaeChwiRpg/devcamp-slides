@@ -56,6 +56,18 @@ python3 scripts/check-titles.py && python3 scripts/check-content.py
 - ❌ "특강" → ✅ "강의" (외부 초청 아님, 총괄 직접)
 - ❌ "비전공자가 진짜로 백엔드 개발자가" 같은 표현 — 톤 너무 처져 보임
 
+## 회사 사례 인용 — 검증 가능한 것만
+
+미확인 한국 회사의 _구체적 도구 선택_ 인용 금지.
+
+- ❌ "Toss 는 Linkerd 쓴다", "카카오·네이버 는 istio", "배민 — OpenTelemetry + Jaeger"
+- ✅ "Netflix — 1 PB / day 추적" (Netflix 기술 블로그 공개)
+- ✅ "Uber — Jaeger 자체 개발 후 오픈소스" (공개)
+- ✅ "Twitter/X — Zipkin 자체 개발" (공개)
+- ✅ "한국 IT 회사 다수가 SaaS APM 채택" (일반화 OK)
+
+원칙: _회사명 + 구체적 기술 선택_ 을 박을 거면 _자체 기술 블로그·컨퍼런스 발표_ 출처가 있어야. 없으면 _일반화_ 또는 _제거_.
+
 ## Discord 채널 표기
 
 실제 서버: `gaechwirpg` (ID `1486978301909270602`). 코호트별 카테고리.

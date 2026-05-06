@@ -93,25 +93,16 @@ LikeEvent(postId, userId, action='UNLIKE', at=...)
 
 ---
 
-# 왜 그래야만 하는 상황 — 4 동기
+# 왜 그래야만 하는가 — 4 동기
 
-1. **Write 가 _무거운_ 연산**
-   - UPDATE = 인덱스 갱신 + 락 + 트랜잭션 비용
-   - INSERT 만 (이벤트 저장) = _가벼움_
+| # | 동기 | 핵심 |
+| --- | --- | --- |
+| 1 | Write 가 무거움 | UPDATE = 인덱스+락+Tx · INSERT 가벼움 |
+| 2 | Read >> Write | 보통 100:1 ~ 1000:1 — read model 분리 |
+| 3 | 비동기 반영 OK | 좋아요·통계 0.5초 지연 사용자 영향 X |
+| 4 | MSA 이벤트 전파 | Kafka 1발행 → N서비스 소비 |
 
-2. **Read >> Write 비율** (보통 100:1 ~ 1000:1)
-   - Write 단순화 + Read model 별도 _최적화_
-   - 검색·통계·추천 read model _다수_ 가능
-
-3. **비동기 반영 OK 인 도메인**
-   - 좋아요 카운트 0.5 초 지연 → 사용자 영향 X
-   - 캐시·통계는 _eventual consistency_ OK
-
-4. **MSA 이벤트 전파**
-   - 주문 생성 → 결제 + 알림 + 통계 + 추천 _4 서비스_ 알아야
-   - Kafka 한 번 발행 → 각자 소비 + read model 구축
-
-> 4 중 2 개+ 해당하면 ES 도입 _진지하게_ 검토.
+> 4 중 _2 개+_ 해당하면 ES 도입 진지하게 검토.
 
 ---
 
@@ -229,23 +220,19 @@ Event Store ─── 비동기 ─→ 읽기 전용 DB
 # Spring 으로 시작하기
 
 ```java
-// 도메인 이벤트
 record OrderCreated(Long orderId, ...) {}
 
-// 발행 (Spring 기본)
-applicationEventPublisher.publishEvent(
-  new OrderCreated(...)
-);
+// 발행
+publisher.publishEvent(new OrderCreated(...));
 
 // 구독
-@EventListener
-@Async
-public void handle(OrderCreated event) {
-  notificationService.send(...);
+@EventListener @Async
+public void handle(OrderCreated e) {
+  notification.send(...);
 }
 ```
 
-> 외부 큐 (Kafka 등) 없이도 _개념_ 도입 가능.
+> 외부 큐 (Kafka) 없이도 _개념_ 도입 가능.
 
 ---
 

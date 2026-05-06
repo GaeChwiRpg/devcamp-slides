@@ -86,22 +86,21 @@ hit rate 10%   = 캐시 _빼는_ 게 나음
 ## Spring 캐시 적용
 
 ```java
-@Cacheable(value = "post", key = "#id")
+@Cacheable(value="post", key="#id")
 public Post findById(Long id) {
-  return postRepository.findById(id).orElseThrow();
+  return postRepo.findById(id).orElseThrow();
 }
 
-@CacheEvict(value = "post", key = "#post.id")
+@CacheEvict(value="post", key="#post.id")
 public void update(Post post) {
-  postRepository.save(post);
+  postRepo.save(post);
 }
 ```
 
-```text
-@Cacheable  : 결과를 캐시에 저장
-@CacheEvict : 캐시에서 제거 (수정 시)
-@CachePut   : 갱신 (드물게)
-```
+| 어노테이션 | 동작 |
+| --- | --- |
+| `@Cacheable` | 결과 캐시 저장 |
+| `@CacheEvict` | 캐시 제거 (수정) |
 
 ---
 
