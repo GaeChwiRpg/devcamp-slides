@@ -18,9 +18,7 @@ title: 'Week 8 — AI 네이티브 워크플로우'
 
 ---
 
-# AI: 제가 했어요 (의심)
-
-![w:500](../theme/assets/memes/w8.jpg)
+# AI: 제가 했어요 🤖
 
 
 ---

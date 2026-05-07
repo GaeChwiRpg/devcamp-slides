@@ -18,9 +18,7 @@ Netflix 가 본 1 PB 로그 · 2026-07-11
 
 ---
 
-# 범인 찾기
-
-![w:500](../theme/assets/memes/w6-lecture.jpg)
+# 범인 찾기 🕵️
 
 
 ---
