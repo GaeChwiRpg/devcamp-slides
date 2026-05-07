@@ -18,7 +18,7 @@ title: 'Week 6 — 서버 성능 최적화'
 
 ---
 
-# 내 코드 어디 아픈가 보자
+# 어디 아픈가 보자
 
 ![w:500](../theme/assets/memes/w6.jpg)
 

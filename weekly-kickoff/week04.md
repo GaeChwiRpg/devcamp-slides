@@ -18,7 +18,7 @@ title: 'Week 4 — 인덱스 / EXPLAIN'
 
 ---
 
-# 쿼리야 어디갔니 어디갔어
+# 쿼리 어디갔니
 
 ![w:500](../theme/assets/memes/w4.jpg)
 

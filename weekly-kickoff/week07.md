@@ -18,7 +18,7 @@ title: 'Week 7 — Redis 실전 활용'
 
 ---
 
-# 엄마는 다 해놨어 (= 캐시)
+# 엄마는 다 해놨어
 
 ![w:500](../theme/assets/memes/w7.jpg)
 

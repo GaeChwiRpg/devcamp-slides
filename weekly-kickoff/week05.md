@@ -18,7 +18,7 @@ title: 'Week 5 — 트랜잭션 / 락 / 동시성'
 
 ---
 
-# 한 명씩만요 차례차례
+# 한 명씩만
 
 ![w:500](../theme/assets/memes/w5.jpg)
 

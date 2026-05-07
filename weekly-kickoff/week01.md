@@ -18,7 +18,7 @@ title: 'Week 1 — Spring Boot 기본기'
 
 ---
 
-# 오늘부터 우리도 백엔드
+# 일단 첫 PR
 
 ![w:500](../theme/assets/memes/w1.jpg)
 

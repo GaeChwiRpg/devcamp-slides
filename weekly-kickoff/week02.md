@@ -18,7 +18,7 @@ title: 'Week 2 — JPA 연관관계 / 영속성'
 
 ---
 
-# JPA? 그게 뭐야 그게
+# JPA? 그게 뭔데
 
 ![w:500](../theme/assets/memes/w2.jpg)
 
