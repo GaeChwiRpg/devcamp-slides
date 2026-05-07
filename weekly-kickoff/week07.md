@@ -18,6 +18,13 @@ title: 'Week 7 — Redis 실전 활용'
 
 ---
 
+# 미리 준비하면 빠르다
+
+![w:500](../theme/assets/memes/w7.jpg)
+
+
+---
+
 # 지난 주 돌아보기 — Week 6
 
 | 항목 | 결과 |

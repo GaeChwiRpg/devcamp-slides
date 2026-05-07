@@ -18,6 +18,13 @@ title: 'Week 8 강의 — Event Sourcing'
 
 ---
 
+# 통장 = 거래의 합
+
+![w:500](../theme/assets/memes/w8-lecture.jpg)
+
+
+---
+
 <!-- _class: quest -->
 
 # 왜 이 주제인가

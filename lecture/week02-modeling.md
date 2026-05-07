@@ -18,6 +18,13 @@ title: 'Week 2 강의 — 도메인 모델링의 함정'
 
 ---
 
+# 도메인 모델링 = 평면도
+
+![w:500](../theme/assets/memes/w2-lecture.jpg)
+
+
+---
+
 <!-- _class: quest -->
 
 # 왜 이 주제인가

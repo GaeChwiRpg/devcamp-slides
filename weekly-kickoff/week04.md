@@ -18,6 +18,13 @@ title: 'Week 4 — 인덱스 / EXPLAIN'
 
 ---
 
+# 느린 쿼리, 어디 갔지?
+
+![w:500](../theme/assets/memes/w4.jpg)
+
+
+---
+
 # 지난 주 돌아보기 — Week 3 이력서
 
 | 항목 | 결과 |

@@ -18,6 +18,13 @@ title: 'Week 8 — AI 네이티브 워크플로우'
 
 ---
 
+# AI 가 다 해줌? 진짜?
+
+![w:500](../theme/assets/memes/w8.jpg)
+
+
+---
+
 # 지난 주 돌아보기 — Week 7 Redis
 
 | 항목 | 결과 |

@@ -18,6 +18,13 @@ title: 'Week 1 — Spring Boot 기본기'
 
 ---
 
+# 공부 시작! 가볍게 가자
+
+![w:500](../theme/assets/memes/w1.jpg)
+
+
+---
+
 # OT 잘 듣고 오셨나요?
 
 | 체크 | 항목 |

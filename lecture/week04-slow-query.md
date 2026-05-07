@@ -18,6 +18,13 @@ title: 'Week 4 강의 — 슬로우 쿼리 사례 5선'
 
 ---
 
+# 그게 왜 느려?
+
+![w:500](../theme/assets/memes/w4-lecture.jpg)
+
+
+---
+
 <!-- _class: quest -->
 
 # 왜 이 주제인가
