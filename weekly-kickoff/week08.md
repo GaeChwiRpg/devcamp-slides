@@ -18,7 +18,7 @@ title: 'Week 8 — AI 네이티브 워크플로우'
 
 ---
 
-# AI 가 다 해줌? 진짜?
+# AI: 제가 다 했어요 (의심됨)
 
 ![w:500](../theme/assets/memes/w8.jpg)
 

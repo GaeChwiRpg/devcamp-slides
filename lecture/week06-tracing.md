@@ -18,7 +18,7 @@ Netflix 가 본 1 PB 로그 · 2026-07-11
 
 ---
 
-# 어디서 새는 걸까
+# 범인은 이 안에 있다
 
 ![w:500](../theme/assets/memes/w6-lecture.jpg)
 

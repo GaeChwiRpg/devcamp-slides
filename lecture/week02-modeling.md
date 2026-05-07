@@ -18,7 +18,7 @@ title: 'Week 2 강의 — 도메인 모델링의 함정'
 
 ---
 
-# 도메인 모델링 = 평면도
+# 정신차려 이 각박한 세상 속에서
 
 ![w:500](../theme/assets/memes/w2-lecture.jpg)
 

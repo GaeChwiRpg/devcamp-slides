@@ -18,7 +18,7 @@ title: 'Week 7 — Redis 실전 활용'
 
 ---
 
-# 미리 준비하면 빠르다
+# 엄마는 다 해놨어 (= 캐시)
 
 ![w:500](../theme/assets/memes/w7.jpg)
 

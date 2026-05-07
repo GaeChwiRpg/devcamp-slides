@@ -18,7 +18,7 @@ title: 'Week 1 — Spring Boot 기본기'
 
 ---
 
-# 공부 시작! 가볍게 가자
+# 오늘부터 우리도 백엔드
 
 ![w:500](../theme/assets/memes/w1.jpg)
 

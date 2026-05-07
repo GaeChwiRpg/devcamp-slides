@@ -18,7 +18,7 @@ title: 'Week 3 — 백엔드 이력서 차별화'
 
 ---
 
-# 내 PR 자랑 거리 만들기
+# 이거 내가 했어 자랑 좀
 
 ![w:500](../theme/assets/memes/w3.jpg)
 
