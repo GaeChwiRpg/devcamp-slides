@@ -63,7 +63,7 @@ npm run watch
 
 | 주차 | 미션 | 매주 슬롯 | 강의 | 비고 |
 | --- | --- | --- | --- | --- |
-| 1 | `02-week1-spring-boot` | TBD | — | 5/30 OT 동시 |
+| 1 | `02-week1-spring-boot` | TBD | — | 6/06 OT 동시 |
 | 2 | `03-week2-jpa` | TBD | TBD | JPA 연관관계 |
 | 3 | `04-week3-backend-resume` | TBD | — | 학생 내부 발표 |
 | 4 | `05-week4-index` | TBD | TBD | 인덱스/EXPLAIN |
@@ -72,7 +72,7 @@ npm run watch
 | 7 | `08-week7-redis` | TBD | — | 학생 내부 발표 |
 | 8 | `09-week8-ai-native` | TBD | TBD | AI Native |
 | 9 | `week9-team-project` | TBD | — | 학생 팀 발표 |
-| 10 | `10-week10-interview` | — | — | 8/8 피날레 |
+| 10 | `10-week10-interview` | — | — | 8/15 피날레 |
 
 ## 라이선스
 

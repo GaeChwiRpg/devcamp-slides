@@ -14,7 +14,7 @@ title: 'Week 8 강의 — Event Sourcing'
 
 ## Event Sourcing — 캐시 너머의 설계
 
-상태 vs 이벤트 · 2026-07-18
+상태 vs 이벤트 · 2026-07-25
 
 ---
 

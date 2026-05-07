@@ -94,7 +94,7 @@ python3 scripts/check-titles.py && python3 scripts/check-content.py
 | --- | --- | --- | --- |
 | `weekly-kickoff/` | 매주 토 14:00–15:00 미션 공개 | 총괄 | 15-25장 / 30-45분 |
 | `lecture/` | 격주 토 15:00–16:30 강의 (W2/4/6/8) | 총괄 직접 | 30-40장 / 60-70분 |
-| `offline/` | 1주차 OT (5/30) / 10주차 피날레 (8/8) | 총괄 | 25-30장 |
+| `offline/` | 1주차 OT (6/06) / 10주차 피날레 (8/15) | 총괄 | 25-30장 |
 | `templates/` | 위 3종 표준 양식 (`_kickoff` / `_lecture` / `_offline`) | — | — |
 
 학생 발표 (3·5·7·9주차 내부 발표) 는 Google Slides — 이 repo 안 다루지 않음.
