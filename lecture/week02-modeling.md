@@ -18,7 +18,7 @@ title: 'Week 2 강의 — 도메인 모델링의 함정'
 
 ---
 
-# 처음부터 잘 짜자 (벽은 못 허물어)
+# 처음부터 잘 짜자 — 벽 못 허물어
 
 ![w:500](../theme/assets/memes/w2-lecture.jpg)
 
