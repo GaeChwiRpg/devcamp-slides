@@ -23,7 +23,8 @@ for d in weekly-kickoff lecture offline; do
   if compgen -G "$d/*.md" > /dev/null; then
     echo "==> Building $d/"
     mkdir -p "dist/$d"
-    npx marp --pdf  -I "$d" -o "dist/$d" -P 1
+    # PDF: 이미지 + 큰 본문 슬라이드 chromium 30초 timeout 알려진 이슈 → fail 허용
+    npx marp --pdf  -I "$d" -o "dist/$d" -P 1 || echo "  (some PDFs may have failed)"
     npx marp --html -I "$d" -o "dist/$d" -P 1
   else
     echo "==> Skip $d (no .md)"
