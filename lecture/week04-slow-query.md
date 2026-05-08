@@ -18,7 +18,9 @@ title: 'Week 4 강의 — 슬로우 쿼리 사례 5선'
 
 ---
 
-# 아 답답해 😤
+# 아 답답해 (고구마 100개)
+
+![w:300](../theme/assets/memes/w4-lecture.jpg)
 
 
 ---
