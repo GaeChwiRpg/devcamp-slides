@@ -49,7 +49,7 @@ title: 'Week 2 — JPA 연관관계 / 영속성'
 
 ---
 
-# 이번 주 학습 목표
+# 이번 주 목표 🎯
 
 1. **연관관계 주인** 본인이 결정 — 양방향 매핑에서 _어느 쪽_ 이 FK 를 가지는지
 2. **모든 연관관계 LAZY** + N+1 발생 현장 _쿼리 로그_ 로 확인
@@ -145,7 +145,7 @@ evidence/dirty-checking-snapshot.md 에 _flush 전후 SQL 로그_ 캡처.
 
 ---
 
-# 함정 / 자주 하는 실수
+# 이거 하면 망함 ⚠️
 
 - ❌ 양방향 매핑에서 양쪽 다 setter → ✅ 편의 메서드 1개로 양쪽 동기화
 - ❌ EAGER 로 처음부터 다 가져옴 → ✅ LAZY 기본, fetch join 으로 케이스별 해결
@@ -154,7 +154,7 @@ evidence/dirty-checking-snapshot.md 에 _flush 전후 SQL 로그_ 캡처.
 
 ---
 
-# 이번 주에 제출할 것
+# 이번 주 제출할 것 📦
 
 ```
 03-week2-jpa/
@@ -171,7 +171,7 @@ evidence/dirty-checking-snapshot.md 에 _flush 전후 SQL 로그_ 캡처.
 
 ---
 
-# 평가 기준 (5축)
+# 평가는 어떻게 (5축) 📊
 
 | 축 | 가중 | 핵심 |
 | --- | --- | --- |
@@ -197,7 +197,7 @@ evidence/dirty-checking-snapshot.md 에 _flush 전후 SQL 로그_ 캡처.
 
 ---
 
-# 운영 안내
+# 이번 주 일정 📅
 
 - **제출 마감**: 2026-06-19 (금) `23:59`
 - **토 15:00–16:30**: 격주 **강의** — JPA 연관관계 / 영속성 (직후 슬롯)
@@ -209,7 +209,7 @@ evidence/dirty-checking-snapshot.md 에 _flush 전후 SQL 로그_ 캡처.
 
 <!-- _class: end -->
 
-# Q&A
+# 질문 ㄱㄱ ❓
 
 ```text
 오늘 15:00 — 도메인 모델링 강의 (게시판 5초 vs 5시간)

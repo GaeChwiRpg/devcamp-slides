@@ -60,7 +60,7 @@ title: 'Week 7 — Redis 실전 활용'
 
 ---
 
-# 이번 주 학습 목표
+# 이번 주 목표 🎯
 
 1. **캐시 키 설계** — 무엇을 키로 잡고 TTL 얼마인지 _근거_
 2. **hit rate 측정** — Spring Actuator `metrics/cache.gets` 또는 Redis `INFO stats`
@@ -129,7 +129,7 @@ public void update(Post post) { ... }
 
 ---
 
-# 이번 주에 제출할 것
+# 이번 주 제출할 것 📦
 
 ```
 08-week7-redis/
@@ -156,7 +156,7 @@ public void update(Post post) { ... }
 
 ---
 
-# 평가 기준 (5축)
+# 평가는 어떻게 (5축) 📊
 
 | 축 | 가중 | 핵심 |
 | --- | --- | --- |
@@ -168,7 +168,7 @@ public void update(Post post) { ... }
 
 ---
 
-# 운영 안내
+# 이번 주 일정 📅
 
 - **제출 마감**: 2026-07-24 (금) `23:59`
 - **토 15:00–16:30**: 학생 내부 발표 (강의 슬롯 아님)
@@ -179,7 +179,7 @@ public void update(Post post) { ... }
 
 <!-- _class: end -->
 
-# Q&A
+# 질문 ㄱㄱ ❓
 
 ```text
 이번 주 = "DB 한 번 → 100 번 응답 가능?"

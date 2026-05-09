@@ -50,7 +50,7 @@ title: 'Week 1 — Spring Boot 기본기'
 
 ---
 
-# 이번 주 학습 목표
+# 이번 주 목표 🎯
 
 1. **3계층 분리** — Controller / Service / Repository 책임을 본인 말로 설명
 2. **`@Transactional` 1개 이상** — _왜_ 그 위치에 붙였는지 근거
@@ -135,7 +135,7 @@ public class PostService {
 
 ---
 
-# 함정 / 자주 하는 실수
+# 이거 하면 망함 ⚠️
 
 - ❌ Controller 안에 비즈니스 로직 → ✅ Service 위임
 - ❌ `@Transactional` 을 Controller 또는 private 메서드에 → ✅ public Service 메서드에
@@ -145,7 +145,7 @@ public class PostService {
 
 ---
 
-# 이번 주에 제출할 것
+# 이번 주 제출할 것 📦
 
 ```
 02-week1-spring-boot/
@@ -163,7 +163,7 @@ public class PostService {
 
 ---
 
-# 평가 기준 (5축)
+# 평가는 어떻게 (5축) 📊
 
 | 축 | 가중 | 핵심 |
 | --- | --- | --- |
@@ -177,7 +177,7 @@ public class PostService {
 
 ---
 
-# 운영 안내
+# 이번 주 일정 📅
 
 - **제출 마감**: 2026-06-12 (금) `23:59`
 - **금 18:00**: 3주차 학생 발표자 1장 슬라이드 제출 (이번 주는 해당 없음)
@@ -187,7 +187,7 @@ public class PostService {
 
 ---
 
-# 첫 주 워크플로우
+# 첫 주 흐름
 
 1. 본인 레포 clone — `git clone git@github.com:GaeChwiRpg/{cohort}-{username}.git`
 2. `02-week1-spring-boot/project/` 에 Spring Boot 코드 시작 (이미 부트스트랩됨)
@@ -202,9 +202,9 @@ public class PostService {
 
 <!-- _class: end -->
 
-# Q&A
+# 질문 ㄱㄱ ❓
 
-질문 환영. 막히면 _바로_ `{cohort}-질문` — 24시간 내 답.
+질문 ㄱㄱ. 막히면 _바로_ `{cohort}-질문` — 24시간 내 답.
 
 > 다음 주: **Week 2 — JPA 연관관계 / 영속성** (14:00) + **도메인 모델링** 강의 (15:00).
 > 1주차 코드를 _그대로 이어서_ 리팩토링.

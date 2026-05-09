@@ -58,7 +58,7 @@ title: 'Week 4 — 인덱스 / EXPLAIN'
 
 ---
 
-# 이번 주 학습 목표
+# 이번 주 목표 🎯
 
 1. **EXPLAIN 으로 쿼리 플랜 읽기** — `type` / `key` / `rows` 3 컬럼만
 2. **인덱스 적용 전후 latency 측정** — 수치 1개 이상 (`hey` / `curl + time` / `k6`)
@@ -119,7 +119,7 @@ CREATE INDEX idx_user ON post(user_id);
 
 ---
 
-# 이번 주에 제출할 것
+# 이번 주 제출할 것 📦
 
 ```
 05-week4-index/
@@ -135,7 +135,7 @@ CREATE INDEX idx_user ON post(user_id);
 
 ---
 
-# 평가 기준 (5축)
+# 평가는 어떻게 (5축) 📊
 
 | 축 | 가중 | 핵심 |
 | --- | --- | --- |
@@ -164,7 +164,7 @@ CREATE INDEX idx_user ON post(user_id);
 
 ---
 
-# 운영 안내
+# 이번 주 일정 📅
 
 - **제출 마감**: 2026-07-03 (금) `23:59`
 - **토 15:00–16:30**: 격주 **강의** — 인덱스 / EXPLAIN 깊게
@@ -175,7 +175,7 @@ CREATE INDEX idx_user ON post(user_id);
 
 <!-- _class: end -->
 
-# Q&A
+# 질문 ㄱㄱ ❓
 
 ```text
 이번 주 = "본인 코드의 SQL 을 _직접_ 측정"
