@@ -20,11 +20,11 @@ title: 'Week 7 학생 발표 — Redis 캐시'
 <!-- _class: cover -->
 <!-- _paginate: false -->
 
-# {{본인 이름}}
+# Redis — hit rate + latency 검증
 
-## Redis — hit rate + latency 검증
+## {{본인 이름}}
 
-Week 7 · {{팀명}} · {{2026-MM-DD}}
+Week 7 · 2026-07-18 (토) · {{팀명}}
 
 ---
 

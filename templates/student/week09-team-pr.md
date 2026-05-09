@@ -20,11 +20,11 @@ title: 'Week 9 학생 발표 — 팀 PR'
 <!-- _class: cover -->
 <!-- _paginate: false -->
 
-# {{본인 이름}}
+# 팀 PR — 본인 영역 + 검증
 
-## 팀 PR — 본인 영역 + 검증
+## {{본인 이름}}
 
-Week 9 · {{팀명}} · {{2026-MM-DD}}
+Week 9 · 2026-08-01 (토) · {{팀명}}
 
 ---
 
@@ -109,14 +109,13 @@ evidence/{{본인-evidence-파일.md}}
 
 ---
 
-# P-O-D-A-R 카드 📇
+# P-A-A-R 카드 📇
 
 ```text
-P (문제) {{1줄 — 예: 거래글 목록 p99 800ms}}
-O (옵션) 인덱스 / fetch join / 캐시 / read replica
-D (결정) {{1줄 — 예: fetch join + 복합 인덱스 (캐시는 W7 이후)}}
-A (행동) {{1줄 — 예: PostRepository.findAllWithMember() 추가}}
-R (결과) {{1줄 — 예: p99 95ms (-88%), SQL 41→1}}
+P (Problem)  {{1줄 — 예: 거래글 목록 p99 800ms, 사용자 이탈}}
+A (Approach) {{1줄 — 예: 인덱스/fetch join/캐시 비교 후 fetch join + 복합 인덱스 선택}}
+A (Action)   {{1줄 — 예: PostRepository.findAllWithMember() + (region,status) 인덱스 추가}}
+R (Result)   {{1줄 — 예: p99 95ms (-88%), SQL 41→1, 이탈률 -30%}}
 ```
 
 > 면접에서 _그대로 말하기_ 좋도록.
