@@ -7,3 +7,4 @@ dist/
 *.pdf
 *.html
 !theme/**/*
+!marketing/visuals/*.html

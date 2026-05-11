@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>산출물 — GitHub 누적</title>
+<style>
+  @font-face {
+    font-family: "Galmuri11";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Galmuri11.woff2") format("woff2");
+    font-display: block;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1280px; height: 720px; overflow: hidden;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 50%, rgba(244,200,75,0.06), transparent),
+      linear-gradient(180deg, #0d1138 0%, #07091f 100%);
+    color: #fff;
+    font-family: "Galmuri11", "Pretendard Variable", sans-serif;
+  }
+  body::before {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(244,200,75,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(244,200,75,0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+  }
+  .wrap { position: relative; padding: 40px 56px; height: 100%; }
+  .badge {
+    font-size: 14px; letter-spacing: 0.18em; color: #f4c84b;
+    border: 1px solid rgba(244,200,75,0.5);
+    padding: 4px 10px; border-radius: 2px;
+  }
+  h1 {
+    font-size: 44px; color: #f4c84b; margin-top: 10px; line-height: 1.1;
+    text-shadow: 0 0 24px rgba(244,200,75,0.45), 4px 4px 0 rgba(0,0,0,0.5);
+  }
+  .sub { color: #a8b0d8; font-size: 16px; margin-top: 8px; font-family: "Pretendard Variable", sans-serif; }
+
+  .stage {
+    margin-top: 26px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+    height: 450px;
+  }
+
+  .grid-box {
+    background: linear-gradient(180deg, #1a1e4d 0%, #11143a 100%);
+    border: 2px solid rgba(244,200,75,0.4);
+    border-radius: 10px;
+    padding: 20px 24px;
+    display: flex; flex-direction: column;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 8px 0 rgba(0,0,0,0.4);
+  }
+  .grid-box .ttl {
+    font-size: 18px; color: #f4c84b; letter-spacing: 0.1em;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed rgba(244,200,75,0.3);
+    margin-bottom: 14px;
+  }
+  .grid-box .repo {
+    font-family: "JetBrains Mono", "Pretendard Variable", monospace;
+    font-size: 13px; color: #cfd6f5;
+    margin-bottom: 10px;
+  }
+  .grid-box .repo .org { color: #a8b0d8; }
+  .grid-box .repo .name { color: #66e89c; }
+
+  .commit-grid {
+    display: grid;
+    grid-template-columns: 50px repeat(10, 1fr);
+    gap: 4px;
+    margin-top: 8px;
+  }
+  .day-label { font-size: 10px; color: #a8b0d8; padding-top: 6px; font-family: "Pretendard Variable", sans-serif; }
+  .cell {
+    aspect-ratio: 1 / 1;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.04);
+  }
+  .cell.l1 { background: rgba(102,232,156,0.25); }
+  .cell.l2 { background: rgba(102,232,156,0.5); }
+  .cell.l3 { background: rgba(102,232,156,0.75); }
+  .cell.l4 { background: #66e89c; box-shadow: 0 0 6px rgba(102,232,156,0.5); }
+  .week-label-row {
+    display: grid; grid-template-columns: 50px repeat(10, 1fr); gap: 4px;
+    margin-top: 6px;
+  }
+  .week-label-row .blank { }
+  .week-label-row .wk {
+    font-size: 10px; color: #a8b0d8; text-align: center;
+    font-family: "Pretendard Variable", sans-serif;
+  }
+  .week-label-row .wk.boss { color: #ff8da0; font-weight: 700; }
+
+  .grid-foot {
+    margin-top: auto;
+    padding-top: 12px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px; color: #a8b0d8;
+    font-family: "Pretendard Variable", sans-serif;
+  }
+  .grid-foot .legend {
+    display: flex; align-items: center; gap: 4px;
+  }
+  .grid-foot .legend .cell { width: 10px; height: 10px; }
+
+  /* RIGHT: counters */
+  .counter-box {
+    background: linear-gradient(180deg, #1a1e4d 0%, #11143a 100%);
+    border: 2px solid rgba(244,200,75,0.4);
+    border-radius: 10px;
+    padding: 24px;
+    display: flex; flex-direction: column;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 8px 0 rgba(0,0,0,0.4);
+  }
+  .counter-box .ttl {
+    font-size: 18px; color: #f4c84b; letter-spacing: 0.1em;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed rgba(244,200,75,0.3);
+    margin-bottom: 18px;
+  }
+  .counters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    flex: 1;
+  }
+  .counter {
+    background: rgba(244,200,75,0.06);
+    border: 1px solid rgba(244,200,75,0.3);
+    border-radius: 8px;
+    padding: 16px 14px;
+    text-align: center;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .counter .v {
+    font-size: 48px; color: #f4c84b; line-height: 1;
+    text-shadow: 0 0 16px rgba(244,200,75,0.4);
+  }
+  .counter .unit { font-size: 16px; color: #f4c84b; margin-left: 2px; }
+  .counter .l {
+    font-size: 12px; color: #a8b0d8; margin-top: 6px;
+    font-family: "Pretendard Variable", sans-serif;
+  }
+  .counter.big {
+    grid-column: span 2;
+    background: rgba(102,232,156,0.08);
+    border-color: rgba(102,232,156,0.4);
+  }
+  .counter.big .v {
+    color: #66e89c; font-size: 64px;
+    text-shadow: 0 0 16px rgba(102,232,156,0.4);
+  }
+  .counter.big .unit { color: #66e89c; }
+
+  .verdict {
+    margin-top: 14px;
+    background: rgba(192,132,252,0.08);
+    border-left: 3px solid #c084fc;
+    padding: 10px 12px;
+    font-size: 13px; color: #cfd6f5;
+    font-family: "Pretendard Variable", sans-serif;
+    line-height: 1.5;
+  }
+  .verdict b { color: #fff; }
+
+  .foot {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 14px; color: #a8b0d8;
+    font-family: "Pretendard Variable", sans-serif;
+  }
+  .foot b { color: #f4c84b; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="badge">▶ OUTCOMES · GITHUB</span>
+  <h1>수료증이 아닙니다.<br>본인 GitHub 에 _이게_ 쌓입니다.</h1>
+  <div class="sub">매주 PR · 정량 수치 리포트 · AI 검증 흔적 · 면접 답변 — 채용 담당자가 _링크 한 번_ 으로 검토</div>
+
+  <div class="stage">
+    <div class="grid-box">
+      <div class="ttl">📊 10주 누적 — 본인 학생 레포</div>
+      <div class="repo">
+        <span class="org">GaeChwiRpg/</span><span class="name">{기수}-{본인}</span>
+      </div>
+
+      <div class="commit-grid" id="grid"></div>
+      <div class="week-label-row" id="wk-row"></div>
+
+      <div class="grid-foot">
+        <div>매 cell = 본인 commit/PR</div>
+        <div class="legend">
+          <span>적음</span>
+          <span class="cell"></span>
+          <span class="cell l1"></span>
+          <span class="cell l2"></span>
+          <span class="cell l3"></span>
+          <span class="cell l4"></span>
+          <span>많음</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="counter-box">
+      <div class="ttl">🎯 10주 후 본인 자산</div>
+      <div class="counters">
+        <div class="counter big">
+          <div><span class="v">65</span><span class="unit"> PR</span></div>
+          <div class="l">누적 Pull Request — 본인 코드 + 리뷰</div>
+        </div>
+        <div class="counter">
+          <div><span class="v">2,654</span><span class="unit"> 줄</span></div>
+          <div class="l">본인 직접 작성 코드</div>
+        </div>
+        <div class="counter">
+          <div><span class="v">12</span><span class="unit"> 건</span></div>
+          <div class="l">정량 수치 리포트<br>(p99 · QPS · hit rate)</div>
+        </div>
+        <div class="counter">
+          <div><span class="v">28</span><span class="unit"> 건</span></div>
+          <div class="l">AI evidence<br>(프롬프트 · hallucination)</div>
+        </div>
+        <div class="counter">
+          <div><span class="v">5</span><span class="unit"> bullet</span></div>
+          <div class="l">이력서 정량화 문장</div>
+        </div>
+      </div>
+      <div class="verdict">
+        <b>면접관 입장</b> — GitHub 링크 한 번 클릭 → PR diff → 수치 evidence →<br>"이거 본인이 직접 한 건가요?" 에 _말로 답할 수 있는 코드_.
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">※ 수치는 sample 레포 기준 — 본인 페이스에 따라 변동. <b>매주 1 commit</b> 만 쌓아도 10주 후 결과.</div>
+</div>
+
+<script>
+  // Generate 7 days × 10 weeks commit grid (sample data, increases over time)
+  const grid = document.getElementById('grid');
+  const wkRow = document.getElementById('wk-row');
+  const dayLabels = ['Mon', '', 'Wed', '', 'Fri', '', 'Sun'];
+  // Build cells row by row (day → weeks)
+  for (let d = 0; d < 7; d++) {
+    const lbl = document.createElement('div');
+    lbl.className = 'day-label';
+    lbl.textContent = dayLabels[d];
+    grid.appendChild(lbl);
+    for (let w = 0; w < 10; w++) {
+      const cell = document.createElement('div');
+      // Activity logic: weekend (Sat/Sun) + Mon/Fri stronger, later weeks fuller
+      const isImportant = (d === 0 || d === 4 || d === 5);  // Mon, Fri, Sat
+      const isSat = (d === 5);
+      const base = isSat ? 3 : (isImportant ? 2 : 1);
+      const growth = Math.min(2, Math.floor(w / 4));
+      const level = Math.min(4, base + growth - (Math.random() > 0.7 ? 1 : 0));
+      const cls = level <= 0 ? '' : `l${Math.max(1, Math.min(4, level))}`;
+      cell.className = 'cell' + (cls ? ' ' + cls : '');
+      grid.appendChild(cell);
+    }
+  }
+  // Week labels
+  const blank = document.createElement('div');
+  blank.className = 'blank';
+  wkRow.appendChild(blank);
+  for (let w = 1; w <= 10; w++) {
+    const lbl = document.createElement('div');
+    lbl.className = 'wk' + (w === 10 ? ' boss' : '');
+    lbl.textContent = w === 10 ? 'BOSS' : ('W' + w);
+    wkRow.appendChild(lbl);
+  }
+</script>
+</body>
+</html>

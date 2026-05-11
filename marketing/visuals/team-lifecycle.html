@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>4인 1조 · 라이프사이클 5단계</title>
+<style>
+  @font-face {
+    font-family: "Galmuri11";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Galmuri11.woff2") format("woff2");
+    font-display: block;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1280px; height: 720px; overflow: hidden;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 50%, rgba(244,200,75,0.06), transparent),
+      linear-gradient(180deg, #0d1138 0%, #07091f 100%);
+    color: #fff;
+    font-family: "Galmuri11", "Pretendard Variable", sans-serif;
+  }
+  body::before {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(244,200,75,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(244,200,75,0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+  }
+  .wrap { position: relative; padding: 40px 56px; height: 100%; }
+  .badge {
+    font-size: 14px; letter-spacing: 0.18em; color: #f4c84b;
+    border: 1px solid rgba(244,200,75,0.5);
+    padding: 4px 10px; border-radius: 2px;
+  }
+  h1 {
+    font-size: 42px; color: #f4c84b; margin-top: 10px; line-height: 1.1;
+    text-shadow: 0 0 24px rgba(244,200,75,0.45), 4px 4px 0 rgba(0,0,0,0.5);
+  }
+  .sub { color: #a8b0d8; font-size: 16px; margin-top: 8px; font-family: "Pretendard Variable", sans-serif; }
+
+  .stage {
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 28px;
+    height: 470px;
+  }
+
+  .team-box {
+    background: linear-gradient(180deg, #1a1e4d 0%, #11143a 100%);
+    border: 2px solid rgba(244,200,75,0.4);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex; flex-direction: column;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 8px 0 rgba(0,0,0,0.4);
+  }
+  .team-box .ttl {
+    font-size: 20px; color: #f4c84b; letter-spacing: 0.1em; text-align: center;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed rgba(244,200,75,0.3);
+  }
+  .members { margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; }
+  .member {
+    background: rgba(244,200,75,0.06);
+    border: 1px solid rgba(244,200,75,0.25);
+    border-radius: 6px;
+    padding: 10px 8px;
+    text-align: center;
+  }
+  .member .ic { font-size: 36px; line-height: 1; display: block; filter: drop-shadow(0 2px 0 rgba(0,0,0,0.4)); }
+  .member .nm {
+    font-size: 13px; color: #fff; margin-top: 6px;
+    font-family: "Pretendard Variable", sans-serif;
+  }
+  .member .role {
+    font-size: 11px; color: #f4c84b; margin-top: 3px;
+    font-family: "Pretendard Variable", sans-serif;
+  }
+  .peer-note {
+    margin-top: 14px;
+    background: rgba(192,132,252,0.08);
+    border-left: 3px solid #c084fc;
+    padding: 8px 10px;
+    font-size: 12px; color: #cfd6f5;
+    font-family: "Pretendard Variable", sans-serif;
+    line-height: 1.5;
+  }
+
+  .cycle-box {
+    background: linear-gradient(180deg, #1a1e4d 0%, #11143a 100%);
+    border: 2px solid rgba(244,200,75,0.4);
+    border-radius: 10px;
+    padding: 20px 28px;
+    position: relative;
+  }
+  .cycle-box .ttl {
+    font-size: 18px; color: #f4c84b; letter-spacing: 0.1em;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed rgba(244,200,75,0.3);
+    margin-bottom: 18px;
+  }
+  .steps {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
+  }
+  .step {
+    text-align: center;
+    background: rgba(244,200,75,0.05);
+    border: 1px solid rgba(244,200,75,0.25);
+    border-radius: 6px;
+    padding: 12px 8px;
+  }
+  .step .num {
+    font-size: 14px; color: #f4c84b; letter-spacing: 0.1em;
+    background: rgba(244,200,75,0.15);
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 8px;
+  }
+  .step .ic { font-size: 30px; line-height: 1; display: block; filter: drop-shadow(0 2px 0 rgba(0,0,0,0.4)); }
+  .step .nm { font-size: 13px; margin-top: 6px; color: #fff; font-family: "Pretendard Variable", sans-serif; }
+  .step .out { font-size: 11px; margin-top: 4px; color: #a8b0d8; font-family: "Pretendard Variable", sans-serif; line-height: 1.4; }
+
+  .docs-title {
+    margin-top: 18px;
+    font-size: 14px; color: #f4c84b;
+    font-family: "Pretendard Variable", sans-serif;
+  }
+  .docs {
+    margin-top: 8px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;
+    font-family: "Pretendard Variable", sans-serif;
+  }
+  .doc {
+    font-size: 11px; color: #cfd6f5;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(244,200,75,0.15);
+    border-radius: 4px;
+    padding: 5px 8px;
+    text-align: center;
+  }
+  .doc.hi { color: #f4c84b; border-color: rgba(244,200,75,0.5); background: rgba(244,200,75,0.08); }
+
+  .foot {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 15px; color: #f4c84b;
+    font-family: "Pretendard Variable", sans-serif;
+  }
+  .foot b { color: #fff; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="badge">▶ TEAM × LIFECYCLE</span>
+  <h1>4인 1조 — 라이프사이클 5단계 분담.</h1>
+  <div class="sub">W9~10 팀 프로젝트 = 본인 손으로 + 팀과 함께 + AI 풀가동. 모든 PR 사람이 검증.</div>
+
+  <div class="stage">
+    <div class="team-box">
+      <div class="ttl">⚔ 4인 1조</div>
+      <div class="members">
+        <div class="member">
+          <span class="ic">🧠</span>
+          <div class="nm">팀원 A</div>
+          <div class="role">기획 오너</div>
+        </div>
+        <div class="member">
+          <span class="ic">💻</span>
+          <div class="nm">팀원 B</div>
+          <div class="role">코딩 오너</div>
+        </div>
+        <div class="member">
+          <span class="ic">🧪</span>
+          <div class="nm">팀원 C</div>
+          <div class="role">테스트 오너</div>
+        </div>
+        <div class="member">
+          <span class="ic">🚀</span>
+          <div class="nm">팀원 D</div>
+          <div class="role">리뷰·운영</div>
+        </div>
+      </div>
+      <div class="peer-note">
+        🤝 <b>교차 피어리뷰</b><br>
+        본인 영역 외 1단계씩 같이 참여 — 약점 보완 + 5단계 모두 흔적
+      </div>
+    </div>
+
+    <div class="cycle-box">
+      <div class="ttl">▶ LIFECYCLE 5 STEPS — 산출물로 증명</div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <span class="ic">📋</span>
+          <div class="nm">기획</div>
+          <div class="out">PRD ·<br>DECISIONS</div>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <span class="ic">⌨️</span>
+          <div class="nm">코딩</div>
+          <div class="out">src/ ·<br>CLAUDE.md</div>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <span class="ic">🔬</span>
+          <div class="nm">테스트</div>
+          <div class="out">tests/e2e ·<br>부하 리포트</div>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <span class="ic">🔍</span>
+          <div class="nm">리뷰</div>
+          <div class="out">AI Actions ·<br>피어리뷰</div>
+        </div>
+        <div class="step">
+          <div class="num">5</div>
+          <span class="ic">📡</span>
+          <div class="nm">배포·운영</div>
+          <div class="out">MONITORING ·<br>Docker</div>
+        </div>
+      </div>
+
+      <div class="docs-title">📂 표준 산출물 12종 — 면접 답변 그대로 근거</div>
+      <div class="docs">
+        <div class="doc hi">PRD.md</div>
+        <div class="doc hi">API-CONTRACT.md</div>
+        <div class="doc hi">DECISIONS.md</div>
+        <div class="doc hi">LIFECYCLE-COVERAGE.md</div>
+        <div class="doc">CLAUDE.md</div>
+        <div class="doc">INTEGRATION-LOG.md</div>
+        <div class="doc">MONITORING.md</div>
+        <div class="doc">RETROSPECTIVE.md</div>
+        <div class="doc">INTERVIEW-ANSWERS.md</div>
+        <div class="doc">README.md</div>
+        <div class="doc">.github/workflows/</div>
+        <div class="doc">presentation/</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><b>10주 후</b>: 본인 GitHub 에 _12개 표준 문서 + 코드 + 면접 답변_ 모두 남는다.</div>
+</div>
+</body>
+</html>
