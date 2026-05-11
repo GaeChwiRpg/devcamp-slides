@@ -19,7 +19,7 @@ python3 scripts/check-overflow.py
 
 mkdir -p dist
 
-for d in weekly-kickoff lecture offline; do
+for d in weekly-kickoff lecture offline marketing; do
   if compgen -G "$d/*.md" > /dev/null; then
     echo "==> Building $d/"
     mkdir -p "dist/$d"
