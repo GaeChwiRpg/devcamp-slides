@@ -74,26 +74,15 @@ description: 2026-05-17 (토) 설명회 발표 자료. 시장의 현실 / 우리
 
 ---
 
-# AI 사용 정책 🤖
+# AI 사용 정책 — 주차별 모드 🤖
 
-```text
-[W1~7]  본인 손으로 통과
-        AI 써도 OK — 단, 제출 코드 본인이 _설명 가능_ 해야 인정
-        evidence/prompt-log.md 에 사용 흔적 누적
+![w:880](../theme/assets/marketing/landing-policy.png)
 
-[W8]    AI Native 워크플로우
-        검증 루프 / 프롬프트 팩 / hallucination 잡힌 사례 3건+
-        AI 답 → 본인 검증 → evidence 까지가 한 사이클
-
-[W9~10] 팀 프로젝트 — AI 풀가동
-        모든 PR 사람이 리뷰 + 통합 테스트
-```
-
-> _AI 도 못 다루면 도태_, _AI 만 믿으면 면접 탈락_.
+> _AI 도 못 다루면 도태_, _AI 만 믿으면 면접 탈락_. — 중간 길을 박는다.
 
 ---
 
-# 산출물 — 채용 담당자가 보는 GitHub
+# 산출물 — GitHub 누적
 
 ![w:760](../theme/assets/marketing/landing-outcomes.png)
 
@@ -125,39 +114,38 @@ description: 2026-05-17 (토) 설명회 발표 자료. 시장의 현실 / 우리
 
 ---
 
-<!-- _class: quest -->
-
 # 4인 1조 — 라이프사이클 5단계 🤝
 
-W9~10 팀 프로젝트에서 _분담_:
+![w:880](../theme/assets/marketing/landing-team.png)
 
-| 단계 | 내용 |
-| --- | --- |
-| 기획 | PRD · 요구사항 · 우선순위 |
-| 코딩 | PR · 테스트 · evidence |
-| 테스트 | E2E · 부하 시나리오 |
-| 리뷰 | 코드 리뷰 · 설계 리뷰 |
-| 배포 / 운영 | 모니터링 · 알림 · 회고 |
+> 4명이 _기획 · 코딩 · 테스트 · 리뷰 · 배포_ 5단계 분담 + 교차 피어리뷰.
 
-> 교차 피어리뷰 = 5축 평균 + 본인 약점 보완.
+---
+
+<!-- _class: lesson -->
+
+# 12개 표준 문서 📂
+
+![w:720](../theme/assets/marketing/github-team-sample.png)
+
+> _PRD / API-CONTRACT / DECISIONS / LIFECYCLE-COVERAGE / MONITORING / RETROSPECTIVE / INTERVIEW-ANSWERS / ..._
+> 5단계 누가 무엇을 했는지 _문서로 증명_ — 그대로 면접 답변 근거.
+
+---
+
+# 졸업 팀 사례 🎯
+
+![w:760](../theme/assets/marketing/github-showcase.png)
+
+> [devcamp-team-project-showcase](https://github.com/GaeChwiRpg/devcamp-team-project-showcase) — Spring Boot · JPA · Redis · Docker + 라이프사이클 5단계 모두 적용된 완성품. 4명 팀이 10주 후 _이 정도_ 까지.
 
 ---
 
 # 주간 리듬 — 평일 + 주말 🗓️
 
-```text
-월(필수)  20:00–22:00  Kickoff · 주간 목표 선언
-화        20:00–22:00  구현 중심 오피스아워
-수        20:00–22:00  blocker 점검 · 막힌 사람 구조
-목        20:00–22:00  코드 리뷰 · 설계 리뷰
-금(필수)  20:00–22:00  PR 상태 · 마감 점검
+![w:760](../theme/assets/marketing/landing-rhythm.png)
 
-토(필수)  14:00–15:00  미션 공개 · 주간 방향
-토(필수)  15:00–16:30  격주 강의 / 격주 내부 발표
-일        20:00–22:00  오피스아워 · 다음 주 전환
-```
-
-> Google Meet 라이브 + 녹화본 제공. 월·금·토 핵심 참여일.
+> 평일 `20:00–22:00` 공식 활동 · 토 14/15 라이브 · 일 20–22 오피스아워. _월·금·토 핵심 참여일_.
 
 ---
 
