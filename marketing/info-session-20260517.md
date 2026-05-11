@@ -66,35 +66,27 @@ description: 2026-05-17 (토) 설명회 발표 자료. 시장의 현실 / 우리
 
 ---
 
-<!-- _class: quest -->
-
-# 10-Week RPG Map 🗺️
-
-![w:880](../theme/assets/marketing/landing-roadmap.png)
+<!-- _backgroundImage: url("../theme/assets/marketing/landing-roadmap.png") -->
+<!-- _backgroundSize: cover -->
+<!-- _backgroundColor: #0d1138 -->
 
 ---
 
-# AI 사용 정책 — 주차별 모드 🤖
-
-![w:880](../theme/assets/marketing/landing-policy.png)
-
-> _AI 도 못 다루면 도태_, _AI 만 믿으면 면접 탈락_. — 중간 길을 박는다.
+<!-- _backgroundImage: url("../theme/assets/marketing/landing-policy.png") -->
+<!-- _backgroundSize: cover -->
+<!-- _backgroundColor: #0d1138 -->
 
 ---
 
-# 산출물 — GitHub 누적
-
-![w:760](../theme/assets/marketing/landing-outcomes.png)
-
-> **수료증이 아닙니다.** 본인 GitHub 에 _PR 65개 · 정량 수치 · evidence_ 누적 — 채용 담당자가 링크 한 번으로 검토.
+<!-- _backgroundImage: url("../theme/assets/marketing/landing-outcomes.png") -->
+<!-- _backgroundSize: cover -->
+<!-- _backgroundColor: #0d1138 -->
 
 ---
 
-# 이력서 Before/After 📝
-
-![w:760](../theme/assets/marketing/landing-before-after.png)
-
-> 정산 처리 **−88%** · 오류율 0% · 1,400만 건 자동화. _인프런 강의 수강생 기준_.
+<!-- _backgroundImage: url("../theme/assets/marketing/landing-before-after.png") -->
+<!-- _backgroundSize: cover -->
+<!-- _backgroundColor: #0d1138 -->
 
 ---
 
@@ -114,11 +106,9 @@ description: 2026-05-17 (토) 설명회 발표 자료. 시장의 현실 / 우리
 
 ---
 
-# 4인 1조 — 라이프사이클 5단계 🤝
-
-![w:880](../theme/assets/marketing/landing-team.png)
-
-> 4명이 _기획 · 코딩 · 테스트 · 리뷰 · 배포_ 5단계 분담 + 교차 피어리뷰.
+<!-- _backgroundImage: url("../theme/assets/marketing/landing-team.png") -->
+<!-- _backgroundSize: cover -->
+<!-- _backgroundColor: #0d1138 -->
 
 ---
 
