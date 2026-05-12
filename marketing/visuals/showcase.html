@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>졸업 팀 사례 — 운영 티켓 시스템</title>
+<style>
+  @font-face {
+    font-family: "Galmuri11";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Galmuri11.woff2") format("woff2");
+    font-display: block;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1280px; height: 720px; overflow: hidden;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 50%, rgba(244,200,75,0.06), transparent),
+      linear-gradient(180deg, #0d1138 0%, #07091f 100%);
+    color: #fff;
+    font-family: "Galmuri11", "Pretendard Variable", sans-serif;
+  }
+  body::before {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(244,200,75,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(244,200,75,0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+  .wrap {
+    position: relative; width: 100%; height: 100%;
+    padding: 36px 56px 28px;
+    display: flex; flex-direction: column;
+  }
+  .top { display: flex; justify-content: space-between; align-items: flex-end; }
+  .top .left .badge {
+    display: inline-block;
+    font-size: 13px; letter-spacing: 0.2em; color: #66e89c;
+    border: 1px solid rgba(102,232,156,0.5);
+    padding: 4px 12px; border-radius: 2px;
+  }
+  .top .left h1 {
+    font-size: 44px; color: #f4c84b; line-height: 1.05;
+    margin-top: 10px;
+    text-shadow: 0 0 24px rgba(244,200,75,0.45), 4px 4px 0 rgba(0,0,0,0.5);
+  }
+  .top .left .sub {
+    margin-top: 8px;
+    font-family: "Pretendard Variable", sans-serif;
+    font-size: 15px; color: #a8b0d8;
+  }
+  .top .stats {
+    text-align: right;
+    font-family: "Pretendard Variable", sans-serif;
+  }
+  .top .stats .row {
+    font-size: 14px; color: #a8b0d8; margin-top: 4px;
+  }
+  .top .stats .row b { color: #f4c84b; font-size: 18px; font-weight: 700; }
+
+  .stack {
+    margin-top: 18px;
+    display: flex; gap: 8px; flex-wrap: wrap;
+    font-family: "Pretendard Variable", sans-serif;
+  }
+  .stack .chip {
+    font-size: 12px; padding: 4px 10px;
+    background: rgba(244,200,75,0.1);
+    border: 1px solid rgba(244,200,75,0.35);
+    color: #f4c84b;
+    border-radius: 14px;
+  }
+
+  .body-row {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 22px;
+    flex: 1;
+  }
+
+  /* Left: lifecycle 5 steps */
+  .lifecycle {
+    background: linear-gradient(180deg, #1a1e4d 0%, #11143a 100%);
+    border: 2px solid rgba(244,200,75,0.4);
+    border-radius: 10px;
+    padding: 18px 20px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 8px 0 rgba(0,0,0,0.35);
+  }
+  .lifecycle .ttl {
+    font-size: 15px; color: #f4c84b; letter-spacing: 0.1em;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed rgba(244,200,75,0.3);
+    margin-bottom: 14px;
+  }
+  .step {
+    display: flex; align-items: center; gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(255,255,255,0.06);
+    font-family: "Pretendard Variable", sans-serif;
+  }
+  .step:last-child { border-bottom: none; }
+  .step .num {
+    flex: 0 0 30px; height: 30px;
+    background: rgba(244,200,75,0.15);
+    color: #f4c84b;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Galmuri11";
+    font-size: 13px;
+  }
+  .step .name { flex: 0 0 80px; font-size: 14px; color: #fff; font-weight: 600; }
+  .step .out  { flex: 1; font-size: 13px; color: #cfd6f5; }
+  .step .out code {
+    font-family: "JetBrains Mono", monospace;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(244,200,75,0.2);
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-size: 11px;
+    color: #f4c84b;
+  }
+  .step .chk {
+    flex: 0 0 50px; text-align: right;
+    font-size: 11px; color: #66e89c;
+  }
+
+  /* Right column: split — top deliverables grid + bottom screenshot */
+  .right { display: grid; grid-template-rows: auto 1fr; gap: 14px; }
+  .delivers {
+    background: linear-gradient(180deg, #1a1e4d 0%, #11143a 100%);
+    border: 2px solid rgba(244,200,75,0.4);
+    border-radius: 10px;
+    padding: 16px 18px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 8px 0 rgba(0,0,0,0.35);
+  }
+  .delivers .ttl {
+    font-size: 15px; color: #f4c84b; letter-spacing: 0.1em;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed rgba(244,200,75,0.3);
+    margin-bottom: 10px;
+  }
+  .doc-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+  }
+  .doc-grid .doc {
+    background: rgba(244,200,75,0.06);
+    border: 1px solid rgba(244,200,75,0.25);
+    border-radius: 5px;
+    padding: 7px 8px;
+    color: #cfd6f5;
+    line-height: 1.2;
+  }
+  .doc-grid .doc b { color: #f4c84b; font-weight: 400; }
+
+  .demo-card {
+    background: linear-gradient(180deg, #1a1e4d 0%, #11143a 100%);
+    border: 2px solid rgba(192,132,252,0.5);
+    border-radius: 10px;
+    padding: 16px 18px;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.05),
+      0 0 22px rgba(192,132,252,0.15),
+      0 8px 0 rgba(0,0,0,0.35);
+    display: flex; flex-direction: column;
+  }
+  .demo-card .ttl {
+    font-size: 15px; color: #c084fc; letter-spacing: 0.1em;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed rgba(192,132,252,0.3);
+    margin-bottom: 10px;
+  }
+  .demo-card .scenarios {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    font-family: "Pretendard Variable", sans-serif;
+    flex: 1;
+  }
+  .demo-card .scn {
+    background: rgba(192,132,252,0.06);
+    border: 1px solid rgba(192,132,252,0.25);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 12px; color: #cfd6f5;
+    line-height: 1.4;
+  }
+  .demo-card .scn b {
+    display: block; color: #c084fc; font-size: 13px;
+    margin-bottom: 3px;
+  }
+
+  .foot {
+    margin-top: 14px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: "Pretendard Variable", sans-serif;
+  }
+  .foot .url {
+    font-size: 13px; color: #a8b0d8;
+    font-family: "JetBrains Mono", monospace;
+  }
+  .foot .url b { color: #66e89c; }
+  .foot .verdict {
+    font-size: 14px; color: #f4c84b;
+  }
+  .foot .verdict b { color: #fff; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="left">
+      <span class="badge">▶ GRADUATED TEAM SHOWCASE</span>
+      <h1>운영 티켓 시스템 — 4인 1조 10주 클리어</h1>
+      <div class="sub">사내 IT 운영팀 슬랙 티켓을 한 곳에 모으고 SLA 측정 + AI 리뷰까지</div>
+    </div>
+    <div class="stats">
+      <div class="row"><b>23</b> commits</div>
+      <div class="row"><b>10</b> PR (Phase 1~4)</div>
+      <div class="row"><b>12</b> 표준 문서</div>
+      <div class="row"><b>5/5</b> 라이프사이클</div>
+    </div>
+  </div>
+
+  <div class="stack">
+    <span class="chip">Spring Boot 3</span>
+    <span class="chip">JPA · Hibernate</span>
+    <span class="chip">PostgreSQL</span>
+    <span class="chip">Redis</span>
+    <span class="chip">Docker · Compose</span>
+    <span class="chip">Playwright</span>
+    <span class="chip">Sentry MCP</span>
+    <span class="chip">Claude Code</span>
+    <span class="chip">GitHub Actions</span>
+  </div>
+
+  <div class="body-row">
+    <div class="lifecycle">
+      <div class="ttl">▶ LIFECYCLE 5 STEPS — 4명이 분담한 산출물</div>
+
+      <div class="step">
+        <div class="num">1</div>
+        <div class="name">기획</div>
+        <div class="out">Alex · <code>PRD.md</code> + <code>DECISIONS.md</code></div>
+        <div class="chk">✓ DONE</div>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <div class="name">코딩</div>
+        <div class="out">팀 전원 · <code>CLAUDE.md</code> + <code>API-CONTRACT.md</code> + src/</div>
+        <div class="chk">✓ DONE</div>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <div class="name">테스트</div>
+        <div class="out">Bora · Playwright E2E + <code>.github/e2e.yml</code></div>
+        <div class="chk">✓ DONE</div>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <div class="name">리뷰</div>
+        <div class="out">Chris · Claude GitHub Actions AI 리뷰어</div>
+        <div class="chk">✓ DONE</div>
+      </div>
+      <div class="step">
+        <div class="num">5</div>
+        <div class="name">배포·운영</div>
+        <div class="out">Dasol · <code>MONITORING.md</code> + Sentry + Docker</div>
+        <div class="chk">✓ DONE</div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="delivers">
+        <div class="ttl">📂 표준 문서 12종 — 그대로 면접 답변 근거</div>
+        <div class="doc-grid">
+          <div class="doc"><b>PRD.md</b><br>기획 · 페르소나</div>
+          <div class="doc"><b>API-CONTRACT.md</b><br>endpoint 계약</div>
+          <div class="doc"><b>DECISIONS.md</b><br>의사결정 기록</div>
+          <div class="doc"><b>LIFECYCLE-COVERAGE.md</b><br>5단계 매트릭스</div>
+          <div class="doc"><b>CLAUDE.md</b><br>AI 헌법</div>
+          <div class="doc"><b>INTEGRATION-LOG.md</b><br>통합 일지</div>
+          <div class="doc"><b>MONITORING.md</b><br>운영·알림</div>
+          <div class="doc"><b>RETROSPECTIVE.md</b><br>10주 회고</div>
+          <div class="doc"><b>INTERVIEW-ANSWERS.md</b><br>면접 답변 카드</div>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <div class="ttl">✨ 실제 동작 시나리오</div>
+        <div class="scenarios">
+          <div class="scn">
+            <b>📋 티켓 CRUD</b>
+            member 가 생성, operator 가 배정 (권한 + 동시성 락)
+          </div>
+          <div class="scn">
+            <b>⚡ Redis 캐시</b>
+            대기열 조회 hit rate ≥ 80%, p99 latency ↓
+          </div>
+          <div class="scn">
+            <b>🔍 검색 + 인덱스</b>
+            상태·우선순위 복합 인덱스, EXPLAIN before/after
+          </div>
+          <div class="scn">
+            <b>📡 Sentry 알림</b>
+            에러 발생 → Slack 알림 → 운영자 dashboard
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="url">github.com/GaeChwiRpg/<b>devcamp-team-project-showcase</b></div>
+    <div class="verdict">🎯 10주 후 <b>이 정도</b> — 면접 답변 그대로 가능한 완성품</div>
+  </div>
+</div>
+</body>
+</html>

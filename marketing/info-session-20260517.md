@@ -123,11 +123,10 @@ description: 2026-05-17 (토) 설명회 발표 자료. 시장의 현실 / 우리
 
 ---
 
-# 졸업 팀 사례 🎯
+<!-- _backgroundImage: url("../theme/assets/marketing/github-showcase.png") -->
+<!-- _backgroundSize: cover -->
+<!-- _backgroundColor: #0d1138 -->
 
-![w:760](../theme/assets/marketing/github-showcase.png)
-
-> [devcamp-team-project-showcase](https://github.com/GaeChwiRpg/devcamp-team-project-showcase) — Spring Boot · JPA · Redis · Docker + 라이프사이클 5단계 모두 적용된 완성품. 4명 팀이 10주 후 _이 정도_ 까지.
 
 ---
 
