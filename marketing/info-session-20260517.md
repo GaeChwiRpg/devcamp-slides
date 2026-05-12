@@ -127,6 +127,11 @@ description: 2026-05-17 (토) 설명회 발표 자료. 시장의 현실 / 우리
 <!-- _backgroundSize: cover -->
 <!-- _backgroundColor: #0d1138 -->
 
+---
+
+<!-- _backgroundImage: url("../theme/assets/marketing/github-showcase-readme.png") -->
+<!-- _backgroundSize: contain -->
+<!-- _backgroundColor: #0d1138 -->
 
 ---
 
