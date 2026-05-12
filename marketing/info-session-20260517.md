@@ -92,7 +92,7 @@ description: 2026-05-17 (토) 설명회 발표 자료. 시장의 현실 / 우리
 
 # 멘토 — 10주 동행 👥
 
-![w:760](../theme/assets/marketing/landing-mentors.png)
+![h:440](../theme/assets/marketing/landing-mentors.png)
 
 > **8년 토스** + **유튜브 20K** · 100건+ 첨삭 평점 5.0 / 이력서 멘토 합격률 **90%**. _강의 던져두기 X · 리뷰 함께_.
 

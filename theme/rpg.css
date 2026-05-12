@@ -165,6 +165,10 @@ section::after {
   letter-spacing: 0.08em;
 }
 
+/* Background image 전용 슬라이드는 상단 골드 라인 + 페이지네이션 hide (이미지 위 겹침 방지) */
+section[data-background-image]::before,
+section[data-background-image]::after { display: none !important; }
+
 /* ===== Layout: cover (표지) ===== */
 section.cover {
   text-align: center;
