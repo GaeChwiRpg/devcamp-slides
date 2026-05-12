@@ -9,8 +9,6 @@ description: 2026-05-17 (토) 설명회 발표 자료. 시장의 현실 / 우리
 <!-- _class: cover -->
 <!-- _paginate: false -->
 
-![logo](../theme/assets/logo.png)
-
 # Spring 에서 시작해서 AI 로 끝낸다
 
 ## 딩코딩코 백엔드 부트캠프 1기
@@ -58,88 +56,179 @@ description: 2026-05-17 (토) 설명회 발표 자료. 시장의 현실 / 우리
 
 | 구간 | 모드 | 목적 |
 | --- | --- | --- |
-| **W1~7** | _Pass by Hand_ | 본인 손으로 통과 · AI 보조는 가능하나 설명 가능해야 |
+| **W1~7** | _Pass by Hand_ | 본인 손으로 통과 · AI 보조 가능하나 설명 가능해야 |
 | **W8** | _AI Native Workflow_ | 검증 루프 · 프롬프트 팩 · 실패 사례 누적 |
 | **W9~10** | _Team Project_ | 4인 팀 · AI 풀가동 + 사람이 모든 PR 검증 |
 
-> _AI 금지_ 도, _AI 던지기_ 도 아닌 **중간 길** — 면접에서 통하는 흔적.
+> _AI 금지_ 도 _AI 던지기_ 도 아닌 **중간 길** — 면접에서 통하는 흔적.
 
 ---
 
-<!-- _backgroundImage: url("../theme/assets/marketing/landing-roadmap.png") -->
-<!-- _backgroundSize: cover -->
-<!-- _backgroundColor: #0d1138 -->
+# 10주 RPG 로드맵 🗺️
 
----
+```text
+Pre  📚  SQL · Git · Java                (5/24 ~ 6/5)
+─────────────────────────────────────────────────────
+W1   🍃  Spring Boot 기본
+W2   🗂️  JPA · N+1 잡기                  ← 격주 특강 ①
+W3   📝  이력서 1차 · 미션 회고
+W4   🔍  인덱스 · EXPLAIN 읽기            ← 격주 특강 ②
+W5   🔒  동시성 · 락
+W6   📊  프로파일링 · 병목 찾기            ← 격주 특강 ③
+W7   💎  Redis 캐시 · hit rate
+─────────────────────────────────────────────────────
+W8   ✨  AI Native Workflow              ← 격주 특강 ④
+W9   ⚔   팀 프로젝트 — 4인 1조
+W10  🐉  FINAL BOSS — 면접 답변
+```
 
-<!-- _backgroundImage: url("../theme/assets/marketing/landing-policy.png") -->
-<!-- _backgroundSize: cover -->
-<!-- _backgroundColor: #0d1138 -->
-
----
-
-<!-- _backgroundImage: url("../theme/assets/marketing/landing-outcomes.png") -->
-<!-- _backgroundSize: cover -->
-<!-- _backgroundColor: #0d1138 -->
-
----
-
-<!-- _backgroundImage: url("../theme/assets/marketing/landing-before-after.png") -->
-<!-- _backgroundSize: cover -->
-<!-- _backgroundColor: #0d1138 -->
-
----
-
-# 멘토 — 10주 동행 👥
-
-![h:440](../theme/assets/marketing/landing-mentors.png)
-
-> **8년 토스** + **유튜브 20K** · 100건+ 첨삭 평점 5.0 / 이력서 멘토 합격률 **90%**. _강의 던져두기 X · 리뷰 함께_.
-
----
-
-# 신뢰 — 12곳+ 합격 사례 📊
-
-![w:660](../theme/assets/marketing/landing-success.png)
-
-> 토스 · 당근 · 오늘의집 · 무신사 · 현대오토에버 · 채널 · 버즈빌 · 대한항공 외. _인프런 기존 강의 수강생 기준_ — 본 부트캠프 1기 합격 보장 아님.
-
----
-
-<!-- _backgroundImage: url("../theme/assets/marketing/landing-team.png") -->
-<!-- _backgroundSize: cover -->
-<!-- _backgroundColor: #0d1138 -->
+> Pre 2주 + W1~10 = **12주 풀 패키지**. _W10 면접이 진짜 보스_.
 
 ---
 
 <!-- _class: lesson -->
 
+# AI 사용 정책 🤖
+
+| 구간 | 모드 | Do | Don't |
+| --- | --- | --- | --- |
+| **W1~7** | _Pass by Hand_ | 막힐 때 보조 · 그러나 설명 가능해야 | "AI 가 짜준 거예요" 답변 |
+| **W8** | _AI Native Workflow_ | 프롬프트 팩 · 검증 루프 · 실패 사례 기록 | 검증 없이 PR |
+| **W9~10** | _Team Project_ | AI 풀가동 + 사람이 모든 PR 검증 | AI 결과 그대로 merge |
+
+> _AI 금지 X · AI 던지기 X_. **설명 가능한 AI 활용** 흔적이 면접에서 통함.
+
+---
+
+# 산출물 — 본인 GitHub 📦
+
+```text
+10주 후 본인 레포 (GaeChwiRpg/{기수}-{본인}) 누적:
+
+  10+   PR        매주 1건 = 최소 보장
+   6+   정량 수치 리포트    W4/5/6/7/9 코드형 + 팀
+  10+   AI evidence       매주 prompt log + W8 집중
+  12    팀 표준 문서       PRD · API · DECISIONS · ...
+   5+   이력서 정량화 bullet  면접에서 그대로
+```
+
+> _수료증 X_. **채용 담당자가 GitHub 링크 한 번** → PR diff → 수치 → 면접에서 _말로 답할 수 있는 코드_.
+
+---
+
+<!-- _class: lesson -->
+
+# 이력서 Before / After 📝
+
+```text
+❌ BEFORE — 형용사만
+  · "Spring Boot 로 API 개발"
+  · "JPA 로 데이터 처리"
+  · "성능 개선 경험"
+```
+
+```text
+✅ AFTER  — 수치 + 트레이드오프
+  · 정산 처리 batch p99 −88% (1.4s → 170ms)
+  · N+1 4건 잡고 응답 12s → 1.1s, EXPLAIN 첨부
+  · Redis 캐시 hit rate 82%, p99 −63%
+```
+
+> _같은 경험, 다른 이력서_ — 차이는 「수치」와 「판단 근거」. 면책: 심야공방 사례 _기존 강의 수강생 기준_.
+
+---
+
+# 멘토 — 10주 동행 👥
+
+- **기술 멘토** — 8년 토스 · 유튜브 20K 구독자 · 인프런 100건+ 첨삭 평점 5.0
+- **이력서 멘토** — 누적 1:1 첨삭 100+ · 합격률 **90%**
+- **운영진** — 매주 토 라이브 + 일 오피스아워 + Slack 즉답
+
+> _강의 던져두기 X · 리뷰 함께 X · 10주 끝나면 안 보이는 멘토 X_. **함께 끝까지**.
+
+---
+
+# 신뢰 — 12곳+ 합격 사례 📊
+
+```text
+토스 · 당근 · 오늘의집 · 무신사 · 현대오토에버
+채널톡 · 버즈빌 · 대한항공 · 카카오모빌리티
+LG CNS · 쿠팡 · 라인 외 (12곳+)
+
+평점 5.0  (197건 후기)
+누적 합격 38건+  (기존 강의 수강생)
+```
+
+> _인프런 기존 강의 수강생 기준_ — 본 부트캠프 1기 합격 _보장 아님_. 정확한 표기.
+
+---
+
+<!-- _class: lesson -->
+
+# 4인 1조 — 라이프사이클 5단계 👥
+
+| 팀원 | 역할 | 핵심 산출물 |
+| --- | --- | --- |
+| Alex | 기획 | `PRD.md` + `DECISIONS.md` |
+| Bora | 테스트 | Playwright E2E + `.github/e2e.yml` |
+| Chris | 리뷰 | Claude GitHub Actions AI 리뷰어 |
+| Dasol | 배포·운영 | `MONITORING.md` + Sentry + Docker |
+
+1. **기획** → PRD · API 계약 작성
+2. **코딩** → 4인 분담 + Phase 1~3 PR
+3. **테스트** → E2E · 자동화
+4. **리뷰** → AI + 사람 교차 피어리뷰
+5. **배포·운영** → 모니터링 · 에러 추적
+
+---
+
 # 12개 표준 문서 📂
 
-![w:720](../theme/assets/marketing/github-team-sample.png)
+| 문서 | 1줄 설명 |
+| --- | --- |
+| `PRD` · `DECISIONS` | 요구사항 + 의사결정 ADR |
+| `API-CONTRACT` | endpoint 계약 |
+| `CLAUDE.md` | AI 헌법 (6요소) |
+| `LIFECYCLE-COVERAGE` | 5단계 통과 매트릭스 |
+| `MONITORING` · `INTEGRATION-LOG` | 운영·알림 + Day 1~5 일지 |
+| `RETROSPECTIVE` · `INTERVIEW-ANSWERS` | 10주 회고 + 면접 답변 카드 |
 
-> _PRD / API-CONTRACT / DECISIONS / LIFECYCLE-COVERAGE / MONITORING / RETROSPECTIVE / INTERVIEW-ANSWERS / ..._
-> 5단계 누가 무엇을 했는지 _문서로 증명_ — 그대로 면접 답변 근거.
+> 5단계 누가 무엇 했는지 _문서로 증명_ — 그대로 면접 답변 근거.
 
 ---
 
-<!-- _backgroundImage: url("../theme/assets/marketing/github-showcase.png") -->
-<!-- _backgroundSize: cover -->
-<!-- _backgroundColor: #0d1138 -->
+# 졸업 팀 사례 — 운영 티켓 시스템 🎮
 
----
+```text
+사내 IT 운영팀 슬랙 티켓 한 곳에 모으고 SLA + AI 리뷰
+4인 1조 · 10주 클리어 · 23 commits · 10 PR · 12 문서
+```
 
-<!-- _backgroundImage: url("../theme/assets/marketing/github-showcase-readme.png") -->
-<!-- _backgroundSize: contain -->
-<!-- _backgroundColor: #0d1138 -->
+| 단계 | 산출물 | AI 도구 | 통과 |
+| --- | --- | --- | --- |
+| 기획 | `PRD` + `DECISIONS` | Jira MCP + AI PRD | ✅ |
+| 코딩 | `src/` + `API-CONTRACT` | Claude.md + Hooks | ✅ |
+| 테스트 | `tests/e2e` + `e2e.yml` | Playwright MCP | ✅ |
+| 리뷰 | `ai-review.yml` | Claude GitHub Actions | ✅ |
+| 운영 | `MONITORING` + Docker | Sentry MCP 가이드 | ✅ |
+
+> 레포: `github.com/GaeChwiRpg/devcamp-team-project-showcase`.
 
 ---
 
 # 주간 리듬 — 평일 + 주말 🗓️
 
-![w:760](../theme/assets/marketing/landing-rhythm.png)
+```text
+월  20:00–22:00   Kickoff (주간 미션 공개 · Q&A)
+화  자율 학습      녹화본 + Slack 멘토 Q&A
+수  자율 학습      자율 학습
+목  자율 학습      자율 학습
+금  20:00–22:00   미션 마감 (PR 제출 · 코드리뷰)
+토  14:00–16:30   라이브 (격주 특강 + 내부 발표)
+일  20:00–22:00   오피스아워 (자유 질문)
+```
 
-> 평일 `20:00–22:00` 공식 활동 · 토 14/15 라이브 · 일 20–22 오피스아워. _월·금·토 핵심 참여일_.
+> _월·금·토 핵심 참여일_. 나머지는 녹화본 + 자율. 주 10~12시간.
 
 ---
 
@@ -172,50 +261,19 @@ description: 2026-05-17 (토) 설명회 발표 자료. 시장의 현실 / 우리
 
 ---
 
-# 가격 & 환불 💰
+# 가격 · 환불 · 1기 한정 혜택 💰
 
 ```text
-정가:      ₩1,400,000
-1기 런칭가: ₩980,000  (30% 할인)
+정가:        ₩1,400,000
+1기 런칭가:  ₩980,000   (30% 할인)
+환불:        2026-05-24 사전학습 시작 전 100% · 이후 주차 차감
 ```
 
-**환불 정책**:
+**🎁 1기 한정 혜택**:
 
-- 2026-05-24 _사전학습 시작 전_ : **100% 환불**
-- 사전학습 시작 후 ~ 정규 시작 전: 강의 지급 기준 부분 환불
-- 정규 운영 시작 후: 주차 진행 차감
-- 목표: 환불 요청 후 _7영업일_ 이내 처리
-
-> 사전학습 2주 + 본과정 10주 + 4인 팀 + 라이브 + 녹화 + 멘토 _모두 포함_.
-
----
-
-# 1기 한정 혜택 🎁
-
-**① 인프런 강의 7개 일괄 제공** (2026-05-24 사전학습 시점):
-
-- SQL / DB 핵심 (2시간 속성)
-- Git 기본기
-- 면접에서 '설명할 수 있는' 코드 만들기 (LV1)
-- JPA Mastery (LV2)
-- 6주완성 백엔드 이력서 돋보이는 법
-- The 10x AI-Native Developer
-- 3일완성 백엔드 면접 생존 챌린지
-
-**② 최종 발표 1등 팀** — 이력서 1:1 첨삭 (팀원 4명 전원, 재제출 1회 포함)
-
----
-
-# 일정 📅
-
-```text
-모집           2026-05-08 ~ 2026-05-23  ← 오늘 D-6
-사전학습       2026-05-24 ~ 2026-06-05  (2주)
-정규 시작      2026-06-06 (토)  · W1 Kickoff
-최종 발표      2026-08-15 (토)  · W10 Final
-```
-
-> 모집 마감 후 정원 마감 시 _대기열_ 운영. _빠른 신청_ 권장.
+- 인프런 강의 **7개 일괄 제공** (SQL/Git/JPA/이력서/AI Native/면접/LV1)
+- 최종 발표 **1등 팀** — 이력서 1:1 첨삭 (팀원 4명 전원, 재제출 1회)
+- 사전학습 2주 + 본과정 10주 + 4인 팀 + 라이브 + 녹화 + 멘토 **모두 포함**
 
 ---
 
@@ -224,10 +282,13 @@ description: 2026-05-17 (토) 설명회 발표 자료. 시장의 현실 / 우리
 # Press Start 🚀
 
 ```text
-지원하기   →  Latpeed 통합 폼  (1기 지원)
-무료 상담  →  Kakao Open Chat
+모집           2026-05-08 ~ 2026-05-23  ← 오늘 D-6
+사전학습       2026-05-24 ~ 2026-06-05  (2주)
+정규 시작      2026-06-06 (토)  · W1 Kickoff
+최종 발표      2026-08-15 (토)  · W10 Final
+
+지원하기   →   Latpeed 통합 폼  (1기 지원)
+무료 상담  →   Kakao Open Chat
 ```
 
-**오늘 결정 안 해도 OK** — 결정은 _미루지 마세요_.
-
-> 모집 마감 **D-6** (2026-05-23). 사전학습은 5/24 일괄 시작.
+**오늘 결정 안 해도 OK** — 결정은 _미루지 마세요_. 모집 마감 **D-6**.
