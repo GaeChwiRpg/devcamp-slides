@@ -116,6 +116,12 @@ W10  🐉  FINAL BOSS — 면접 답변
 
 ---
 
+<!-- _backgroundImage: url("../theme/assets/marketing/gh-pr-list.png") -->
+<!-- _backgroundSize: contain -->
+<!-- _backgroundColor: #0d1138 -->
+
+---
+
 <!-- _class: lesson -->
 
 # 이력서 Before / After 📝
@@ -197,6 +203,12 @@ LG CNS · 쿠팡 · 라인 외 (12곳+)
 
 ---
 
+<!-- _backgroundImage: url("../theme/assets/marketing/gh-file-tree.png") -->
+<!-- _backgroundSize: contain -->
+<!-- _backgroundColor: #0d1138 -->
+
+---
+
 # 졸업 팀 사례 — 운영 티켓 시스템 🎮
 
 ```text
@@ -216,6 +228,18 @@ LG CNS · 쿠팡 · 라인 외 (12곳+)
 
 ---
 
+<!-- _backgroundImage: url("../theme/assets/marketing/github-showcase-readme.png") -->
+<!-- _backgroundSize: contain -->
+<!-- _backgroundColor: #0d1138 -->
+
+---
+
+<!-- _backgroundImage: url("../theme/assets/marketing/gh-pr-6.png") -->
+<!-- _backgroundSize: contain -->
+<!-- _backgroundColor: #0d1138 -->
+
+---
+
 # 주간 리듬 — 평일 + 주말 🗓️
 
 ```text
@@ -229,6 +253,12 @@ LG CNS · 쿠팡 · 라인 외 (12곳+)
 ```
 
 > _월·금·토 핵심 참여일_. 나머지는 녹화본 + 자율. 주 10~12시간.
+
+---
+
+<!-- _backgroundImage: url("../theme/assets/marketing/discord-schedule.png") -->
+<!-- _backgroundSize: contain -->
+<!-- _backgroundColor: #0d1138 -->
 
 ---
 
