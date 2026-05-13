@@ -116,9 +116,11 @@ W10  🐉  FINAL BOSS — 면접 답변
 
 ---
 
-<!-- _backgroundImage: url("../theme/assets/marketing/gh-pr-list.png") -->
-<!-- _backgroundSize: contain -->
-<!-- _backgroundColor: #0d1138 -->
+# 실제 운영 흔적 — 졸업 팀 PR 10건 ⌚
+
+![h:380](../theme/assets/marketing/gh-pr-list.png)
+
+> _GaeChwiRpg/devcamp-team-project-showcase_ · 4인 1조 · Day 1~5 + Week 10 finale · **10 PRs 모두 merged**.
 
 ---
 
@@ -203,9 +205,11 @@ LG CNS · 쿠팡 · 라인 외 (12곳+)
 
 ---
 
-<!-- _backgroundImage: url("../theme/assets/marketing/gh-file-tree.png") -->
-<!-- _backgroundSize: contain -->
-<!-- _backgroundColor: #0d1138 -->
+# 실제 레포 파일 트리 📁
+
+![h:380](../theme/assets/marketing/gh-file-tree.png)
+
+> `.claude/` · `.github/workflows/` · `presentation/` · `src/` · `tests/e2e/` + `API-CONTRACT.md` · `CLAUDE.md` · `DECISIONS.md` ...
 
 ---
 
@@ -228,15 +232,19 @@ LG CNS · 쿠팡 · 라인 외 (12곳+)
 
 ---
 
-<!-- _backgroundImage: url("../theme/assets/marketing/github-showcase-readme.png") -->
-<!-- _backgroundSize: contain -->
-<!-- _backgroundColor: #0d1138 -->
+# 졸업 팀 README — 가상 팀 + Day 5 📋
+
+![h:340](../theme/assets/marketing/github-showcase-readme.png)
+
+> Alex / Bora / Chris / Dasol · Day 1~5 PR 매트릭스 · 핵심 문서 list.
 
 ---
 
-<!-- _backgroundImage: url("../theme/assets/marketing/gh-pr-6.png") -->
-<!-- _backgroundSize: contain -->
-<!-- _backgroundColor: #0d1138 -->
+# AI 리뷰어 PR — 실제 merge 흔적 🤖
+
+![h:340](../theme/assets/marketing/gh-pr-6.png)
+
+> Day 4 — Claude GitHub Actions AI 리뷰어 도입 · _Merged_.
 
 ---
 
@@ -256,9 +264,11 @@ LG CNS · 쿠팡 · 라인 외 (12곳+)
 
 ---
 
-<!-- _backgroundImage: url("../theme/assets/marketing/discord-schedule.png") -->
-<!-- _backgroundSize: contain -->
-<!-- _backgroundColor: #0d1138 -->
+# Discord 서버 — 운영 체계 💬
+
+![h:380](../theme/assets/marketing/discord-schedule.png)
+
+> 채널: 전체 공지 / 1기 공용 / 1기 팀. dingco-bot 10주 일정 + 평일 20~22 공식 활동.
 
 ---
 
