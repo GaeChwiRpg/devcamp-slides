@@ -29,8 +29,17 @@
   --rpg-font-body: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --rpg-font-mono: 'JetBrains Mono', 'D2Coding', Menlo, Consolas, monospace;
 
-  /* 슬라이드 + fragment 전환 속도 — 팍팍 넘어가도록 */
-  --marp-bespoke-transition-animation-duration: 200ms;
+}
+
+/* Fragment fade-in (페이지 전환은 즉시 / 페이지 내부 요소만 부드러운 fade) */
+[data-marpit-fragment] {
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+[data-marpit-fragment][data-bespoke-marp-fragment="inactive"] {
+  opacity: 0;
+}
+[data-marpit-fragment][data-bespoke-marp-fragment="active"] {
+  opacity: 1;
 }
 
 /* ===== 기본 슬라이드 ===== */

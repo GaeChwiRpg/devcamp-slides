@@ -2,7 +2,6 @@
 marp: true
 theme: rpg
 paginate: true
-transition: fade
 title: '딩코딩코 백엔드 부트캠프 1기 — 설명회'
 description: 2026-05-17 (일) 설명회 발표 자료. 시장의 현실 / 우리의 답 / 10주 RPG 로드맵 / 신뢰 / 가격·신청.
 ---
