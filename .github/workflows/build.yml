@@ -62,6 +62,7 @@ jobs:
           }
 
           const sections = [
+            { id: 'marketing',      title: '설명회 / 마케팅 자료' },
             { id: 'weekly-kickoff', title: '매주 14:00–15:00 미션 공개' },
             { id: 'lecture',        title: '격주 강의 (2/4/6/8주차)' },
             { id: 'offline',        title: '첫·마지막 오프라인 모임' },
