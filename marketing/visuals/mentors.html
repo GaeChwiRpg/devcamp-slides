@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Mentors — 10주 동행</title>
+<style>
+  @font-face {
+    font-family: "Galmuri11";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Galmuri11.woff2") format("woff2");
+    font-display: block;
+  }
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1280px; height: 720px; overflow: hidden;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 50%, rgba(244,200,75,0.06), transparent),
+      linear-gradient(180deg, #0d1138 0%, #07091f 100%);
+    color: #fff;
+    font-family: "Galmuri11", "Pretendard Variable", sans-serif;
+  }
+  body::before {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(244,200,75,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(244,200,75,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+  .wrap { position: relative; padding: 40px 56px; height: 100%; }
+  .badge {
+    display: inline-block;
+    font-size: 14px; letter-spacing: 0.18em; color: #f4c84b;
+    border: 1px solid rgba(244,200,75,0.5);
+    padding: 4px 12px; border-radius: 2px;
+  }
+  h1 {
+    font-size: 44px; color: #f4c84b; margin-top: 10px; line-height: 1.1;
+    text-shadow: 0 0 24px rgba(244,200,75,0.45), 4px 4px 0 rgba(0,0,0,0.5);
+  }
+  .sub { color: #a8b0d8; font-size: 16px; margin-top: 10px; font-family: "Pretendard Variable", sans-serif; }
+
+  .cards {
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    align-items: stretch;
+    height: 460px;
+  }
+
+  .card {
+    background: linear-gradient(180deg, #1a1e4d 0%, #11143a 100%);
+    border: 2px solid rgba(244,200,75,0.4);
+    border-radius: 10px;
+    padding: 18px 22px;
+    display: flex; flex-direction: column;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 8px 0 rgba(0,0,0,0.4);
+    position: relative;
+  }
+  .card.magic { border-color: rgba(192,132,252,0.6); }
+  .card.success { border-color: rgba(102,232,156,0.6); }
+
+  .card .role {
+    font-size: 12px; letter-spacing: 0.18em; color: #a8b0d8;
+    margin-bottom: 6px;
+  }
+  .card .nm {
+    font-size: 22px; color: #f4c84b;
+    line-height: 1.1;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+  }
+  .card.magic .nm { color: #c084fc; }
+  .card.success .nm { color: #66e89c; }
+
+  .card .stats {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    font-family: "Pretendard Variable", sans-serif;
+  }
+  .stat {
+    background: rgba(244,200,75,0.06);
+    border: 1px solid rgba(244,200,75,0.3);
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .card.magic .stat { background: rgba(192,132,252,0.06); border-color: rgba(192,132,252,0.3); }
+  .card.success .stat { background: rgba(102,232,156,0.06); border-color: rgba(102,232,156,0.3); }
+  .stat .v {
+    font-family: "Galmuri11";
+    font-size: 26px; color: #f4c84b; line-height: 1;
+  }
+  .card.magic .stat .v { color: #c084fc; }
+  .card.success .stat .v { color: #66e89c; }
+  .stat .l { font-size: 10px; color: #a8b0d8; margin-top: 3px; }
+
+  .card .desc {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(244,200,75,0.2);
+    font-family: "Pretendard Variable", sans-serif;
+    font-size: 13px; color: #cfd6f5;
+    line-height: 1.5;
+  }
+  .card .desc b { color: #fff; }
+
+  .verdict {
+    margin-top: 22px;
+    background: rgba(192,132,252,0.08);
+    border-left: 3px solid #c084fc;
+    padding: 12px 16px;
+    font-family: "Pretendard Variable", sans-serif;
+    font-size: 14px; color: #cfd6f5;
+    line-height: 1.5;
+  }
+  .verdict b { color: #fff; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="badge">▶ MENTORS · 10-WEEK PARTY</span>
+  <h1>현직 백엔드 멘토 3종 — 10주 동행</h1>
+  <div class="sub">강의 던져두기 X · 매주 PR · 성능 수치 · 팀 프로젝트 · 면접까지 함께</div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="role">▶ 기술 멘토</div>
+      <div class="nm">현직 백엔드<br>8년 · 토스</div>
+      <div class="stats">
+        <div class="stat"><div class="v">20K+</div><div class="l">유튜브 구독자</div></div>
+        <div class="stat"><div class="v">100건+</div><div class="l">크몽 첨삭 (평점 5.0)</div></div>
+      </div>
+      <div class="desc">
+        Spring Boot · JPA · 성능 · AI 워크플로우를 <b>PR 리뷰와 팀 프로젝트 산출물로</b> 잇습니다.
+      </div>
+    </div>
+
+    <div class="card magic">
+      <div class="role">▶ 이력서 멘토</div>
+      <div class="nm">메이저 5곳<br>동시 합격자</div>
+      <div class="stats">
+        <div class="stat"><div class="v">90%</div><div class="l">서류 합격률</div></div>
+        <div class="stat"><div class="v">100+</div><div class="l">1:1 이력서 첨삭</div></div>
+      </div>
+      <div class="desc">
+        딩코딩코 강의 출신 → 본인 이력서 개선으로 <b>토스/당근/오늘의집 5곳 동시 합격</b>.
+      </div>
+    </div>
+
+    <div class="card success">
+      <div class="role">▶ 운영진</div>
+      <div class="nm">총괄 + 조교<br>매일 활동</div>
+      <div class="stats">
+        <div class="stat"><div class="v">월·금</div><div class="l">Core 라이브</div></div>
+        <div class="stat"><div class="v">일 20시</div><div class="l">오피스아워</div></div>
+      </div>
+      <div class="desc">
+        Slack 즉답 + 토 라이브 + 일 오피스아워. <b>10주 끝까지 안 보이는 멘토 X</b>.
+      </div>
+    </div>
+  </div>
+
+  <div class="verdict">
+    🎮 <b>단발 특강 X</b> — Week 1~10 전 구간에서 PR · README · 성능 수치 · 발표 · 면접 답변까지 함께 점검.
+  </div>
+</div>
+</body>
+</html>

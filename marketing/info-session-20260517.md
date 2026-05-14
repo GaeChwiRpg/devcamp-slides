@@ -88,11 +88,11 @@ W10  🐉  3일 면접 생존 챌린지 — FINAL BOSS
 
 ---
 
-# Landing — 10주 미션 트리 🌳
+# 10주 RPG 미션 트리 🌳
 
-![h:400](../theme/assets/marketing/landing-roadmap-v2.png)
+![h:420](../theme/assets/marketing/roadmap.png)
 
-> 픽셀 아이콘 Pre~W10 · W10 _FINAL BOSS_ 골드 강조. 실제 landing 페이지.
+> Pre · W1~W7 기본기 · W8~W9 AI·팀 · W10 _FINAL BOSS_ · +α 취업.
 
 ---
 
@@ -158,9 +158,9 @@ W10  🐉  3일 면접 생존 챌린지 — FINAL BOSS
 
 # 수강생 사례 — 정산 배치 −88% 📈
 
-![h:360](../theme/assets/marketing/landing-before-after-v2.png)
+![h:380](../theme/assets/marketing/before-after.png)
 
-> Oracle 프로시저 + Excel 수작업 (2시간) → Spring Scheduled + Crontab E2E 자동화 (15분). 월 1,400만 건 · 오류율 0%.
+> Oracle 프로시저 + Excel 수작업 (2h) → Spring Scheduled + Crontab E2E 자동화 (15분). 월 1,400만 건 · 오류율 0%.
 
 ---
 
@@ -176,11 +176,11 @@ W10  🐉  3일 면접 생존 챌린지 — FINAL BOSS
 
 ---
 
-# 멘토 카드 — 인프런 평점 · 합격률 ⭐
+# 멘토 3종 — 카드 ⭐
 
-![h:400](../theme/assets/marketing/landing-mentors-v2.png)
+![h:420](../theme/assets/marketing/mentors.png)
 
-> 8년 · 토스 · 20K · 100건+ (평점 5.0) · 우측: _5개 기업 동시 합격_ 이력서 멘토 영상.
+> 기술 멘토 (8년 토스 · 20K) · 이력서 멘토 (5곳 동시 합격 · 90%) · 운영진 (총괄 + 조교).
 
 ---
 
@@ -199,11 +199,11 @@ LG CNS · 쿠팡 · 라인 외 (12곳+)
 
 ---
 
-# 합격 사례 카드 — 12곳 회사 모음 🏆
+# 합격 사례 12곳 — 회사 그리드 🏆
 
-![h:360](../theme/assets/marketing/landing-success-v2.png)
+![h:420](../theme/assets/marketing/success.png)
 
-> ✓ QUEST COMPLETED + ★ FINAL OFFER 배지. 토스 · 토스뱅크 · 당근 · 오늘의집 · 무신사 · 현대오토에버 · 채널 · 버즈빌 ...
+> ✓ QUEST + ★ FINAL OFFER. 토스 · 토스뱅크 · 당근 · 오늘의집 · 무신사 · 현대오토에버 · 채널 · 버즈빌 ...
 
 ---
 
@@ -334,9 +334,9 @@ LG CNS · 쿠팡 · 라인 외 (12곳+)
 
 ---
 
-# 🏆 실제 작동 — Week 1 리더보드 자동 발표
+# 🏆 Week 1 리더보드 자동 발표
 
-![h:400](../theme/assets/marketing/discord-leaderboard.png)
+![h:380](../theme/assets/marketing/discord-leaderboard.png)
 
 > 일요일 23:55 evaluate cron → 차등 보너스 자동 적립 → 팀 채널 자동 발표. _internal-test-0510_ 실 운영 캡처.
 
