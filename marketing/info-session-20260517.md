@@ -2,8 +2,9 @@
 marp: true
 theme: rpg
 paginate: true
+transition: fade
 title: '딩코딩코 백엔드 부트캠프 1기 — 설명회'
-description: 2026-05-17 (토) 설명회 발표 자료. 시장의 현실 / 우리의 답 / 10주 RPG 로드맵 / 신뢰 / 가격·신청.
+description: 2026-05-17 (일) 설명회 발표 자료. 시장의 현실 / 우리의 답 / 10주 RPG 로드맵 / 신뢰 / 가격·신청.
 ---
 
 <!-- _class: cover -->
@@ -15,19 +16,23 @@ description: 2026-05-17 (토) 설명회 발표 자료. 시장의 현실 / 우리
 
 10주 · 주 10~12시간 · 4인 1조 · 채용 담당자가 보는 GitHub
 
-2026-05-17 (토) 설명회 · 모집 마감 **D-6** (5/23)
+2026-05-17 (일) 설명회 · 모집 마감 **D-6** (5/23)
 
 ---
 
 # 오늘 흐름 — 30분 🎯
 
+<div>
+
 | # | 블록 | 분량 | 핵심 |
 | --- | --- | --- | --- |
-| 1️⃣ | **시장의 현실** | 5분 | 왜 지금 — AI 시대 신입의 두 얼굴 |
-| 2️⃣ | **우리의 답** | 5분 | 3축 분리 — Pass · AI Native · Team |
-| 3️⃣ | **10주 RPG** | 8분 | 로드맵 + AI 사용 정책 |
-| 4️⃣ | **산출물 · 신뢰** | 7분 | GitHub · 멘토 · 12곳+ 합격 |
-| 5️⃣ | **가격 · 신청** | 5분 | ₩980,000 · D-6 모집 마감 |
+| <span data-marpit-fragment="1">1️⃣</span> | <span data-marpit-fragment="1">**시장의 현실**</span> | <span data-marpit-fragment="1">5분</span> | <span data-marpit-fragment="1">왜 지금 — AI 시대 신입의 두 얼굴</span> |
+| <span data-marpit-fragment="2">2️⃣</span> | <span data-marpit-fragment="2">**우리의 답**</span> | <span data-marpit-fragment="2">5분</span> | <span data-marpit-fragment="2">3축 분리 — Pass · AI Native · Team</span> |
+| <span data-marpit-fragment="3">3️⃣</span> | <span data-marpit-fragment="3">**10주 RPG**</span> | <span data-marpit-fragment="3">8분</span> | <span data-marpit-fragment="3">로드맵 + AI 사용 정책</span> |
+| <span data-marpit-fragment="4">4️⃣</span> | <span data-marpit-fragment="4">**산출물 · 신뢰**</span> | <span data-marpit-fragment="4">7분</span> | <span data-marpit-fragment="4">GitHub · 멘토 · 12곳+ 합격</span> |
+| <span data-marpit-fragment="5">5️⃣</span> | <span data-marpit-fragment="5">**가격 · 신청**</span> | <span data-marpit-fragment="5">5분</span> | <span data-marpit-fragment="5">₩980,000 · D-6 모집 마감</span> |
+
+</div>
 
 > 30분 발표 + 10분 Q&A. 막히는 질문은 끝에 모아서.
 
@@ -218,11 +223,15 @@ LG CNS · 쿠팡 · 라인 외 (12곳+)
 | Chris | 리뷰 | Claude GitHub Actions AI 리뷰어 |
 | Dasol | 배포·운영 | `MONITORING.md` + Sentry + Docker |
 
-1. **기획** → PRD · API 계약 작성
-2. **코딩** → 4인 분담 + Phase 1~3 PR
-3. **테스트** → E2E · 자동화
-4. **리뷰** → AI + 사람 교차 피어리뷰
-5. **배포·운영** → 모니터링 · 에러 추적
+<div>
+
+1. <span data-marpit-fragment="1">**기획** → PRD · API 계약 작성</span>
+2. <span data-marpit-fragment="2">**코딩** → 4인 분담 + Phase 1~3 PR</span>
+3. <span data-marpit-fragment="3">**테스트** → E2E · 자동화</span>
+4. <span data-marpit-fragment="4">**리뷰** → AI + 사람 교차 피어리뷰</span>
+5. <span data-marpit-fragment="5">**배포·운영** → 모니터링 · 에러 추적</span>
+
+</div>
 
 ---
 
