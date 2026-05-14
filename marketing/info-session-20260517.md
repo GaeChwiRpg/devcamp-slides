@@ -22,17 +22,13 @@ description: 2026-05-17 (일) 설명회 발표 자료. 시장의 현실 / 우리
 
 # 오늘 흐름 — 30분 🎯
 
-<div>
-
 | # | 블록 | 분량 | 핵심 |
 | --- | --- | --- | --- |
-| <span data-marpit-fragment="1">1️⃣</span> | <span data-marpit-fragment="1">**시장의 현실**</span> | <span data-marpit-fragment="1">5분</span> | <span data-marpit-fragment="1">왜 지금 — AI 시대 신입의 두 얼굴</span> |
-| <span data-marpit-fragment="2">2️⃣</span> | <span data-marpit-fragment="2">**우리의 답**</span> | <span data-marpit-fragment="2">5분</span> | <span data-marpit-fragment="2">3축 분리 — Pass · AI Native · Team</span> |
-| <span data-marpit-fragment="3">3️⃣</span> | <span data-marpit-fragment="3">**10주 RPG**</span> | <span data-marpit-fragment="3">8분</span> | <span data-marpit-fragment="3">로드맵 + AI 사용 정책</span> |
-| <span data-marpit-fragment="4">4️⃣</span> | <span data-marpit-fragment="4">**산출물 · 신뢰**</span> | <span data-marpit-fragment="4">7분</span> | <span data-marpit-fragment="4">GitHub · 멘토 · 12곳+ 합격</span> |
-| <span data-marpit-fragment="5">5️⃣</span> | <span data-marpit-fragment="5">**가격 · 신청**</span> | <span data-marpit-fragment="5">5분</span> | <span data-marpit-fragment="5">₩980,000 · D-6 모집 마감</span> |
-
-</div>
+| 1️⃣ | **시장의 현실** | 5분 | 왜 지금 — AI 시대 신입의 두 얼굴 |
+| 2️⃣ | **우리의 답** | 5분 | 3축 분리 — Pass · AI Native · Team |
+| 3️⃣ | **10주 RPG** | 8분 | 로드맵 + AI 사용 정책 |
+| 4️⃣ | **산출물 · 신뢰** | 7분 | GitHub · 멘토 · 12곳+ 합격 |
+| 5️⃣ | **가격 · 신청** | 5분 | ₩980,000 · D-6 모집 마감 |
 
 > 30분 발표 + 10분 Q&A. 막히는 질문은 끝에 모아서.
 

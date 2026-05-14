@@ -28,6 +28,9 @@
   --rpg-font-pixel: 'Galmuri11', 'DotGothic16', monospace;
   --rpg-font-body: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --rpg-font-mono: 'JetBrains Mono', 'D2Coding', Menlo, Consolas, monospace;
+
+  /* 슬라이드 + fragment 전환 속도 — 팍팍 넘어가도록 */
+  --marp-bespoke-transition-animation-duration: 200ms;
 }
 
 /* ===== 기본 슬라이드 ===== */
